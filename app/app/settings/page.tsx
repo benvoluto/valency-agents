@@ -19,6 +19,40 @@ async function saveProfile(formData: FormData) {
   redirect('/app/settings?saved=profile')
 }
 
+async function saveEmailPrefs(formData: FormData) {
+  'use server'
+  const user = await requireUser()
+  const cadence = formData.get('cadence')?.toString() ?? 'daily'
+  const validCadences = ['instant', 'hourly', 'daily', 'weekly', 'off']
+  if (!validCadences.includes(cadence)) {
+    redirect('/app/settings?error=' + encodeURIComponent('invalid cadence'))
+  }
+  const start = formData.get('quietStart')?.toString()
+  const end = formData.get('quietEnd')?.toString()
+  const quietStart = start && /^\d+$/.test(start) ? Math.min(23, Math.max(0, Number(start))) : null
+  const quietEnd = end && /^\d+$/.test(end) ? Math.min(23, Math.max(0, Number(end))) : null
+  await db
+    .update(users)
+    .set({
+      emailDigestCadence: cadence,
+      emailQuietHoursStart: quietStart,
+      emailQuietHoursEnd: quietEnd,
+    })
+    .where(eq(users.id, user.id))
+  redirect('/app/settings?saved=email')
+}
+
+async function resumeEmail(formData: FormData) {
+  'use server'
+  const user = await requireUser()
+  void formData
+  await db
+    .update(users)
+    .set({ emailSuppressed: null })
+    .where(eq(users.id, user.id))
+  redirect('/app/settings?saved=email')
+}
+
 async function saveValencyToken(formData: FormData) {
   'use server'
   const user = await requireUser()
@@ -168,6 +202,102 @@ export default async function SettingsPage({
             className="bg-ink text-surface hover:bg-ink/90 inline-flex items-center justify-center rounded-lg px-4 py-2 text-sm font-medium transition"
           >
             Save profile
+          </button>
+        </form>
+      </section>
+
+      <section className="bg-surface border-border-subtle mb-8 rounded-2xl border p-8">
+        <h2 className="font-display text-ink text-lg">Email preferences</h2>
+        <p className="text-ink-muted mt-1 text-sm leading-relaxed">
+          How often briefings land in your inbox. Replying to a digest with{' '}
+          <code className="bg-accent-soft text-accent rounded px-1 font-mono text-[11px]">
+            approve
+          </code>{' '}
+          /{' '}
+          <code className="bg-accent-soft text-accent rounded px-1 font-mono text-[11px]">
+            dismiss
+          </code>{' '}
+          /{' '}
+          <code className="bg-accent-soft text-accent rounded px-1 font-mono text-[11px]">
+            more
+          </code>{' '}
+          plus the briefing&apos;s short id will fire the corresponding action.
+        </p>
+        {user.emailSuppressed ? (
+          <div className="bg-priority-critical/10 text-priority-critical mt-4 flex items-center justify-between gap-3 rounded-md px-3 py-2 text-sm">
+            <span>
+              Email is suppressed (reason: <code>{user.emailSuppressed}</code>).
+              Mailgun won&apos;t deliver until you resume.
+            </span>
+            <form action={resumeEmail}>
+              <button
+                type="submit"
+                className="bg-priority-critical text-surface hover:bg-priority-critical/90 rounded px-3 py-1 text-xs font-medium"
+              >
+                Resume
+              </button>
+            </form>
+          </div>
+        ) : null}
+        <form action={saveEmailPrefs} className="mt-4 space-y-4">
+          <fieldset>
+            <legend className="text-ink text-sm font-medium">
+              Digest cadence
+            </legend>
+            <div className="mt-2 grid grid-cols-1 gap-2 sm:grid-cols-3">
+              {(['instant', 'hourly', 'daily', 'weekly', 'off'] as const).map(
+                (c) => (
+                  <label
+                    key={c}
+                    className="border-border-subtle hover:bg-accent-soft flex cursor-pointer items-center gap-2 rounded-md border px-3 py-2 text-sm"
+                  >
+                    <input
+                      type="radio"
+                      name="cadence"
+                      value={c}
+                      defaultChecked={user.emailDigestCadence === c}
+                      className="accent-accent"
+                    />
+                    <span className="capitalize">{c}</span>
+                  </label>
+                ),
+              )}
+            </div>
+          </fieldset>
+          <div className="grid grid-cols-2 gap-4">
+            <label className="block">
+              <span className="text-ink text-sm font-medium">
+                Quiet hours start{' '}
+                <span className="text-ink-muted font-normal">(0–23, UTC)</span>
+              </span>
+              <input
+                name="quietStart"
+                type="number"
+                min={0}
+                max={23}
+                defaultValue={user.emailQuietHoursStart ?? ''}
+                className="border-border-subtle bg-surface text-ink mt-1 block w-full rounded-md border px-3 py-2 text-sm focus:outline-2 focus:outline-accent"
+              />
+            </label>
+            <label className="block">
+              <span className="text-ink text-sm font-medium">
+                Quiet hours end
+              </span>
+              <input
+                name="quietEnd"
+                type="number"
+                min={0}
+                max={23}
+                defaultValue={user.emailQuietHoursEnd ?? ''}
+                className="border-border-subtle bg-surface text-ink mt-1 block w-full rounded-md border px-3 py-2 text-sm focus:outline-2 focus:outline-accent"
+              />
+            </label>
+          </div>
+          <button
+            type="submit"
+            className="bg-ink text-surface hover:bg-ink/90 inline-flex items-center justify-center rounded-lg px-4 py-2 text-sm font-medium transition"
+          >
+            Save email preferences
           </button>
         </form>
       </section>
