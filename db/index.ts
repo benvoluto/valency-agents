@@ -11,7 +11,13 @@ import * as schema from './schema'
 // with a clear error, but the module graph loads cleanly.
 
 const PLACEHOLDER = 'postgres://build:build@build.invalid:5432/build'
-const url = process.env.DATABASE_URL ?? PLACEHOLDER
+// `??` would not fall back on the empty string, but GitHub Actions hands env
+// vars through as `""` when the corresponding secret isn't set — so we
+// treat empty + undefined identically here.
+const url =
+  process.env.DATABASE_URL && process.env.DATABASE_URL.length > 0
+    ? process.env.DATABASE_URL
+    : PLACEHOLDER
 
 if (typeof WebSocket === 'undefined') {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

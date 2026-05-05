@@ -13,14 +13,10 @@ jobs:
   check:
     name: lint + typecheck + unit + build
     runs-on: ubuntu-latest
-    env:
-      # Provided as repo / org secrets in GitHub Actions.
-      DATABASE_URL: ${{ secrets.DATABASE_URL }}
-      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-      GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
-      GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
-      AUTH_SECRET: ${{ secrets.AUTH_SECRET }}
-      VALENCY_BEARER_TOKEN: ${{ secrets.VALENCY_BEARER_TOKEN }}
+    # No env block — the build path is intentionally tolerant of missing
+    # secrets (db/index.ts uses a placeholder URL, Auth.js auto-generates a
+    # dev secret, etc.). Adding empty-string secrets here would actively
+    # break build-time module init by overriding the placeholder fallback.
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -37,6 +33,8 @@ jobs:
     name: playwright
     runs-on: ubuntu-latest
     needs: check
+    # Only the e2e job needs real secrets — and even those are optional;
+    # the affected tests use `test.skip` when env is missing.
     env:
       DATABASE_URL: ${{ secrets.DATABASE_URL }}
       ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
@@ -44,6 +42,9 @@ jobs:
       GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
       AUTH_SECRET: ${{ secrets.AUTH_SECRET }}
       VALENCY_BEARER_TOKEN: ${{ secrets.VALENCY_BEARER_TOKEN }}
+      BRIEFING_ENC_KEY: ${{ secrets.BRIEFING_ENC_KEY }}
+      MAILGUN_WEBHOOK_SIGNING_KEY: ${{ secrets.MAILGUN_WEBHOOK_SIGNING_KEY }}
+      E2E_TEST_MODE: 'true'
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -53,4 +54,8 @@ jobs:
       - run: npm ci
       - run: npx playwright install --with-deps chromium
       - run: npm run build
-      - run: npm run test:e2e
+      - run: npm run start &
+        env:
+          PORT: '3000'
+      - run: npx wait-on http://localhost:3000/api/health --timeout 60000
+      - run: PLAYWRIGHT_BASE_URL=http://localhost:3000 npm run test:e2e
