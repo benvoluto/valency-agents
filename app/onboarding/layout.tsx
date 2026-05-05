@@ -8,16 +8,19 @@ export default async function OnboardingLayout({
 }) {
   await requireUser()
   return (
-    <main className="bg-bg min-h-screen px-6 py-12">
+    <main
+      id="main"
+      className="bg-bg min-h-screen px-4 py-6 sm:px-6 sm:py-12"
+    >
       <div className="mx-auto max-w-2xl">
-        <header className="mb-10">
+        <header className="mb-8 sm:mb-10">
           <Link
             href="/"
-            className="text-ink-muted font-mono text-xs tracking-wider uppercase"
+            className="text-ink-muted font-mono text-xs tracking-wider uppercase focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2 rounded-sm"
           >
             researchagents.io
           </Link>
-          <h1 className="font-display text-ink mt-3 text-3xl">
+          <h1 className="font-display text-ink mt-3 text-2xl sm:text-3xl">
             Welcome — let&apos;s get you set up.
           </h1>
         </header>

@@ -29,20 +29,22 @@ export function BriefingActions({
   const [popoverOpen, setPopoverOpen] = useState(false)
   return (
     <>
-      <div className="flex items-center gap-4 text-xs">
+      <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs">
         <button
           type="button"
           onClick={() => setDrawerOpen(true)}
-          className="text-ink-muted hover:text-ink underline-offset-2 hover:underline"
+          className="text-ink-muted hover:text-ink focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2 inline-flex min-h-11 items-center rounded px-2 underline-offset-2 hover:underline"
           aria-haspopup="dialog"
         >
           Explain
         </button>
-        <span className="text-ink-muted">·</span>
+        <span className="text-ink-muted hidden sm:inline" aria-hidden>
+          ·
+        </span>
         <button
           type="button"
           onClick={() => setPopoverOpen((v) => !v)}
-          className="text-ink-muted hover:text-ink underline-offset-2 hover:underline"
+          className="text-ink-muted hover:text-ink focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2 inline-flex min-h-11 items-center rounded px-2 underline-offset-2 hover:underline"
           aria-expanded={popoverOpen}
         >
           Show sources
@@ -92,7 +94,7 @@ function SourcesPopover({
         <button
           type="button"
           onClick={onClose}
-          className="text-ink-muted hover:text-ink"
+          className="text-ink-muted hover:text-ink focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2 inline-flex h-9 w-9 items-center justify-center rounded-md"
           aria-label="Close sources"
         >
           <X size={14} weight="bold" aria-hidden />
@@ -159,7 +161,7 @@ function ExplainDrawer({
         onClick={onClose}
         className="absolute inset-0 bg-black/30"
       />
-      <div className="bg-surface relative flex h-full w-full max-w-md flex-col overflow-y-auto border-l border-border-subtle p-6 shadow-2xl">
+      <div className="bg-surface relative flex h-full w-full flex-col overflow-y-auto border-l border-border-subtle p-6 shadow-2xl sm:max-w-md">
         <div className="mb-6 flex items-start justify-between gap-3">
           <div>
             <p className="text-ink-muted font-mono text-[11px] tracking-wider uppercase">
@@ -172,7 +174,7 @@ function ExplainDrawer({
           <button
             type="button"
             onClick={onClose}
-            className="text-ink-muted hover:text-ink"
+            className="text-ink-muted hover:text-ink focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2 inline-flex h-11 w-11 items-center justify-center rounded-md"
             aria-label="Close drawer"
           >
             <X size={18} weight="bold" aria-hidden />

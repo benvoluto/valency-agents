@@ -45,11 +45,16 @@ export function CategoryIcon({
   const Icon = ICON[kind]
   return (
     <div
+      role="img"
       className={`${TINT[kind]} flex shrink-0 items-center justify-center rounded-md`}
       style={{ width: size, height: size }}
       aria-label={`Category: ${kind.replace(/_/g, ' ')}`}
     >
-      <Icon size={Math.round(size * 0.55)} weight="regular" />
+      <Icon
+        size={Math.round(size * 0.55)}
+        weight="regular"
+        aria-hidden
+      />
     </div>
   )
 }

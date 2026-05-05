@@ -103,7 +103,7 @@ export function BriefingActionPanel({
   return (
     <>
       <div
-        className={`flex items-center gap-2 ${isCard ? 'ml-auto' : ''}`}
+        className={`flex flex-wrap items-center gap-x-3 gap-y-2 ${isCard ? 'sm:ml-auto' : ''}`}
         data-testid="briefing-actions"
       >
         {isDismissed ? (
@@ -117,7 +117,7 @@ export function BriefingActionPanel({
           type="button"
           disabled={submitting || isDismissed || isActed}
           onClick={() => openConfirm('dismiss')}
-          className="text-ink-muted hover:text-ink disabled:opacity-40 disabled:hover:text-ink-muted text-xs underline-offset-2 hover:underline"
+          className="text-ink-muted hover:text-ink disabled:opacity-40 disabled:hover:text-ink-muted focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2 inline-flex min-h-11 items-center rounded px-2 text-xs underline-offset-2 hover:underline"
         >
           Dismiss
         </button>
@@ -127,7 +127,7 @@ export function BriefingActionPanel({
             type="button"
             disabled={submitting || isDismissed}
             onClick={() => openConfirm('approve')}
-            className="text-ink-muted hover:text-ink disabled:opacity-40 text-xs underline-offset-2 hover:underline"
+            className="text-ink-muted hover:text-ink disabled:opacity-40 focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2 inline-flex min-h-11 items-center rounded px-2 text-xs underline-offset-2 hover:underline"
           >
             Approve
           </button>
@@ -137,7 +137,7 @@ export function BriefingActionPanel({
           type="button"
           disabled={submitting || isDismissed}
           onClick={() => openConfirm('more_like_this')}
-          className="text-ink-muted hover:text-ink disabled:opacity-40 text-xs underline-offset-2 hover:underline inline-flex items-center gap-1"
+          className="text-ink-muted hover:text-ink disabled:opacity-40 focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2 inline-flex min-h-11 items-center gap-1 rounded px-2 text-xs underline-offset-2 hover:underline"
         >
           <Sparkle size={12} weight="regular" aria-hidden />
           More like this
@@ -147,7 +147,7 @@ export function BriefingActionPanel({
           type="button"
           disabled={submitting || isDismissed || isActed}
           onClick={() => openConfirm(cta.kind)}
-          className="bg-ink text-surface hover:bg-ink/90 disabled:opacity-40 inline-flex items-center justify-center gap-1.5 rounded-md px-3 py-1.5 text-xs font-medium transition"
+          className="bg-ink text-surface hover:bg-ink/90 disabled:opacity-40 focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2 inline-flex min-h-11 items-center justify-center gap-1.5 rounded-md px-3 py-2 text-xs font-medium transition motion-reduce:transition-none"
         >
           <PrimaryIcon size={14} weight="regular" aria-hidden />
           {cta.label}

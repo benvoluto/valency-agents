@@ -11,8 +11,8 @@ export function ConfidenceChip({ confidence }: { confidence: number }) {
     <span
       className={`${tone} inline-flex items-center gap-1 font-mono text-[11px] font-medium tracking-wider`}
     >
-      <span className="opacity-80">{label}</span>
-      <span className="opacity-60">·</span>
+      <span>{label}</span>
+      <span aria-hidden>·</span>
       <span>{pct}%</span>
     </span>
   )

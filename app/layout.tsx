@@ -36,7 +36,15 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} ${fraunces.variable} ${jetbrainsMono.variable}`}
     >
-      <body className="font-sans antialiased">{children}</body>
+      <body className="font-sans antialiased">
+        <a
+          href="#main"
+          className="bg-ink text-surface focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2 absolute left-2 top-2 z-50 -translate-y-32 rounded-md px-3 py-2 text-sm font-medium transition focus:translate-y-0"
+        >
+          Skip to main content
+        </a>
+        {children}
+      </body>
     </html>
   )
 }

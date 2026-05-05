@@ -186,13 +186,17 @@ export function ThreadView({
         }}
         className="bg-surface border-border-subtle sticky bottom-4 mt-8 flex items-end gap-3 rounded-2xl border p-3"
       >
+        <label htmlFor="chat-input" className="sr-only">
+          Message
+        </label>
         <textarea
+          id="chat-input"
           value={draft}
           onChange={(e) => setDraft(e.target.value)}
           rows={2}
           placeholder="Ask a follow-up…"
           disabled={!!pending}
-          className="text-ink placeholder:text-ink-muted/70 flex-1 resize-none bg-transparent px-2 py-1 text-sm focus:outline-none disabled:opacity-50"
+          className="text-ink placeholder:text-ink-muted focus-visible:outline-2 focus-visible:outline-accent flex-1 resize-none rounded-md bg-transparent px-2 py-1 text-sm disabled:opacity-50"
           onKeyDown={(e) => {
             if (e.key === 'Enter' && !e.shiftKey) {
               e.preventDefault()
@@ -203,7 +207,7 @@ export function ThreadView({
         <button
           type="submit"
           disabled={!!pending || draft.trim().length === 0}
-          className="bg-ink text-surface hover:bg-ink/90 inline-flex h-9 w-9 items-center justify-center rounded-md transition disabled:opacity-30"
+          className="bg-ink text-surface hover:bg-ink/90 focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2 inline-flex h-11 w-11 items-center justify-center rounded-md transition motion-reduce:transition-none disabled:opacity-30"
           aria-label="Send"
         >
           <PaperPlaneTilt size={16} weight="regular" aria-hidden />

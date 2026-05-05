@@ -68,7 +68,7 @@ export function UndoBarClient({
         type="button"
         onClick={undo}
         disabled={pending}
-        className="text-surface hover:text-accent-soft inline-flex items-center gap-1 text-xs font-medium disabled:opacity-50"
+        className="text-surface hover:text-accent-soft focus-visible:outline-2 focus-visible:outline-accent-soft focus-visible:outline-offset-2 inline-flex min-h-11 items-center gap-1 rounded-md px-3 text-xs font-medium disabled:opacity-50"
       >
         <ArrowCounterClockwise size={14} weight="regular" aria-hidden />
         Undo
@@ -76,7 +76,7 @@ export function UndoBarClient({
       <button
         type="button"
         onClick={() => setDismissed(true)}
-        className="text-surface/70 hover:text-surface"
+        className="text-surface/70 hover:text-surface focus-visible:outline-2 focus-visible:outline-accent-soft focus-visible:outline-offset-2 inline-flex h-11 w-11 items-center justify-center rounded-md"
         aria-label="Dismiss undo bar"
       >
         <X size={14} weight="bold" aria-hidden />

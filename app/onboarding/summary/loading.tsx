@@ -15,7 +15,7 @@ export default function Loading() {
         {[0, 1, 2].map((i) => (
           <div
             key={i}
-            className="border-border-subtle animate-pulse rounded-md border p-4"
+            className="border-border-subtle rounded-md border p-4 motion-safe:animate-pulse"
           >
             <div className="bg-border-subtle h-3 w-2/3 rounded" />
             <div className="bg-border-subtle mt-2 h-2 w-full rounded" />

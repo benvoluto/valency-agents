@@ -11,7 +11,12 @@ export default async function AppLayout({
   return (
     <div className="bg-bg min-h-screen">
       <AppNav user={user} />
-      <div className="mx-auto max-w-5xl px-6 py-10">{children}</div>
+      <main
+        id="main"
+        className="mx-auto max-w-5xl px-4 py-6 sm:px-6 sm:py-10"
+      >
+        {children}
+      </main>
       <UndoBar userId={user.id} />
     </div>
   )

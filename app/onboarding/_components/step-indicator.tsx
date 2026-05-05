@@ -22,7 +22,7 @@ export function StepIndicator({ active }: { active: Step }) {
                   ? 'text-ink'
                   : isPast
                     ? 'text-ink-muted'
-                    : 'text-ink-muted/60'
+                    : 'text-ink-muted'
               }
             >
               {String(i + 1).padStart(2, '0')} · {s.label}

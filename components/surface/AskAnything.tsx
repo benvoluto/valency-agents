@@ -27,7 +27,7 @@ export function AskAnything() {
           value={value}
           onChange={(e) => setValue(e.target.value)}
           placeholder="e.g. what cited my 2024 attention paper this week?"
-          className="border-border-subtle text-ink placeholder:text-ink-muted/70 mt-2 block w-full rounded-md border bg-transparent px-3 py-2 text-sm focus:outline-2 focus:outline-accent"
+          className="border-border-subtle text-ink placeholder:text-ink-muted mt-2 block w-full rounded-md border bg-transparent px-3 py-2 text-sm focus:outline-2 focus:outline-accent"
         />
       </form>
     </section>
