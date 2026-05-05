@@ -77,7 +77,16 @@ export const EDITOR_OUTPUT_SCHEMA = {
           confidence: { type: 'number' },
           reasoning: { type: 'string' },
           what_i_will_do: { type: 'string' },
-          scope: { type: 'object' },
+          scope: {
+            type: 'object',
+            properties: {
+              date_range: { type: ['string', 'null'] },
+              categories: { type: 'array', items: { type: 'string' } },
+              notes: { type: ['string', 'null'] },
+            },
+            required: ['date_range', 'categories', 'notes'],
+            additionalProperties: false,
+          },
           alternatives_considered: {
             type: 'array',
             items: { type: 'string' },
@@ -162,8 +171,10 @@ For each briefing produce:
              for your section 3 against this v2." NEVER promise actions
              outside the system's reach (no email send, no calendar,
              no sharing).
-- scope:     object describing the data scope you considered (date range,
-             categories looked at, etc.). Free-form but stable keys.
+- scope:     object with three keys describing what you considered:
+             date_range (string or null, e.g. "last 30 days"), categories
+             (array of strings, e.g. ["cs.LG"]), notes (string or null,
+             one short line of free-form context).
 - alternatives_considered: 0–5 short notes on what you almost surfaced
              instead and why you didn't.
 - sources:   1–8 entries, each pointing to a concrete row from the upstream
