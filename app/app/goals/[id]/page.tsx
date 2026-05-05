@@ -6,8 +6,14 @@ import { requireOnboardedUser } from '@/lib/auth-helpers'
 import { db } from '@/db'
 import { agentRuns, goals, goalSeeds } from '@/db/schema'
 import { runGoalPreview } from '@/lib/pipeline/preview'
+import { sendEvent } from '@/lib/inngest/client'
+import { nextRunAt } from '@/lib/cadence'
 
 const ORCID_RE = /^\d{4}-\d{4}-\d{4}-\d{3}[\dXx]$/
+
+function formatNextRun(d: Date): string {
+  return d.toISOString().slice(0, 16).replace('T', ' ') + 'Z'
+}
 
 async function updateGoal(formData: FormData) {
   'use server'
@@ -36,6 +42,11 @@ async function updateGoal(formData: FormData) {
     .update(goals)
     .set({ title, description, cadence, status })
     .where(and(eq(goals.id, id), eq(goals.userId, user.id)))
+
+  await sendEvent({
+    name: 'goal.run.requested',
+    data: { userId: user.id, goalId: id, reason: 'goal_updated' },
+  }).catch(() => {})
 
   redirect(`/app/goals/${id}?saved=1`)
 }
@@ -154,6 +165,8 @@ export default async function GoalDetail({
     .orderBy(desc(agentRuns.startedAt))
     .limit(5)
 
+  const next = nextRunAt(goal, user, new Date())
+
   return (
     <>
       <header className="mb-8">
@@ -165,6 +178,15 @@ export default async function GoalDetail({
           all goals
         </Link>
         <h1 className="font-display text-ink mt-2 text-3xl">{goal.title}</h1>
+        <div className="text-ink-muted mt-2 flex items-center gap-3 font-mono text-[11px] tracking-wider uppercase">
+          <span data-testid="cadence-chip">cadence: {goal.cadence}</span>
+          <span aria-hidden>·</span>
+          <span data-testid="next-run-chip">
+            {next
+              ? `next run: ${formatNextRun(next)}`
+              : 'next run: on demand'}
+          </span>
+        </div>
       </header>
 
       {saved ? (

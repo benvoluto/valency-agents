@@ -1,4 +1,4 @@
-import { eq, inArray, sql } from 'drizzle-orm'
+import { and, eq, gte, inArray, sql } from 'drizzle-orm'
 import { db } from '@/db'
 import {
   agentRuns,
@@ -102,6 +102,20 @@ export async function runGoalPipeline(
       userMessage: JSON.stringify(analystInput),
     })
 
+    // ─── Dedupe ───────────────────────────────────────────────────────────
+    // Drop any candidate paper_ids that the user has already seen as a
+    // briefing source within the last 30 days, per plan §8.
+    const shortlistIds = analyst.output.shortlist.map((s) => s.paper_id)
+    const dedupedShortlist = shortlistIds.length > 0
+      ? await dropRecentlyShown(user.id, analyst.output.shortlist)
+      : []
+    // Mutate the analyst output in place so downstream agents see the
+    // filtered list. We keep a copy of the dropped IDs in the run summary.
+    const droppedIds = analyst.output.shortlist
+      .map((s) => s.paper_id)
+      .filter((id) => !dedupedShortlist.some((s) => s.paper_id === id))
+    analyst.output.shortlist = dedupedShortlist
+
     // ─── Librarian ────────────────────────────────────────────────────────
     const librarianModel = await pickModelForNonEditor(
       user,
@@ -152,6 +166,7 @@ export async function runGoalPipeline(
     const summary = {
       candidateCount: scout.output.candidates.length,
       shortlistCount: analyst.output.shortlist.length,
+      droppedDuplicateIds: droppedIds,
       taggedPapers: librarian.output.papers.length,
       briefingCount: written.length,
       totalCost: await todaysSpendUsd(user.id),
@@ -267,6 +282,36 @@ async function upsertLibrarianEntities(out: LibrarianOutput): Promise<void> {
 
 function sqlExcluded(column: string) {
   return sql.raw(`excluded.${column}`)
+}
+
+const DEDUPE_WINDOW_MS = 30 * 24 * 60 * 60 * 1000
+
+/**
+ * Removes shortlist items whose paper_id appeared as a `briefing_sources.refId`
+ * for this user in the last 30 days (per plan §8 dedupe contract).
+ */
+async function dropRecentlyShown<T extends { paper_id: string }>(
+  userId: string,
+  shortlist: T[],
+): Promise<T[]> {
+  const ids = shortlist.map((s) => s.paper_id)
+  if (ids.length === 0) return shortlist
+  const cutoff = new Date(Date.now() - DEDUPE_WINDOW_MS)
+  const seen = await db
+    .selectDistinct({ refId: briefingSources.refId })
+    .from(briefingSources)
+    .innerJoin(briefings, eq(briefings.id, briefingSources.briefingId))
+    .where(
+      and(
+        eq(briefings.userId, userId),
+        eq(briefingSources.kind, 'paper'),
+        inArray(briefingSources.refId, ids),
+        gte(briefings.createdAt, cutoff),
+      ),
+    )
+  if (seen.length === 0) return shortlist
+  const seenSet = new Set(seen.map((r) => r.refId))
+  return shortlist.filter((s) => !seenSet.has(s.paper_id))
 }
 
 async function materializeBriefings(

@@ -3,6 +3,7 @@ import { redirect } from 'next/navigation'
 import { requireOnboardedUser } from '@/lib/auth-helpers'
 import { db } from '@/db'
 import { goals, goalSeeds } from '@/db/schema'
+import { sendEvent } from '@/lib/inngest/client'
 import { valencyForUser, tools as valency } from '@/lib/valency'
 
 const ORCID_RE = /^\d{4}-\d{4}-\d{4}-\d{3}[\dXx]$/
@@ -69,6 +70,15 @@ async function createGoal(formData: FormData) {
       await tx.insert(goalSeeds).values(seedRows)
     }
     return g.id
+  })
+
+  // Fire-and-forget: schedule the first pipeline run for this goal.
+  await sendEvent({
+    name: 'goal.run.requested',
+    data: { userId: user.id, goalId, reason: 'goal_created' },
+  }).catch(() => {
+    // Swallow: if Inngest isn't configured yet (no event key), the user
+    // can still preview the goal manually from /app/goals/[id].
   })
 
   redirect(`/app/goals/${goalId}`)

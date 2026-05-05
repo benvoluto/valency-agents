@@ -12,6 +12,11 @@ interface SummaryShape {
   candidateCount?: number
   papersBySeed?: Record<string, number>
   warnings?: string[]
+  inngestRunId?: string
+  reason?: string
+  briefingCount?: number
+  shortlistCount?: number
+  droppedDuplicateIds?: string[]
 }
 
 interface PaperLike {
@@ -103,6 +108,25 @@ export default async function RunInspector({ params }: Props) {
         <p className="text-ink-muted mt-1 font-mono text-xs">
           {run.id}
         </p>
+        {summary?.inngestRunId ? (
+          <p className="text-ink-muted mt-2 font-mono text-[11px]">
+            Inngest run:{' '}
+            <a
+              href={`https://app.inngest.com/run?run-id=${summary.inngestRunId}`}
+              target="_blank"
+              rel="noreferrer"
+              className="text-accent hover:underline inline-flex items-center gap-1"
+            >
+              {summary.inngestRunId.slice(0, 12)}…
+              <ArrowSquareOut size={10} weight="regular" aria-hidden />
+            </a>
+          </p>
+        ) : null}
+        {summary?.reason ? (
+          <p className="text-ink-muted mt-1 font-mono text-[11px] tracking-wider uppercase">
+            Trigger: {summary.reason}
+          </p>
+        ) : null}
       </header>
 
       <section className="bg-surface border-border-subtle mb-8 rounded-2xl border p-6">

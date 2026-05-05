@@ -4,13 +4,7 @@ A Next.js + Vercel app that puts a small team of Claude (Opus) agents in front o
 
 ## 0. Context (read first)
 
-This is the Valency-side companion to the Faros exercise in `../farosresponse`. The thesis is the same: **agentic AI doesn't replace the surface, it replaces the chore of asking**. A researcher should not have to type "what new papers cite my 2024 work on X" every Monday — a small team of agents should already have run that question, weighed it against everything else they could have surfaced, and presented a short, ranked, source-attributed briefing in app, in email, and (Phase 2) by phone.
-
-Three references shape this build, and you should re-read them before writing code:
-
-- `../farosresponse/workday-prototype-build-plan.md` — the structural pattern for the home surface (suggested-actions feed, Explain drawer, sources popover, scope/confidence chips, dry-run/audit/undo) is what we're adapting. Card anatomy, drawer anatomy, and trust-scaffolding pattern map directly.
-- `../farosresponse/Employee View.png` and `Manager View.png` — the visual target. The home surface here is the academic-researcher analog of "Today's Briefing".
-- `../farosresponse/ResponseText.md` — the philosophy. "The graph is the noun"; agents earn their leash; the same Explain/dry-run/audit/undo loop applies.
+The thesis is: **agentic AI doesn't replace the surface, it replaces the chore of asking**. A researcher should not have to type "what new papers cite my 2024 work on X" every Monday — a small team of agents should already have run that question, weighed it against everything else they could have surfaced, and presented a short, ranked, source-attributed briefing in app, in email, and (Phase 2) by phone.
 
 Valency reference:
 
@@ -18,7 +12,7 @@ Valency reference:
 - Endpoint: `POST https://labs.valency.io/mcp`, JSON-RPC 2.0, `Authorization: Bearer <token>`. Health: `GET https://labs.valency.io/health`. Tokens are issued per user from `app.valency.io/settings`.
 - Anthropic Messages API consumes the Valency MCP server natively via the `mcp_servers` parameter, so we do not need to re-implement a JSON-RPC client just to give the model tools — but we **do** need our own server-side MCP client for the agent team's deterministic search/analysis steps that run outside a model turn.
 
-Researcher practices we are designing for (informed by literature on scholarly-information seeking + interviews-grade common knowledge — validate with 2–3 real researchers in Phase 0):
+Researcher practices we are designing for (informed by literature on scholarly-information seeking + interviews-grade common knowledge):
 
 - Tracking new arXiv submissions and v2 revisions in a small set of categories
 - Following 5–50 specific authors (advisor, peers, "rivals", students, frequent collaborators)
@@ -76,7 +70,7 @@ The agent team is a small set of role-specialized prompts run by Inngest steps, 
 |---|---|---|
 | Framework | Next.js (App Router, current version on disk) | `AGENTS.md` warns this is *not* the Next.js you know — read `node_modules/next/dist/docs/` before writing anything Next-specific. |
 | Language | TypeScript strict | `tsconfig.json` already strict. |
-| Styling | Tailwind v4 + design tokens | Tokens mirror the Faros system; declared via `@theme` in `app/globals.css` (no `tailwind.config.ts`). |
+| Styling | Tailwind v4 + design tokens | Tokens declared via `@theme` in `app/globals.css` (no `tailwind.config.ts`). |
 | Auth | Auth.js v5 (Google provider only) | Cookie-based session, JWT strategy, custom `User` table in Postgres via the Drizzle adapter. |
 | DB | Neon Postgres + Drizzle ORM | Use the pooled `DATABASE_URL` for app traffic, unpooled for migrations. |
 | Migrations | `drizzle-kit` | `drizzle/` directory under repo root. |
@@ -92,8 +86,6 @@ The agent team is a small set of role-specialized prompts run by Inngest steps, 
 Out: shadcn-as-dependency (we copy components in), Prisma, Lucia, NextAuth v4, Trigger.dev, OpenClaw, Twilio (Phase 2).
 
 ## 4. Visual system
-
-Adapted from Faros, retuned for an academic researcher (calmer, more readable, less corporate-saturated).
 
 Tokens (declared via Tailwind v4 `@theme` in `app/globals.css`):
 
@@ -112,7 +104,7 @@ Tokens (declared via Tailwind v4 `@theme` in `app/globals.css`):
 
 Typography: `Fraunces` (serif) for H1 + display numerals; `Inter` for everything else; `JetBrains Mono` for audit timestamps and tool-call headers. Loaded via `next/font/google`.
 
-Card anatomy (Faros-equivalent, adapted):
+Card anatomy:
 
 - 32×32 rounded-square category icon (top-left): paper, author, trend, citation, funder, deadline.
 - Title (medium 16px) — one line, ellipsize at 90 chars.
@@ -134,9 +126,9 @@ Mobile: same components, sidebar collapses below the feed in a drawer; cards ful
 ## 5. Routes (App Router)
 
 ```
-/                            landing — Google sign-in, marketing one-liner, password gate "designgeek" if you want parity w/ Faros (default off)
+/                            landing — Google sign-in
 /onboarding                  3-step: ORCID resolve → goals → briefing cadence
-/app                         home surface — today's briefings (the Faros analog)
+/app                         home surface — today's briefings 
 /app/briefings/[id]          single-briefing detail — full Explain, full source list, action panel, audit trail
 /app/topics                  tag list + filtered feed
 /app/topics/[slug]           tag view — papers, authors, related goals
@@ -247,7 +239,7 @@ Dedupe: every Scout candidate has a stable hash `(arxivId, goalId)`; before mate
 
 Cost guardrails: per-user daily ceiling (`users.dailyBudgetUsd`, default $2.00), per-goal per-run ceiling, hard kill at 2× budget with an audit entry. Anthropic spend tracked per step; if a step would exceed, downgrade to `claude-haiku-4-5` for the Scout/Librarian steps only, never for Editor.
 
-## 9. Trust scaffolding (the Faros pattern, applied)
+## 9. Trust scaffolding 
 
 Every briefing card and every action surface has an `Explain` button that opens a right-side drawer with four sections, populated **directly from the database**, never from a fresh LLM call:
 
@@ -363,7 +355,7 @@ Each phase is independently deploy-and-demo-able. Definition-of-done at the end 
 - An admin-only CLI (`scripts/runGoal.ts`) that runs the pipeline for a given user+goal and prints the resulting briefings.
 **Integration tests.** Vitest integration: run the full pipeline against a real Neon dev branch and the real Valency endpoint with a fixed seed; assert ≥3 briefings written, every briefing has ≥1 source row and a provenance row, costs recorded, no orphan rows. Schema-validation tests for each role.
 
-### Phase 5 — Briefing feed & trust scaffolding (the Faros surface)
+### Phase 5 — Briefing feed & trust scaffolding 
 **Goal.** A signed-in user sees a real briefing feed at `/app` with working Explain and Sources.
 **Deliverables.**
 - `components/surface/HomeShell.tsx`, `Sidebar.tsx`, `BriefingCard.tsx`, `PriorityBadge.tsx`, `ConfidenceChip.tsx`, `ExplainButton.tsx`, `ShowSourcesLink.tsx`, `ExplainDrawer.tsx`, `SourcesPopover.tsx`, `QuickActions.tsx`, `InProgressPanel.tsx`, `AskAnything.tsx` (links to `/app/chat?q=`).
