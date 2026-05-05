@@ -36,6 +36,13 @@
       "when": 1777952610475,
       "tag": "0004_oval_mordo",
       "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1777955608553,
+      "tag": "0005_gray_paladin",
+      "breakpoints": true
     }
   ]
 }

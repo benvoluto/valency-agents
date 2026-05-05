@@ -27,6 +27,7 @@ import {
   todaysSpendUsd,
 } from '@/lib/agents/runner'
 import { HAIKU } from '@/lib/agents/pricing'
+import { sendEvent } from '@/lib/inngest/client'
 
 const VALENCY_URL = 'https://labs.valency.io/mcp'
 
@@ -162,6 +163,21 @@ export async function runGoalPipeline(
       parentRun.id,
       editor.output,
     )
+
+    // Fan out one briefing.created event per row — Phase 8 listens with a
+    // per-user debounce for digest sends.
+    if (written.length > 0) {
+      await Promise.all(
+        written.map((b) =>
+          sendEvent({
+            name: 'briefing.created',
+            data: { userId: user.id, briefingId: b.id, goalId: b.goalId },
+          }).catch(() => {
+            // Best-effort: if Inngest isn't configured, just skip.
+          }),
+        ),
+      )
+    }
 
     const summary = {
       candidateCount: scout.output.candidates.length,

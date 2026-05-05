@@ -26,6 +26,10 @@ export const users = pgTable('user', {
   timezone: text('timezone'),
   onboardingCompletedAt: timestamp('onboarding_completed_at', { mode: 'date' }),
   dailyBudgetUsd: doublePrecision('daily_budget_usd').notNull().default(2),
+  emailDigestCadence: text('email_digest_cadence').notNull().default('daily'),
+  emailQuietHoursStart: integer('email_quiet_hours_start'),
+  emailQuietHoursEnd: integer('email_quiet_hours_end'),
+  emailSuppressed: text('email_suppressed'),
   createdAt: timestamp('created_at', { mode: 'date' }).notNull().defaultNow(),
 })
 
@@ -298,6 +302,10 @@ export const briefings = pgTable(
     title: text('title').notNull(),
     summary: text('summary').notNull(),
     confidence: doublePrecision('confidence').notNull(),
+    shortId: text('short_id')
+      .notNull()
+      .unique()
+      .$defaultFn(() => crypto.randomUUID().replace(/-/g, '').slice(0, 8)),
     createdAt: timestamp('created_at', { mode: 'date' }).notNull().defaultNow(),
   },
   (t) => [
@@ -428,6 +436,67 @@ export const auditEntries = pgTable(
   ],
 )
 
+export const emailKind = pgEnum('email_kind', ['digest', 'one_off', 'reply'])
+export const emailStatus = pgEnum('email_status', [
+  'queued',
+  'sent',
+  'delivered',
+  'opened',
+  'clicked',
+  'bounced',
+  'complained',
+  'failed',
+])
+export const emailEventKind = pgEnum('email_event_kind', [
+  'delivered',
+  'opened',
+  'clicked',
+  'failed',
+  'bounced',
+  'complained',
+  'unsubscribed',
+])
+
+export const emails = pgTable(
+  'email',
+  {
+    id: text('id')
+      .primaryKey()
+      .$defaultFn(() => crypto.randomUUID()),
+    userId: text('user_id')
+      .notNull()
+      .references(() => users.id, { onDelete: 'cascade' }),
+    kind: emailKind('kind').notNull(),
+    subject: text('subject').notNull(),
+    mailgunId: text('mailgun_id'),
+    status: emailStatus('status').notNull().default('queued'),
+    briefingIdsJson: jsonb('briefing_ids_json').$type<string[]>().default([]),
+    sentAt: timestamp('sent_at', { mode: 'date' }),
+    createdAt: timestamp('created_at', { mode: 'date' }).notNull().defaultNow(),
+  },
+  (t) => [
+    index('email_user_created_idx').on(t.userId, t.createdAt.desc()),
+    index('email_mailgun_id_idx').on(t.mailgunId),
+  ],
+)
+
+export const emailEvents = pgTable(
+  'email_event',
+  {
+    id: text('id')
+      .primaryKey()
+      .$defaultFn(() => crypto.randomUUID()),
+    emailId: text('email_id').references(() => emails.id, {
+      onDelete: 'cascade',
+    }),
+    mailgunId: text('mailgun_id'),
+    kind: emailEventKind('kind').notNull(),
+    payloadJson: jsonb('payload_json').$type<Record<string, unknown>>(),
+    ts: timestamp('ts', { mode: 'date' }).notNull().defaultNow(),
+  },
+  (t) => [index('email_event_email_idx').on(t.emailId)],
+)
+
 export const credentials = pgTable('credential', {
   userId: text('user_id')
     .primaryKey()
@@ -465,3 +534,6 @@ export type Action = typeof actions.$inferSelect
 export type NewAction = typeof actions.$inferInsert
 export type AuditEntry = typeof auditEntries.$inferSelect
 export type NewAuditEntry = typeof auditEntries.$inferInsert
+export type Email = typeof emails.$inferSelect
+export type NewEmail = typeof emails.$inferInsert
+export type EmailEvent = typeof emailEvents.$inferSelect

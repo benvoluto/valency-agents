@@ -20,7 +20,16 @@ export type BriefingCreated = {
   data: { userId: string; briefingId: string; goalId: string | null }
 }
 
-export type AppEvent = GoalRunRequested | SignalPollTick | BriefingCreated
+export type DigestSendRequested = {
+  name: 'digest.send.requested'
+  data: { userId: string }
+}
+
+export type AppEvent =
+  | GoalRunRequested
+  | SignalPollTick
+  | BriefingCreated
+  | DigestSendRequested
 
 export const inngest = new Inngest({
   id: 'valency-agents',
