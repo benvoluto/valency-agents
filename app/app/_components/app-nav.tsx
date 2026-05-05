@@ -23,6 +23,12 @@ export function AppNav({ user }: { user: User }) {
           <Link href="/app/library" className="hover:text-ink">
             Library
           </Link>
+          <Link href="/app/topics" className="hover:text-ink">
+            Topics
+          </Link>
+          <Link href="/app/map" className="hover:text-ink">
+            Map
+          </Link>
           <Link href="/app/settings" className="hover:text-ink">
             Settings
           </Link>
