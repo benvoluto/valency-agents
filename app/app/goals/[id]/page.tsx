@@ -43,10 +43,31 @@ async function updateGoal(formData: FormData) {
     .set({ title, description, cadence, status })
     .where(and(eq(goals.id, id), eq(goals.userId, user.id)))
 
-  await sendEvent({
-    name: 'goal.run.requested',
-    data: { userId: user.id, goalId: id, reason: 'goal_updated' },
-  }).catch(() => {})
+  try {
+    const r = await sendEvent({
+      name: 'goal.run.requested',
+      data: { userId: user.id, goalId: id, reason: 'goal_updated' },
+    })
+    console.info(
+      JSON.stringify({
+        tag: 'inngest.send',
+        event: 'goal.run.requested',
+        ids: r.ids,
+        goalId: id,
+        eventKeySet: !!process.env.INNGEST_EVENT_KEY,
+      }),
+    )
+  } catch (err) {
+    console.error(
+      JSON.stringify({
+        tag: 'inngest.send.failed',
+        event: 'goal.run.requested',
+        goalId: id,
+        eventKeySet: !!process.env.INNGEST_EVENT_KEY,
+        error: err instanceof Error ? err.message : String(err),
+      }),
+    )
+  }
 
   redirect(`/app/goals/${id}?saved=1`)
 }

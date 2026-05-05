@@ -72,14 +72,33 @@ async function createGoal(formData: FormData) {
     return g.id
   })
 
-  // Fire-and-forget: schedule the first pipeline run for this goal.
-  await sendEvent({
-    name: 'goal.run.requested',
-    data: { userId: user.id, goalId, reason: 'goal_created' },
-  }).catch(() => {
-    // Swallow: if Inngest isn't configured yet (no event key), the user
-    // can still preview the goal manually from /app/goals/[id].
-  })
+  // Fire-and-forget: schedule the first pipeline run for this goal. Log
+  // outcome so we can see in Vercel logs whether Inngest accepted it.
+  try {
+    const r = await sendEvent({
+      name: 'goal.run.requested',
+      data: { userId: user.id, goalId, reason: 'goal_created' },
+    })
+    console.info(
+      JSON.stringify({
+        tag: 'inngest.send',
+        event: 'goal.run.requested',
+        ids: r.ids,
+        goalId,
+        eventKeySet: !!process.env.INNGEST_EVENT_KEY,
+      }),
+    )
+  } catch (err) {
+    console.error(
+      JSON.stringify({
+        tag: 'inngest.send.failed',
+        event: 'goal.run.requested',
+        goalId,
+        eventKeySet: !!process.env.INNGEST_EVENT_KEY,
+        error: err instanceof Error ? err.message : String(err),
+      }),
+    )
+  }
 
   redirect(`/app/goals/${goalId}`)
 }
