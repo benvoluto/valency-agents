@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { ArrowRight } from '@phosphor-icons/react/dist/ssr'
 import { desc, eq, sql } from 'drizzle-orm'
 import { requireOnboardedUser } from '@/lib/auth-helpers'
 import { db } from '@/db'
@@ -72,7 +73,7 @@ export default async function GoalsList() {
                       <span>{g.seedCount} seed{g.seedCount === 1 ? '' : 's'}</span>
                     </div>
                   </div>
-                  <span className="text-ink-muted text-xs">→</span>
+                  <ArrowRight size={14} className="text-ink-muted" aria-hidden />
                 </div>
               </Link>
             </li>

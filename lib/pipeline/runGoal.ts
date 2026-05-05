@@ -1,4 +1,4 @@
-import { eq, sql } from 'drizzle-orm'
+import { eq, inArray, sql } from 'drizzle-orm'
 import { db } from '@/db'
 import {
   agentRuns,
@@ -288,7 +288,7 @@ async function materializeBriefings(
       : await db
           .select({ id: tags.id, slug: tags.slug })
           .from(tags)
-          .where(sql`${tags.slug} = ANY(${distinctSlugs})`)
+          .where(inArray(tags.slug, distinctSlugs))
   const tagIdBySlug = new Map(tagRows.map((r) => [r.slug, r.id]))
 
   return db.transaction(async (tx) => {

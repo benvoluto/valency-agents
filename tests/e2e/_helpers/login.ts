@@ -38,3 +38,17 @@ export function randomEmail(prefix = 'e2e'): string {
   const suffix = Math.random().toString(36).slice(2, 10)
   return `${prefix}+${suffix}@e2e.test`
 }
+
+/** Seeds a deterministic briefing set for the given email via the test endpoint. */
+export async function seedBriefings(
+  request: APIRequestContext,
+  email: string,
+): Promise<{ created: string[] }> {
+  const res = await request.post('/api/test/seed-briefings', {
+    data: { email },
+  })
+  if (!res.ok()) {
+    throw new Error(`seedBriefings failed (${res.status()})`)
+  }
+  return (await res.json()) as { created: string[] }
+}

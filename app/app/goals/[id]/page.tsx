@@ -1,5 +1,6 @@
 import { notFound, redirect } from 'next/navigation'
 import Link from 'next/link'
+import { ArrowLeft, ArrowRight } from '@phosphor-icons/react/dist/ssr'
 import { and, desc, eq } from 'drizzle-orm'
 import { requireOnboardedUser } from '@/lib/auth-helpers'
 import { db } from '@/db'
@@ -158,9 +159,10 @@ export default async function GoalDetail({
       <header className="mb-8">
         <Link
           href="/app/goals"
-          className="text-ink-muted font-mono text-xs tracking-wider uppercase hover:underline"
+          className="text-ink-muted font-mono text-xs tracking-wider uppercase hover:underline inline-flex items-center gap-1"
         >
-          ← all goals
+          <ArrowLeft size={12} weight="regular" aria-hidden />
+          all goals
         </Link>
         <h1 className="font-display text-ink mt-2 text-3xl">{goal.title}</h1>
       </header>
@@ -356,9 +358,10 @@ export default async function GoalDetail({
                   </div>
                   <Link
                     href={`/app/runs/${r.id}`}
-                    className="text-accent text-sm hover:underline"
+                    className="text-accent text-sm hover:underline inline-flex items-center gap-1"
                   >
-                    Open →
+                    Open
+                    <ArrowRight size={12} weight="regular" aria-hidden />
                   </Link>
                 </li>
               )

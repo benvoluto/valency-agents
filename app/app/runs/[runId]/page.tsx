@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
+import { ArrowLeft, ArrowSquareOut, Warning } from '@phosphor-icons/react/dist/ssr'
 import { and, asc, eq } from 'drizzle-orm'
 import { requireOnboardedUser } from '@/lib/auth-helpers'
 import { db } from '@/db'
@@ -93,9 +94,10 @@ export default async function RunInspector({ params }: Props) {
       <header className="mb-8">
         <Link
           href={goal ? `/app/goals/${goal.id}` : '/app/goals'}
-          className="text-ink-muted font-mono text-xs tracking-wider uppercase hover:underline"
+          className="text-ink-muted font-mono text-xs tracking-wider uppercase hover:underline inline-flex items-center gap-1"
         >
-          ← {goal ? goal.title : 'all goals'}
+          <ArrowLeft size={12} weight="regular" aria-hidden />
+          {goal ? goal.title : 'all goals'}
         </Link>
         <h1 className="font-display text-ink mt-2 text-3xl">Run inspector</h1>
         <p className="text-ink-muted mt-1 font-mono text-xs">
@@ -139,8 +141,9 @@ export default async function RunInspector({ params }: Props) {
         {summary?.warnings && summary.warnings.length > 0 ? (
           <ul className="border-border-subtle mt-6 border-t pt-4 text-xs">
             {summary.warnings.map((w, i) => (
-              <li key={i} className="text-priority-signal">
-                ⚠ {w}
+              <li key={i} className="text-priority-signal flex items-start gap-2">
+                <Warning size={14} weight="regular" aria-hidden className="mt-0.5" />
+                <span>{w}</span>
               </li>
             ))}
           </ul>
@@ -188,9 +191,10 @@ export default async function RunInspector({ params }: Props) {
                       href={p.url}
                       target="_blank"
                       rel="noreferrer"
-                      className="text-accent text-xs hover:underline"
+                      className="text-accent text-xs hover:underline inline-flex items-center gap-1"
                     >
-                      open →
+                      open
+                      <ArrowSquareOut size={12} weight="regular" aria-hidden />
                     </a>
                   ) : null}
                 </div>

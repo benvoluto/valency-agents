@@ -1,3 +1,5 @@
+import { ArrowRight } from '@phosphor-icons/react/dist/ssr'
+
 type Step = 'identity' | 'summary' | 'cadence'
 
 const STEPS: { key: Step; label: string }[] = [
@@ -25,7 +27,9 @@ export function StepIndicator({ active }: { active: Step }) {
             >
               {String(i + 1).padStart(2, '0')} · {s.label}
             </span>
-            {i < STEPS.length - 1 ? <span aria-hidden>→</span> : null}
+            {i < STEPS.length - 1 ? (
+              <ArrowRight size={12} weight="regular" aria-hidden />
+            ) : null}
           </li>
         )
       })}
