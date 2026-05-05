@@ -29,7 +29,7 @@ import {
 import { HAIKU } from '@/lib/agents/pricing'
 import { sendEvent } from '@/lib/inngest/client'
 
-const VALENCY_URL = 'https://labs.valency.io/mcp'
+export const VALENCY_URL = 'https://labs.valency.io/mcp'
 
 export interface RunGoalResult {
   parentRun: AgentRun
@@ -222,7 +222,7 @@ export async function runGoalPipeline(
   }
 }
 
-async function pickModelForNonEditor(
+export async function pickModelForNonEditor(
   user: User,
   defaultModel: string,
 ): Promise<string> {
@@ -238,7 +238,7 @@ async function pickModelForNonEditor(
   }
 }
 
-async function upsertLibrarianEntities(out: LibrarianOutput): Promise<void> {
+export async function upsertLibrarianEntities(out: LibrarianOutput): Promise<void> {
   await db.transaction(async (tx) => {
     if (out.papers.length > 0) {
       await tx
@@ -306,7 +306,7 @@ const DEDUPE_WINDOW_MS = 30 * 24 * 60 * 60 * 1000
  * Removes shortlist items whose paper_id appeared as a `briefing_sources.refId`
  * for this user in the last 30 days (per plan §8 dedupe contract).
  */
-async function dropRecentlyShown<T extends { paper_id: string }>(
+export async function dropRecentlyShown<T extends { paper_id: string }>(
   userId: string,
   shortlist: T[],
 ): Promise<T[]> {
@@ -330,7 +330,7 @@ async function dropRecentlyShown<T extends { paper_id: string }>(
   return shortlist.filter((s) => !seenSet.has(s.paper_id))
 }
 
-async function materializeBriefings(
+export async function materializeBriefings(
   userId: string,
   goalId: string,
   runId: string,
