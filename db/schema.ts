@@ -497,6 +497,55 @@ export const emailEvents = pgTable(
   (t) => [index('email_event_email_idx').on(t.emailId)],
 )
 
+export const messageRole = pgEnum('message_role', [
+  'user',
+  'assistant',
+  'tool',
+  'system',
+])
+
+export const threads = pgTable(
+  'thread',
+  {
+    id: text('id')
+      .primaryKey()
+      .$defaultFn(() => crypto.randomUUID()),
+    userId: text('user_id')
+      .notNull()
+      .references(() => users.id, { onDelete: 'cascade' }),
+    title: text('title').notNull(),
+    archivedAt: timestamp('archived_at', { mode: 'date' }),
+    costUsd: doublePrecision('cost_usd').notNull().default(0),
+    tokensIn: integer('tokens_in').notNull().default(0),
+    tokensOut: integer('tokens_out').notNull().default(0),
+    createdAt: timestamp('created_at', { mode: 'date' }).notNull().defaultNow(),
+    lastMessageAt: timestamp('last_message_at', { mode: 'date' })
+      .notNull()
+      .defaultNow(),
+  },
+  (t) => [index('thread_user_last_idx').on(t.userId, t.lastMessageAt.desc())],
+)
+
+export const messages = pgTable(
+  'message',
+  {
+    id: text('id')
+      .primaryKey()
+      .$defaultFn(() => crypto.randomUUID()),
+    threadId: text('thread_id')
+      .notNull()
+      .references(() => threads.id, { onDelete: 'cascade' }),
+    role: messageRole('role').notNull(),
+    contentJson: jsonb('content_json').$type<unknown[]>().notNull(),
+    toolCallsJson: jsonb('tool_calls_json').$type<Record<string, unknown>[]>(),
+    costUsd: doublePrecision('cost_usd').notNull().default(0),
+    tokensIn: integer('tokens_in').notNull().default(0),
+    tokensOut: integer('tokens_out').notNull().default(0),
+    createdAt: timestamp('created_at', { mode: 'date' }).notNull().defaultNow(),
+  },
+  (t) => [index('message_thread_created_idx').on(t.threadId, t.createdAt)],
+)
+
 export const credentials = pgTable('credential', {
   userId: text('user_id')
     .primaryKey()
@@ -537,3 +586,7 @@ export type NewAuditEntry = typeof auditEntries.$inferInsert
 export type Email = typeof emails.$inferSelect
 export type NewEmail = typeof emails.$inferInsert
 export type EmailEvent = typeof emailEvents.$inferSelect
+export type Thread = typeof threads.$inferSelect
+export type NewThread = typeof threads.$inferInsert
+export type Message = typeof messages.$inferSelect
+export type NewMessage = typeof messages.$inferInsert
