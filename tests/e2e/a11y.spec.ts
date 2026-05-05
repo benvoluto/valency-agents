@@ -1,5 +1,5 @@
 import AxeBuilder from '@axe-core/playwright'
-import { expect, test } from '@playwright/test'
+import { test } from '@playwright/test'
 import { loginAs, randomEmail, seedBriefings } from './_helpers/login'
 
 const PAGES_TO_AUDIT = [

@@ -1,5 +1,5 @@
 import { z } from 'zod'
-import { reserveToken } from './rate-limit'
+import { reserveToken } from '@/lib/rate-limit'
 
 const ENDPOINT = 'https://labs.valency.io/mcp'
 
@@ -101,7 +101,7 @@ export class ValencyClient {
 
     for (let attempt = 1; attempt <= this.maxAttempts; attempt++) {
       attempts = attempt
-      const wait = reserveToken(this.rateLimitKey)
+      const wait = reserveToken('valency', this.rateLimitKey)
       if (wait > 0) await sleep(wait)
 
       try {

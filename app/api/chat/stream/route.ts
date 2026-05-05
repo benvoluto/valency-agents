@@ -4,6 +4,7 @@ import { db } from '@/db'
 import { users } from '@/db/schema'
 import { eventsToSse, runChatTurn } from '@/lib/chat/stream'
 import { assertWithinBudget, BudgetExceededError } from '@/lib/agents/runner'
+import { rateLimit } from '@/lib/rate-limit'
 
 export const dynamic = 'force-dynamic'
 export const maxDuration = 60
@@ -14,6 +15,9 @@ export async function POST(req: Request) {
     return Response.json({ error: 'unauthenticated' }, { status: 401 })
   }
   const userId = session.user.id
+
+  const limited = rateLimit('chat', userId)
+  if (limited) return limited
 
   let body: { threadId?: string; message?: string }
   try {

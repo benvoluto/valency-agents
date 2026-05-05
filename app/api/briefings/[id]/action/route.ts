@@ -5,6 +5,7 @@ import {
   type ActionKind,
   type ActionSource,
 } from '@/lib/actions/apply'
+import { rateLimit } from '@/lib/rate-limit'
 
 const VALID_KINDS: ActionKind[] = [
   'approve',
@@ -25,6 +26,8 @@ export async function POST(req: Request, ctx: RouteContext) {
   if (!session?.user?.id) {
     return Response.json({ error: 'unauthenticated' }, { status: 401 })
   }
+  const limited = rateLimit('action', session.user.id)
+  if (limited) return limited
   const { id: briefingId } = await ctx.params
   let body: {
     kind?: string

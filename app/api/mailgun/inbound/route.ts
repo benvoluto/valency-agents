@@ -9,6 +9,7 @@ import {
   applyAction,
   type ActionKind,
 } from '@/lib/actions/apply'
+import { rateLimit } from '@/lib/rate-limit'
 
 const KIND_MAP: Record<string, ActionKind> = {
   approve: 'approve',
@@ -62,6 +63,9 @@ export async function POST(req: Request) {
   if (!sender) {
     return Response.json({ ok: true, ignored: 'no sender' })
   }
+
+  const limited = rateLimit('inbound', sender)
+  if (limited) return limited
 
   // Allowlist by exact users.email match.
   const [user] = await db

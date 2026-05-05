@@ -504,6 +504,23 @@ export const messageRole = pgEnum('message_role', [
   'system',
 ])
 
+export const healthChecks = pgTable(
+  'health_check',
+  {
+    id: text('id')
+      .primaryKey()
+      .$defaultFn(() => crypto.randomUUID()),
+    ts: timestamp('ts', { mode: 'date' }).notNull().defaultNow(),
+    db: text('db').notNull(),
+    anthropic: text('anthropic').notNull(),
+    valency: text('valency').notNull(),
+    dbLatencyMs: integer('db_latency_ms'),
+    anthropicLatencyMs: integer('anthropic_latency_ms'),
+    valencyLatencyMs: integer('valency_latency_ms'),
+  },
+  (t) => [index('health_check_ts_idx').on(t.ts.desc())],
+)
+
 export const threads = pgTable(
   'thread',
   {
@@ -590,3 +607,5 @@ export type Thread = typeof threads.$inferSelect
 export type NewThread = typeof threads.$inferInsert
 export type Message = typeof messages.$inferSelect
 export type NewMessage = typeof messages.$inferInsert
+export type HealthCheck = typeof healthChecks.$inferSelect
+export type NewHealthCheck = typeof healthChecks.$inferInsert
