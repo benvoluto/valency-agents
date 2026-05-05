@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { X } from '@phosphor-icons/react'
 import type { BriefingWithDetail } from './types'
 import { ConfidenceChip } from './ConfidenceChip'
+import { BriefingActionPanel } from './BriefingActionPanel'
 
 const SOURCE_KIND_LABEL: Record<string, string> = {
   paper: 'Paper',
@@ -21,10 +22,8 @@ function band(c: number): string {
 
 export function BriefingActions({
   data,
-  cta,
 }: {
   data: BriefingWithDetail
-  cta: string
 }) {
   const [drawerOpen, setDrawerOpen] = useState(false)
   const [popoverOpen, setPopoverOpen] = useState(false)
@@ -50,22 +49,7 @@ export function BriefingActions({
         </button>
       </div>
 
-      <div className="ml-auto flex items-center gap-3">
-        <button
-          type="button"
-          disabled
-          title="Wired in Phase 6"
-          className="text-ink-muted hover:text-ink disabled:opacity-50 text-xs underline-offset-2 hover:underline"
-        >
-          Dismiss
-        </button>
-        <Link
-          href={`/app/briefings/${data.briefing.id}`}
-          className="bg-ink text-surface hover:bg-ink/90 inline-flex items-center justify-center rounded-md px-3 py-1.5 text-xs font-medium transition"
-        >
-          {cta}
-        </Link>
-      </div>
+      <BriefingActionPanel briefing={data.briefing} variant="card" />
 
       {popoverOpen ? (
         <SourcesPopover data={data} onClose={() => setPopoverOpen(false)} />

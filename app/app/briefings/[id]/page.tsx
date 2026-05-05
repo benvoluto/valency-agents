@@ -16,6 +16,8 @@ import {
 import { CategoryIcon } from '@/components/surface/CategoryIcon'
 import { ConfidenceChip } from '@/components/surface/ConfidenceChip'
 import { PriorityBadge } from '@/components/surface/PriorityBadge'
+import { AuditTrail } from '@/components/surface/AuditTrail'
+import { BriefingActionPanel } from '@/components/surface/BriefingActionPanel'
 
 const SOURCE_KIND_LABEL: Record<string, string> = {
   paper: 'Paper',
@@ -256,22 +258,22 @@ export default async function BriefingDetail({
         ) : null}
       </section>
 
-      <section className="bg-surface border-border-subtle border-dashed mb-6 rounded-2xl border p-6">
-        <h2 className="text-ink-muted font-mono text-[11px] tracking-wider uppercase">
-          Audit timeline
-        </h2>
-        <p className="text-ink-muted mt-2 text-sm italic">
-          Audit entries land here in Phase 6, once the action loop is live.
-        </p>
-      </section>
-
-      <section className="bg-surface border-border-subtle border-dashed rounded-2xl border p-6">
+      <section className="bg-surface border-border-subtle mb-6 rounded-2xl border p-6">
         <h2 className="text-ink-muted font-mono text-[11px] tracking-wider uppercase">
           Actions
         </h2>
-        <p className="text-ink-muted mt-2 text-sm italic">
-          Approve / dismiss / save / more-like-this are wired in Phase 6.
-        </p>
+        <div className="mt-4">
+          <BriefingActionPanel briefing={briefing} variant="detail" />
+        </div>
+      </section>
+
+      <section className="bg-surface border-border-subtle rounded-2xl border p-6">
+        <h2 className="text-ink-muted font-mono text-[11px] tracking-wider uppercase">
+          Audit timeline
+        </h2>
+        <div className="mt-3">
+          <AuditTrail briefingId={briefing.id} />
+        </div>
       </section>
     </>
   )

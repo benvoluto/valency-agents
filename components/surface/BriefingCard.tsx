@@ -5,24 +5,12 @@ import { PriorityBadge } from './PriorityBadge'
 import { BriefingActions } from './BriefingActions'
 import type { BriefingWithDetail } from './types'
 
-const KIND_CTA: Record<string, string> = {
-  new_paper: 'Save to library',
-  citation: 'Save citation',
-  trend: 'Pin trend',
-  collaborator: 'Open profile',
-  counter_evidence: 'Open in draft',
-  venue: 'Add to watchlist',
-  method_shift: 'Pin trend',
-  funder: 'Open call',
-}
-
 function ellipsize(s: string, n: number): string {
   return s.length > n ? `${s.slice(0, n - 1)}…` : s
 }
 
 export function BriefingCard({ data }: { data: BriefingWithDetail }) {
   const { briefing, goalTitle, sources, tags } = data
-  const cta = KIND_CTA[briefing.kind] ?? 'Open'
   const sourceCount = sources.length
   const authorMatch = sources.find((s) => s.kind === 'author')
   const subtitleParts: string[] = []
@@ -71,7 +59,7 @@ export function BriefingCard({ data }: { data: BriefingWithDetail }) {
           ) : null}
 
           <div className="mt-4 flex items-center justify-between gap-3">
-            <BriefingActions data={data} cta={cta} />
+            <BriefingActions data={data} />
           </div>
         </div>
       </div>

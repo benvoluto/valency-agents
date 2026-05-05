@@ -353,6 +353,81 @@ export const briefingTags = pgTable(
   (t) => [primaryKey({ columns: [t.briefingId, t.tagId] })],
 )
 
+export const actionKind = pgEnum('action_kind', [
+  'approve',
+  'dismiss',
+  'save',
+  'more_like_this',
+  'snooze',
+  'open',
+  'undo',
+])
+export const actionSource = pgEnum('action_source', ['web', 'email', 'voice'])
+export const auditKind = pgEnum('audit_kind', [
+  'action',
+  'run_started',
+  'run_completed',
+  'run_failed',
+  'note',
+])
+
+export const actions = pgTable(
+  'action',
+  {
+    id: text('id')
+      .primaryKey()
+      .$defaultFn(() => crypto.randomUUID()),
+    briefingId: text('briefing_id')
+      .notNull()
+      .references(() => briefings.id, { onDelete: 'cascade' }),
+    userId: text('user_id')
+      .notNull()
+      .references(() => users.id, { onDelete: 'cascade' }),
+    kind: actionKind('kind').notNull(),
+    source: actionSource('source').notNull().default('web'),
+    detailsJson: jsonb('details_json').$type<Record<string, unknown>>(),
+    idempotencyKey: text('idempotency_key').notNull().unique(),
+    createdAt: timestamp('created_at', { mode: 'date' }).notNull().defaultNow(),
+    undoneAt: timestamp('undone_at', { mode: 'date' }),
+    undoneByActionId: text('undone_by_action_id'),
+  },
+  (t) => [
+    index('action_user_created_idx').on(t.userId, t.createdAt.desc()),
+    index('action_briefing_idx').on(t.briefingId),
+  ],
+)
+
+export const auditEntries = pgTable(
+  'audit_entry',
+  {
+    id: text('id')
+      .primaryKey()
+      .$defaultFn(() => crypto.randomUUID()),
+    userId: text('user_id')
+      .notNull()
+      .references(() => users.id, { onDelete: 'cascade' }),
+    briefingId: text('briefing_id').references(() => briefings.id, {
+      onDelete: 'cascade',
+    }),
+    runId: text('run_id').references(() => agentRuns.id, {
+      onDelete: 'set null',
+    }),
+    actionId: text('action_id').references(() => actions.id, {
+      onDelete: 'set null',
+    }),
+    kind: auditKind('kind').notNull(),
+    source: actionSource('source').notNull().default('web'),
+    message: text('message').notNull(),
+    payloadJson: jsonb('payload_json').$type<Record<string, unknown>>(),
+    ts: timestamp('ts', { mode: 'date' }).notNull().defaultNow(),
+  },
+  (t) => [
+    index('audit_user_ts_idx').on(t.userId, t.ts.desc()),
+    index('audit_briefing_idx').on(t.briefingId),
+    index('audit_run_idx').on(t.runId),
+  ],
+)
+
 export const credentials = pgTable('credential', {
   userId: text('user_id')
     .primaryKey()
@@ -386,3 +461,7 @@ export type BriefingSource = typeof briefingSources.$inferSelect
 export type BriefingProvenance = typeof briefingProvenance.$inferSelect
 export type BriefingTag = typeof briefingTags.$inferSelect
 export type Tag = typeof tags.$inferSelect
+export type Action = typeof actions.$inferSelect
+export type NewAction = typeof actions.$inferInsert
+export type AuditEntry = typeof auditEntries.$inferSelect
+export type NewAuditEntry = typeof auditEntries.$inferInsert
