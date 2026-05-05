@@ -1,0 +1,78 @@
+{
+  "count": 2,
+  "warnings": [
+    "100% of results lack DOI. Use filter_papers_with_doi to restrict to papers with DOI identifiers."
+  ],
+  "_meta": {
+    "request_id": "d8fb036f464e6f8c1e9488ec17c7a710",
+    "tool": "search_by_abstract_batch",
+    "duration_ms": 18,
+    "server_version": "0.3.20",
+    "db_duration_ms": 18
+  },
+  "papers": [
+    {
+      "id": "2602.01203v1",
+      "title": "Attention Sink Forges Native MoE in Attention Layers: Sink-Aware Training to Address Head Collapse",
+      "abstract": "Large Language Models (LLMs) often assign disproportionate attention to the first token, a phenomenon known as the attention sink. Several recent approaches aim to address this issue, including Sink Attention in GPT-OSS and Gated Attention in Qwen3-Next. However, a comprehensive analysis of the relationship among these attention mechanisms is lacking. In this work, we provide both theoretical and empirical evidence demonstrating that the sink in Vanilla Attention and Sink Attention naturally construct a Mixture-of-Experts (MoE) mechanism within attention layers. This insight explains the head collapse phenomenon observed in prior work, where only a fixed subset of attention heads contributes to generation. To mitigate head collapse, we propose a sink-aware training algorithm with an auxiliary load balancing loss designed for attention layers. Extensive experiments show that our method achieves effective head load balancing and improves model performance across Vanilla Attention, Sink Attention, and Gated Attention. We hope this study offers a new perspective on attention mechanisms and encourages further exploration of the inherent MoE structure within attention layers.",
+      "authors": [
+        "Zizhuo Fu",
+        "Wenxuan Zeng",
+        "Runsheng Wang",
+        "Meng Li"
+      ],
+      "categories": [
+        "cs.CL",
+        "cs.LG"
+      ],
+      "datestamp": "2026-02-03",
+      "doi": "",
+      "journal_ref": "",
+      "source": "arxiv",
+      "first_submitted": "2026-02-01",
+      "relevance_score": 1,
+      "match_quality": "good",
+      "citation_count": 0,
+      "url": "https://arxiv.org/abs/2602.01203",
+      "matched_queries": [
+        "attention sinks"
+      ],
+      "rank": 0.6869955062866211
+    },
+    {
+      "id": "2602.05228v2",
+      "title": "Surgery: Mitigating Harmful Fine-Tuning for Large Language Models via Attention Sink",
+      "abstract": "Harmful fine-tuning can invalidate safety alignment of large language models, exposing significant safety risks. In this paper, we utilize the attention sink mechanism to mitigate harmful fine-tuning. Specifically, we first measure a statistic named \\emph{sink divergence} for each attention head and observe that \\emph{different attention heads exhibit two different signs of sink divergence}. To understand its safety implications, we conduct experiments and find that the number of attention heads of positive sink divergence increases along with the increase of the model's harmfulness when undergoing harmful fine-tuning. Based on this finding, we propose a separable sink divergence hypothesis -- \\emph{attention heads associating with learning harmful patterns during fine-tuning are separable by their sign of sink divergence}. Based on the hypothesis, we propose a fine-tuning-stage defense, dubbed Surgery. Surgery utilizes a regularizer for sink divergence suppression, which steers attention heads toward the negative sink divergence group, thereby reducing the model's tendency to learn and amplify harmful patterns. Extensive experiments demonstrate that Surgery improves defense performance by 5.90\\%, 11.25\\%, and 9.55\\% on the BeaverTails, HarmBench, and SorryBench benchmarks, respectively. Source code is available on https://github.com/Lslland/Surgery.",
+      "authors": [
+        "Guozhi Liu",
+        "Weiwei Lin",
+        "Tiansheng Huang",
+        "Ruichao Mo",
+        "Qi Mu",
+        "Xiumin Wang",
+        "Li Shen"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "datestamp": "2026-02-12",
+      "doi": "",
+      "journal_ref": "",
+      "source": "arxiv",
+      "first_submitted": "2026-02-01",
+      "relevance_score": 0.5,
+      "match_quality": "good",
+      "citation_count": 0,
+      "url": "https://arxiv.org/abs/2602.05228",
+      "matched_queries": [
+        "attention sinks"
+      ],
+      "rank": 0.5199096202850342
+    }
+  ],
+  "query_type": "abstract_batch",
+  "queries": [
+    "attention sinks"
+  ],
+  "truncated": true
+}

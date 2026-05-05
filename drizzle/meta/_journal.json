@@ -8,6 +8,27 @@
       "when": 1777918416280,
       "tag": "0000_exotic_blob",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1777919075246,
+      "tag": "0001_military_shinko_yamashiro",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1777945280639,
+      "tag": "0002_tired_deathbird",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1777949552812,
+      "tag": "0003_dusty_tag",
+      "breakpoints": true
     }
   ]
 }

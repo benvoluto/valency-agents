@@ -1,0 +1,470 @@
+{
+  "count": 16,
+  "warnings": [
+    "17 paper(s) from the last 90 days matched by name only — the ORCID→paper disambiguation index lags ingestion by 2-4 weeks. See 'match_type' per paper; treat 'name_matched_recent_low_confidence' as candidates, not facts."
+  ],
+  "_meta": {
+    "request_id": "6d218834b959e203c36d2bdddc2f5fb6",
+    "tool": "find_papers_by_researcher",
+    "duration_ms": 28,
+    "server_version": "0.3.20",
+    "db_duration_ms": 28
+  },
+  "papers": [
+    {
+      "id": "2602.03604v3",
+      "title": "A Lightweight Library for Energy-Based Joint-Embedding Predictive Architectures",
+      "abstract": "We present EB-JEPA, an open-source library for learning representations and world models using Joint-Embedding Predictive Architectures (JEPAs). JEPAs learn to predict in representation space rather than pixel space, avoiding the pitfalls of generative modeling while capturing semantically meaningful features suitable for downstream tasks. Our library provides modular, self-contained implementations that illustrate how representation learning techniques developed for image-level self-supervised learning can transfer to video, where temporal dynamics add complexity, and ultimately to action-conditioned world models, where the model must additionally learn to predict the effects of control inputs. Each example is designed for single-GPU training within a few hours, making energy-based self-supervised learning accessible for research and education. We provide ablations of JEA components on CIFAR-10. Probing these representations yields 91% accuracy, indicating that the model learns useful features. Extending to video, we include a multi-step prediction example on Moving MNIST that demonstrates how the same principles scale to temporal modeling. Finally, we show how these representations can drive action-conditioned world models, achieving a 97% planning success rate on the Two Rooms navigation task. Comprehensive ablations reveal the critical importance of each regularization component for preventing representation collapse. Code is available at https://github.com/facebookresearch/eb_jepa.",
+      "authors": [
+        "Basile Terver",
+        "Randall Balestriero",
+        "Megi Dervishi",
+        "David Fan",
+        "Quentin Garrido",
+        "Tushar Nagarajan",
+        "Koustuv Sinha",
+        "Wancong Zhang",
+        "Mike Rabbat",
+        "Yann LeCun",
+        "Amir Bar"
+      ],
+      "categories": [
+        "cs.CV",
+        "cs.AI"
+      ],
+      "datestamp": "2026-04-09",
+      "doi": "",
+      "journal_ref": "",
+      "source": "arxiv",
+      "first_submitted": "2026-02-01",
+      "citation_count": 0,
+      "url": "https://arxiv.org/abs/2602.03604",
+      "match_type": "name_matched_recent_high_confidence",
+      "coauthor_overlap": 3
+    },
+    {
+      "id": "2512.13644v2",
+      "title": "World Models for Learning Dexterous Hand-Object Interactions from Human Videos",
+      "abstract": "Modeling dexterous hand-object interactions is challenging as it requires understanding how subtle finger motions influence the environment through contact with objects. While recent world models address interaction modeling, they typically rely on coarse action spaces that fail to capture fine-grained dexterity. We, therefore, introduce DexWM, a Dexterous Interaction World Model that predicts future latent states of the environment conditioned on past states and dexterous actions. To overcome the scarcity of finely annotated dexterous datasets, DexWM represents actions using finger keypoints extracted from egocentric videos, enabling training on over 900 hours of human and non-dexterous robot data. Further, to accurately model dexterity, we find that predicting visual features alone is insufficient; therefore, we incorporate an auxiliary hand consistency loss that enforces accurate hand configurations. DexWM outperforms prior world models conditioned on text, navigation, or full-body actions in future-state prediction and demonstrates strong zero-shot transfer to unseen skills on a Franka Panda arm with an Allegro gripper, surpassing Diffusion Policy by over 50% on average across grasping, placing, and reaching tasks.",
+      "authors": [
+        "Raktim Gautam Goswami",
+        "Amir Bar",
+        "David Fan",
+        "Tsung-Yen Yang",
+        "Gaoyue Zhou",
+        "Prashanth Krishnamurthy",
+        "Michael Rabbat",
+        "Farshad Khorrami",
+        "Yann LeCun"
+      ],
+      "categories": [
+        "cs.RO",
+        "cs.AI",
+        "cs.CV"
+      ],
+      "datestamp": "2026-03-18",
+      "doi": "",
+      "journal_ref": "",
+      "source": "arxiv",
+      "first_submitted": "2025-12-01",
+      "citation_count": 0,
+      "url": "https://arxiv.org/abs/2512.13644",
+      "comments": "",
+      "published_doi": null,
+      "base_id": "2512.13644",
+      "match_type": "orcid_verified"
+    },
+    {
+      "id": "2603.13227v1",
+      "title": "Representation Learning for Spatiotemporal Physical Systems",
+      "abstract": "Machine learning approaches to spatiotemporal physical systems have primarily focused on next-frame prediction, with the goal of learning an accurate emulator for the system's evolution in time. However, these emulators are computationally expensive to train and are subject to performance pitfalls, such as compounding errors during autoregressive rollout. In this work, we take a different perspective and look at scientific tasks further downstream of predicting the next frame, such as estimation of a system's governing physical parameters. Accuracy on these tasks offers a uniquely quantifiable glimpse into the physical relevance of the representations of these models. We evaluate the effectiveness of general-purpose self-supervised methods in learning physics-grounded representations that are useful for downstream scientific tasks. Surprisingly, we find that not all methods designed for physical modeling outperform generic self-supervised learning methods on these tasks, and methods that learn in the latent space (e.g., joint embedding predictive architectures, or JEPAs) outperform those optimizing pixel-level prediction objectives. Code is available at https://github.com/helenqu/physical-representation-learning.",
+      "authors": [
+        "Helen Qu",
+        "Rudy Morel",
+        "Michael McCabe",
+        "Alberto Bietti",
+        "Francois Lanusse",
+        "Shirley Ho",
+        "Yann LeCun"
+      ],
+      "categories": [
+        "cs.LG",
+        "cs.CV"
+      ],
+      "datestamp": "2026-03-16",
+      "doi": "",
+      "journal_ref": "",
+      "source": "arxiv",
+      "first_submitted": "2026-03-01",
+      "citation_count": null,
+      "url": "https://arxiv.org/abs/2603.13227",
+      "match_type": "name_matched_recent_low_confidence",
+      "coauthor_overlap": 0
+    },
+    {
+      "id": "2602.14272v1",
+      "title": "Radial-VCReg: More Informative Representation Learning Through Radial Gaussianization",
+      "abstract": "Self-supervised learning aims to learn maximally informative representations, but explicit information maximization is hindered by the curse of dimensionality. Existing methods like VCReg address this by regularizing first and second-order feature statistics, which cannot fully achieve maximum entropy. We propose Radial-VCReg, which augments VCReg with a radial Gaussianization loss that aligns feature norms with the Chi distribution-a defining property of high-dimensional Gaussians. We prove that Radial-VCReg transforms a broader class of distributions towards normality compared to VCReg and show on synthetic and real-world datasets that it consistently improves performance by reducing higher-order dependencies and promoting more diverse and informative representations.",
+      "authors": [
+        "Yilun Kuang",
+        "Yash Dagade",
+        "Deep Chakraborty",
+        "Erik Learned-Miller",
+        "Randall Balestriero",
+        "Tim G. J. Rudner",
+        "Yann LeCun"
+      ],
+      "categories": [
+        "cs.LG"
+      ],
+      "datestamp": "2026-02-17",
+      "doi": "",
+      "journal_ref": "",
+      "source": "arxiv",
+      "first_submitted": "2026-02-01",
+      "citation_count": 0,
+      "url": "https://arxiv.org/abs/2602.14272",
+      "match_type": "name_matched_recent_low_confidence",
+      "coauthor_overlap": 0
+    },
+    {
+      "id": "2512.21204v2",
+      "title": "SpidR-Adapt: A Universal Speech Representation Model for Few-Shot Adaptation",
+      "abstract": "Human infants, with only a few hundred hours of speech exposure, acquire basic units of new languages, highlighting a striking efficiency gap compared to the data-hungry self-supervised speech models. To address this gap, this paper introduces SpidR-Adapt for rapid adaptation of speech units to new languages using minimal unlabeled data. We cast such low-resource speech representation learning as a meta-learning problem and construct a multi-task adaptive pre-training (MAdaPT) protocol which formulates the adaptation process as a bi-level optimization framework. To enable scalable meta-training under this framework, we propose a novel heuristic solution, first-order bi-level optimization (FOBLO), avoiding heavy computation costs. Finally, we stabilize meta-training by using a robust initialization through interleaved supervision which alternates self-supervised and supervised objectives. Empirically, SpidR-Adapt achieves rapid gains in phonemic discriminability (ABX) and downstream spoken language modeling scores (sWUGGY, sBLIMP, tSC), surpassing in-domain toplines after training on less than 1h of target-language audio and delivering $100\\times$ greater data efficiency than standard multi-task training. These findings highlight a practical, architecture-agnostic path toward biologically inspired, data-efficient representations. We open-source the training code and model checkpoints at https://github.com/facebookresearch/spidr-adapt.",
+      "authors": [
+        "Mahi Luthra",
+        "Jiayi Shen",
+        "Maxime Poli",
+        "Angelo Ortiz",
+        "Yosuke Higuchi",
+        "Youssef Benchekroun",
+        "Martin Gleize",
+        "Charles-Eric Saint-James",
+        "Dongyan Lin",
+        "Phillip Rust",
+        "Angel Villar",
+        "Surya Parimi",
+        "Vanessa Stark",
+        "Rashel Moritz",
+        "Juan Pino",
+        "Yann LeCun",
+        "Emmanuel Dupoux"
+      ],
+      "categories": [
+        "cs.CL",
+        "cs.AI"
+      ],
+      "datestamp": "2026-04-21",
+      "doi": "",
+      "journal_ref": "",
+      "source": "arxiv",
+      "first_submitted": "2025-12-01",
+      "citation_count": 0,
+      "url": "https://arxiv.org/abs/2512.21204",
+      "match_type": "name_matched_recent_low_confidence",
+      "coauthor_overlap": 0
+    },
+    {
+      "id": "2604.03208v1",
+      "title": "Hierarchical Planning with Latent World Models",
+      "abstract": "Model predictive control (MPC) with learned world models has emerged as a promising paradigm for embodied control, particularly for its ability to generalize zero-shot when deployed in new environments. However, learned world models often struggle with long-horizon control due to the accumulation of prediction errors and the exponentially growing search space. In this work, we address these challenges by learning latent world models at multiple temporal scales and performing hierarchical planning across these scales, enabling long-horizon reasoning while substantially reducing inference-time planning complexity. Our approach serves as a modular planning abstraction that applies across diverse latent world-model architectures and domains. We demonstrate that this hierarchical approach enables zero-shot control on real-world non-greedy robotic tasks, achieving a 70% success rate on pick-&-place using only a final goal specification, compared to 0% for a single-level world model. In addition, across physics-based simulated environments including push manipulation and maze navigation, hierarchical planning achieves higher success while requiring up to 4x less planning-time compute.",
+      "authors": [
+        "Wancong Zhang",
+        "Basile Terver",
+        "Artem Zholus",
+        "Soham Chitnis",
+        "Harsh Sutaria",
+        "Mido Assran",
+        "Randall Balestriero",
+        "Amir Bar",
+        "Adrien Bardes",
+        "Yann LeCun",
+        "Nicolas Ballas"
+      ],
+      "categories": [
+        "cs.LG"
+      ],
+      "datestamp": "2026-04-06",
+      "doi": "",
+      "journal_ref": "",
+      "source": "arxiv",
+      "first_submitted": "2026-04-01",
+      "citation_count": null,
+      "url": "https://arxiv.org/abs/2604.03208",
+      "match_type": "name_matched_recent_low_confidence",
+      "coauthor_overlap": 1
+    },
+    {
+      "id": "2603.19312v2",
+      "title": "LeWorldModel: Stable End-to-End Joint-Embedding Predictive Architecture from Pixels",
+      "abstract": "Joint Embedding Predictive Architectures (JEPAs) offer a compelling framework for learning world models in compact latent spaces, yet existing methods remain fragile, relying on complex multi-term losses, exponential moving averages, pre-trained encoders, or auxiliary supervision to avoid representation collapse. In this work, we introduce LeWorldModel (LeWM), the first JEPA that trains stably end-to-end from raw pixels using only two loss terms: a next-embedding prediction loss and a regularizer enforcing Gaussian-distributed latent embeddings. This reduces tunable loss hyperparameters from six to one compared to the only existing end-to-end alternative. With ~15M parameters trainable on a single GPU in a few hours, LeWM plans up to 48x faster than foundation-model-based world models while remaining competitive across diverse 2D and 3D control tasks. Beyond control, we show that LeWM's latent space encodes meaningful physical structure through probing of physical quantities. Surprise evaluation confirms that the model reliably detects physically implausible events.",
+      "authors": [
+        "Lucas Maes",
+        "Quentin Le Lidec",
+        "Damien Scieur",
+        "Yann LeCun",
+        "Randall Balestriero"
+      ],
+      "categories": [
+        "cs.LG",
+        "cs.AI"
+      ],
+      "datestamp": "2026-03-26",
+      "doi": "",
+      "journal_ref": "",
+      "source": "arxiv",
+      "first_submitted": "2026-03-01",
+      "citation_count": null,
+      "url": "https://arxiv.org/abs/2603.19312",
+      "match_type": "name_matched_recent_low_confidence",
+      "coauthor_overlap": 0
+    },
+    {
+      "id": "2603.15381v1",
+      "title": "Why AI systems don't learn and what to do about it: Lessons on autonomous learning from cognitive science",
+      "abstract": "We critically examine the limitations of current AI models in achieving autonomous learning and propose a learning architecture inspired by human and animal cognition. The proposed framework integrates learning from observation (System A) and learning from active behavior (System B) while flexibly switching between these learning modes as a function of internally generated meta-control signals (System M). We discuss how this could be built by taking inspiration on how organisms adapt to real-world, dynamic environments across evolutionary and developmental timescales.",
+      "authors": [
+        "Emmanuel Dupoux",
+        "Yann LeCun",
+        "Jitendra Malik"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "datestamp": "2026-03-17",
+      "doi": "",
+      "journal_ref": "",
+      "source": "arxiv",
+      "first_submitted": "2026-03-01",
+      "citation_count": null,
+      "url": "https://arxiv.org/abs/2603.15381",
+      "match_type": "name_matched_recent_low_confidence",
+      "coauthor_overlap": 0
+    },
+    {
+      "id": "2603.12231v1",
+      "title": "Temporal Straightening for Latent Planning",
+      "abstract": "Learning good representations is essential for latent planning with world models. While pretrained visual encoders produce strong semantic visual features, they are not tailored to planning and contain information irrelevant -- or even detrimental -- to planning. Inspired by the perceptual straightening hypothesis in human visual processing, we introduce temporal straightening to improve representation learning for latent planning. Using a curvature regularizer that encourages locally straightened latent trajectories, we jointly learn an encoder and a predictor. We show that reducing curvature this way makes the Euclidean distance in latent space a better proxy for the geodesic distance and improves the conditioning of the planning objective. We demonstrate empirically that temporal straightening makes gradient-based planning more stable and yields significantly higher success rates across a suite of goal-reaching tasks.",
+      "authors": [
+        "Ying Wang",
+        "Oumayma Bounou",
+        "Gaoyue Zhou",
+        "Randall Balestriero",
+        "Tim G. J. Rudner",
+        "Yann LeCun",
+        "Mengye Ren"
+      ],
+      "categories": [
+        "cs.LG"
+      ],
+      "datestamp": "2026-03-13",
+      "doi": "",
+      "journal_ref": "",
+      "source": "arxiv",
+      "first_submitted": "2026-03-01",
+      "citation_count": null,
+      "url": "https://arxiv.org/abs/2603.12231",
+      "match_type": "name_matched_recent_low_confidence",
+      "coauthor_overlap": 1
+    },
+    {
+      "id": "2603.05498v1",
+      "title": "The Spike, the Sparse and the Sink: Anatomy of Massive Activations and Attention Sinks",
+      "abstract": "We study two recurring phenomena in Transformer language models: massive activations, in which a small number of tokens exhibit extreme outliers in a few channels, and attention sinks, in which certain tokens attract disproportionate attention mass regardless of semantic relevance. Prior work observes that these phenomena frequently co-occur and often involve the same tokens, but their functional roles and causal relationship remain unclear. Through systematic experiments, we show that the co-occurrence is largely an architectural artifact of modern Transformer design, and that the two phenomena serve related but distinct functions. Massive activations operate globally: they induce near-constant hidden representations that persist across layers, effectively functioning as implicit parameters of the model. Attention sinks operate locally: they modulate attention outputs across heads and bias individual heads toward short-range dependencies. We identify the pre-norm configuration as the key choice that enables the co-occurrence, and show that ablating it causes the two phenomena to decouple.",
+      "authors": [
+        "Shangwen Sun",
+        "Alfredo Canziani",
+        "Yann LeCun",
+        "Jiachen Zhu"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CL"
+      ],
+      "datestamp": "2026-03-06",
+      "doi": "",
+      "journal_ref": "",
+      "source": "arxiv",
+      "first_submitted": "2026-03-01",
+      "citation_count": null,
+      "url": "https://arxiv.org/abs/2603.05498",
+      "match_type": "name_matched_recent_low_confidence",
+      "coauthor_overlap": 0
+    },
+    {
+      "id": "2602.23643v1",
+      "title": "AI Must Embrace Specialization via Superhuman Adaptable Intelligence",
+      "abstract": "Everyone from AI executives and researchers to doomsayers, politicians, and activists is talking about Artificial General Intelligence (AGI). Yet, they often don't seem to agree on its exact definition. One common definition of AGI is an AI that can do everything a human can do, but are humans truly general? In this paper, we address what's wrong with our conception of AGI, and why, even in its most coherent formulation, it is a flawed concept to describe the future of AI. We explore whether the most widely accepted definitions are plausible, useful, and truly general. We argue that AI must embrace specialization, rather than strive for generality, and in its specialization strive for superhuman performance, and introduce Superhuman Adaptable Intelligence (SAI). SAI is defined as intelligence that can learn to exceed humans at anything important that we can do, and that can fill in the skill gaps where humans are incapable. We then lay out how SAI can help hone a discussion around AI that was blurred by an overloaded definition of AGI, and extrapolate the implications of using it as a guide for the future.",
+      "authors": [
+        "Judah Goldfeder",
+        "Philippe Wyder",
+        "Yann LeCun",
+        "Ravid Shwartz Ziv"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "datestamp": "2026-03-02",
+      "doi": "",
+      "journal_ref": "",
+      "source": "arxiv",
+      "first_submitted": "2026-02-01",
+      "citation_count": null,
+      "url": "https://arxiv.org/abs/2602.23643",
+      "match_type": "name_matched_recent_low_confidence",
+      "coauthor_overlap": 0
+    },
+    {
+      "id": "2602.22617v1",
+      "title": "Semantic Tube Prediction: Beating LLM Data Efficiency with JEPA",
+      "abstract": "Large Language Models (LLMs) obey consistent scaling laws -- empirical power-law fits that predict how loss decreases with compute, data, and parameters. While predictive, these laws are descriptive rather than prescriptive: they characterize typical training, not optimal training. Surprisingly few works have successfully challenged the data-efficiency bounds implied by these laws -- which is our primary focus. To that end, we introduce the Geodesic Hypothesis, positing that token sequences trace geodesics on a smooth semantic manifold and are therefore locally linear. Building on this principle, we propose a novel Semantic Tube Prediction (STP) task, a JEPA-style regularizer that confines hidden-state trajectories to a tubular neighborhood of the geodesic. STP generalizes JEPA to language without requiring explicit multi-view augmentations. We show this constraint improves signal-to-noise ratio, and consequently preserves diversity by preventing trajectory collisions during inference. Empirically, STP allows LLMs to match baseline accuracy with 16$\\times$ less training data on the NL-RX-SYNTH dataset, directly violating the data term of Chinchilla-style scaling laws and demonstrating that principled geometric priors can surpass brute-force scaling. Code is available at https://github.com/galilai-group/llm-jepa#stp.",
+      "authors": [
+        "Hai Huang",
+        "Yann LeCun",
+        "Randall Balestriero"
+      ],
+      "categories": [
+        "cs.LG"
+      ],
+      "datestamp": "2026-02-27",
+      "doi": "",
+      "journal_ref": "",
+      "source": "arxiv",
+      "first_submitted": "2026-02-01",
+      "citation_count": null,
+      "url": "https://arxiv.org/abs/2602.22617",
+      "match_type": "name_matched_recent_low_confidence",
+      "coauthor_overlap": 0
+    },
+    {
+      "id": "2602.08968v2",
+      "title": "stable-worldmodel-v1: Reproducible World Modeling Research and Evaluation",
+      "abstract": "World Models have emerged as a powerful paradigm for learning compact, predictive representations of environment dynamics, enabling agents to reason, plan, and generalize beyond direct experience. Despite recent interest in World Models, most available implementations remain publication-specific, severely limiting their reusability, increasing the risk of bugs, and reducing evaluation standardization. To mitigate these issues, we introduce stable-worldmodel (SWM), a modular, tested, and documented world-model research ecosystem that provides efficient data-collection tools, standardized environments, planning algorithms, and baseline implementations. In addition, each environment in SWM enables controllable factors of variation, including visual and physical properties, to support robustness and continual learning research. Finally, we demonstrate the utility of SWM by using it to study zero-shot robustness in DINO-WM.",
+      "authors": [
+        "Lucas Maes",
+        "Quentin Le Lidec",
+        "Dan Haramati",
+        "Nassim Massaudi",
+        "Damien Scieur",
+        "Yann LeCun",
+        "Randall Balestriero"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "datestamp": "2026-02-18",
+      "doi": "",
+      "journal_ref": "",
+      "source": "arxiv",
+      "first_submitted": "2026-02-01",
+      "citation_count": 0,
+      "url": "https://arxiv.org/abs/2602.08968",
+      "match_type": "name_matched_recent_low_confidence",
+      "coauthor_overlap": 0
+    },
+    {
+      "id": "2602.11389v1",
+      "title": "Causal-JEPA: Learning World Models through Object-Level Latent Interventions",
+      "abstract": "World models require robust relational understanding to support prediction, reasoning, and control. While object-centric representations provide a useful abstraction, they are not sufficient to capture interaction-dependent dynamics. We therefore propose C-JEPA, a simple and flexible object-centric world model that extends masked joint embedding prediction from image patches to object-centric representations. By applying object-level masking that requires an object's state to be inferred from other objects, C-JEPA induces latent interventions with counterfactual-like effects and prevents shortcut solutions, making interaction reasoning essential. Empirically, C-JEPA leads to consistent gains in visual question answering, with an absolute improvement of about 20\\% in counterfactual reasoning compared to the same architecture without object-level masking. On agent control tasks, C-JEPA enables substantially more efficient planning by using only 1\\% of the total latent input features required by patch-based world models, while achieving comparable performance. Finally, we provide a formal analysis demonstrating that object-level masking induces a causal inductive bias via latent interventions. Our code is available at https://github.com/galilai-group/cjepa.",
+      "authors": [
+        "Heejeong Nam",
+        "Quentin Le Lidec",
+        "Lucas Maes",
+        "Yann LeCun",
+        "Randall Balestriero"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "datestamp": "2026-02-13",
+      "doi": "",
+      "journal_ref": "",
+      "source": "arxiv",
+      "first_submitted": "2026-02-01",
+      "citation_count": 0,
+      "url": "https://arxiv.org/abs/2602.11389",
+      "match_type": "name_matched_recent_low_confidence",
+      "coauthor_overlap": 0
+    },
+    {
+      "id": "2602.09040v1",
+      "title": "Soft Clustering Anchors for Self-Supervised Speech Representation Learning in Joint Embedding Prediction Architectures",
+      "abstract": "Joint Embedding Predictive Architectures (JEPA) offer a promising approach to self-supervised speech representation learning, but suffer from representation collapse without explicit grounding. We propose GMM-Anchored JEPA, which fits a Gaussian Mixture Model once on log-mel spectrograms and uses its frozen soft posteriors as auxiliary targets throughout training. A decaying supervision schedule allows GMM regularization to dominate early training before gradually yielding to the JEPA objective. Unlike HuBERT and WavLM, which require iterative re-clustering, our approach clusters input features once with soft rather than hard assignments. On ~50k hours of speech, GMM anchoring improves ASR (28.68% vs. 33.22% WER), emotion recognition (67.76% vs. 65.46%), and slot filling (64.7% vs. 59.1% F1) compared to a WavLM-style baseline with matched compute. Cluster analysis shows GMM-anchored representations achieve up to 98% entropy compared to 31% for WavLM-style, indicating substantially more uniform cluster utilization. Code is made available at https://github.com/gioannides/clustering-anchored-jepa.",
+      "authors": [
+        "Georgios Ioannides",
+        "Adrian Kieback",
+        "Judah Goldfeder",
+        "Linsey Pang",
+        "Aman Chadha",
+        "Aaron Elkins",
+        "Yann LeCun",
+        "Ravid Shwartz-Ziv"
+      ],
+      "categories": [
+        "eess.AS",
+        "cs.AI",
+        "cs.LG",
+        "cs.SD"
+      ],
+      "datestamp": "2026-02-11",
+      "doi": "",
+      "journal_ref": "",
+      "source": "arxiv",
+      "first_submitted": "2026-02-01",
+      "citation_count": 0,
+      "url": "https://arxiv.org/abs/2602.09040",
+      "match_type": "name_matched_recent_low_confidence",
+      "coauthor_overlap": 1
+    },
+    {
+      "id": "2603.05225v1",
+      "title": "AI+HW 2035: Shaping the Next Decade",
+      "abstract": "Artificial intelligence (AI) and hardware (HW) are advancing at unprecedented rates, yet their trajectories have become inseparably intertwined. The global research community lacks a cohesive, long-term vision to strategically coordinate the development of AI and HW. This fragmentation constrains progress toward holistic, sustainable, and adaptive AI systems capable of learning, reasoning, and operating efficiently across cloud, edge, and physical environments. The future of AI depends not only on scaling intelligence, but on scaling efficiency, achieving exponential gains in intelligence per joule, rather than unbounded compute consumption. Addressing this grand challenge requires rethinking the entire computing stack. This vision paper lays out a 10-year roadmap for AI+HW co-design and co-development, spanning algorithms, architectures, systems, and sustainability. We articulate key insights that redefine scaling around energy efficiency, system-level integration, and cross-layer optimization. We identify key challenges and opportunities, candidly assess potential obstacles and pitfalls, and propose integrated solutions grounded in algorithmic innovation, hardware advances, and software abstraction. Looking ahead, we define what success means in 10 years: achieving a 1000x improvement in efficiency for AI training and inference; enabling energy-aware, self-optimizing systems that seamlessly span cloud, edge, and physical AI; democratizing access to advanced AI infrastructure; and embedding human-centric principles into the design of intelligent systems. Finally, we outline concrete action items for academia, industry, government, and the broader community, calling for coordinated national initiatives, shared infrastructure, workforce development, cross-agency collaboration, and sustained public-private partnerships to ensure that AI+HW co-design becomes a unifying long-term mission.",
+      "authors": [
+        "Deming Chen",
+        "Jason Cong",
+        "Azalia Mirhoseini",
+        "Christos Kozyrakis",
+        "Subhasish Mitra",
+        "Jinjun Xiong",
+        "Cliff Young",
+        "Anima Anandkumar",
+        "Michael Littman",
+        "Aron Kirschen",
+        "Sophia Shao",
+        "Serge Leef",
+        "Naresh Shanbhag",
+        "Dejan Milojicic",
+        "Michael Schulte",
+        "Gert Cauwenberghs",
+        "Jerry M. Chow",
+        "Tri Dao",
+        "Kailash Gopalakrishnan",
+        "Richard Ho"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.AR"
+      ],
+      "datestamp": "2026-03-06",
+      "doi": "",
+      "journal_ref": "",
+      "source": "arxiv",
+      "first_submitted": "2026-03-01",
+      "citation_count": null,
+      "url": "https://arxiv.org/abs/2603.05225",
+      "match_type": "name_matched_recent_low_confidence",
+      "coauthor_overlap": 0,
+      "total_authors": 30,
+      "authors_truncated": true
+    }
+  ],
+  "query_type": "papers_by_researcher",
+  "researcher": {
+    "display_name": "Yann LeCun",
+    "orcid": null
+  },
+  "candidates": [],
+  "disambiguation_status": "potentially_incomplete_recent_window",
+  "recent_window_days": 90
+}

@@ -1,0 +1,33 @@
+{
+  "total_papers": 263076,
+  "_meta": {
+    "request_id": "2d39e3ba2462836814a02c2bfc1e9fa4",
+    "tool": "analyze_corpus_metrics",
+    "duration_ms": 1367,
+    "server_version": "0.3.20",
+    "db_duration_ms": 1367
+  },
+  "date_range": {
+    "earliest": "2007-01-18",
+    "latest": "2026-05-04"
+  },
+  "field_completeness": {
+    "with_abstract": {
+      "count": 263076,
+      "percentage": 100
+    },
+    "with_doi": {
+      "count": 32283,
+      "percentage": 12.27
+    },
+    "with_journal_ref": {
+      "count": 24403,
+      "percentage": 9.28
+    }
+  },
+  "author_statistics": {
+    "avg_authors_per_paper": 4.39,
+    "max_authors": 1323
+  },
+  "category_filter": "cs.LG"
+}

@@ -1,0 +1,15 @@
+{
+  "warnings": [],
+  "_meta": {
+    "request_id": "09ef45b89e2a01c78306260c18d3cb3c",
+    "tool": "get_citing_papers",
+    "duration_ms": 18,
+    "server_version": "0.3.20",
+    "db_duration_ms": 18
+  },
+  "papers": [],
+  "paper_id": "2406.12345",
+  "openalex_work_id": "https://openalex.org/W4399837142",
+  "total_citing_papers": 0,
+  "results": []
+}

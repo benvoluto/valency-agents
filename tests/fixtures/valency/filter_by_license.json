@@ -1,0 +1,13 @@
+{
+  "count": 0,
+  "warnings": [],
+  "_meta": {
+    "request_id": "8bf88c46e11c46d9d20b824e8e3e79d5",
+    "tool": "filter_by_license",
+    "duration_ms": 9,
+    "server_version": "0.3.20"
+  },
+  "papers": [],
+  "license": "CC-BY-4.0",
+  "query_type": "license"
+}

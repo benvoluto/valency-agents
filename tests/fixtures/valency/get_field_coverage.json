@@ -1,0 +1,96 @@
+{
+  "count": 20,
+  "warnings": [],
+  "_meta": {
+    "request_id": "e533a8d24412023fbac73a5b8ea6e5cc",
+    "tool": "get_field_coverage",
+    "duration_ms": 596,
+    "server_version": "0.3.20",
+    "db_duration_ms": 596
+  },
+  "field": "journal_ref",
+  "category": "cs.LG",
+  "query_type": "field_coverage",
+  "values": [
+    {
+      "value": "NeurIPS 2025",
+      "count": 42
+    },
+    {
+      "value": "Transactions on Machine Learning Research, 2025",
+      "count": 31
+    },
+    {
+      "value": "ICLR 2025",
+      "count": 29
+    },
+    {
+      "value": "NeurIPS 2020",
+      "count": 28
+    },
+    {
+      "value": "NeurIPS 2023",
+      "count": 27
+    },
+    {
+      "value": "ICLR 2026",
+      "count": 26
+    },
+    {
+      "value": "ICML 2025",
+      "count": 25
+    },
+    {
+      "value": "NeurIPS 2024",
+      "count": 24
+    },
+    {
+      "value": "ICLR 2024",
+      "count": 23
+    },
+    {
+      "value": "NeurIPS 2021",
+      "count": 22
+    },
+    {
+      "value": "NeurIPS 2022",
+      "count": 22
+    },
+    {
+      "value": "ICLR 2022",
+      "count": 21
+    },
+    {
+      "value": "ICLR 2023",
+      "count": 19
+    },
+    {
+      "value": "NeurIPS 2019",
+      "count": 19
+    },
+    {
+      "value": "39th Conference on Neural Information Processing Systems (NeurIPS 2025)",
+      "count": 18
+    },
+    {
+      "value": "Transactions on Machine Learning Research, 2026",
+      "count": 18
+    },
+    {
+      "value": "AAAI 2020",
+      "count": 16
+    },
+    {
+      "value": "ICML 2022",
+      "count": 16
+    },
+    {
+      "value": "ICML 2024",
+      "count": 15
+    },
+    {
+      "value": "Transactions on Machine Learning Research, 2023",
+      "count": 14
+    }
+  ]
+}

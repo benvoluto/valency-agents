@@ -1,0 +1,39 @@
+{
+  "count": 5,
+  "warnings": [],
+  "_meta": {
+    "request_id": "17a8a217e63542498fd62c965d6b6dad",
+    "tool": "identify_research_domains",
+    "duration_ms": 2,
+    "server_version": "0.3.20",
+    "db_duration_ms": 2
+  },
+  "categories": [
+    {
+      "category": "COVID-19",
+      "paper_count": 378686,
+      "percentage": 0.87
+    },
+    {
+      "category": "cs.LG",
+      "paper_count": 263076,
+      "percentage": 0.6
+    },
+    {
+      "category": "cs.CV",
+      "paper_count": 190014,
+      "percentage": 0.44
+    },
+    {
+      "category": "Neoplasms",
+      "paper_count": 184544,
+      "percentage": 0.42
+    },
+    {
+      "category": "hep-ph",
+      "paper_count": 180740,
+      "percentage": 0.41
+    }
+  ],
+  "limit": 5
+}

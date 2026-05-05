@@ -1,0 +1,64 @@
+{
+  "count": 2,
+  "warnings": [
+    "No strong matches found. Consider semantic_search_papers for conceptual queries."
+  ],
+  "_meta": {
+    "request_id": "8a59b8514d75d4b345b9902c24e6e33c",
+    "tool": "search_by_abstract",
+    "duration_ms": 68,
+    "server_version": "0.3.20",
+    "db_duration_ms": 68
+  },
+  "papers": [
+    {
+      "id": "1503.02531v1",
+      "title": "Distilling the Knowledge in a Neural Network",
+      "abstract": "A very simple way to improve the performance of almost any machine learning algorithm is to train many different models on the same data and then to average their predictions. Unfortunately, making predictions using a whole ensemble of models is cumbersome and may be too computationally expensive to allow deployment to a large number of users, especially if the individual models are large neural nets. Caruana and his collaborators have shown that it is possible to compress the knowledge in an ensemble into a single model which is much easier to deploy and we develop this approach further using a different compression technique. We achieve some surprising results on MNIST and we show that we can significantly improve the acoustic model of a heavily used commercial system by distilling the knowledge in an ensemble of models into a single model. We also introduce a new type of ensemble composed of one or more full models and many specialist models which learn to distinguish fine-grained classes that the full models confuse. Unlike a mixture of experts, these specialist models can be trained rapidly and in parallel.",
+      "authors": [
+        "Geoffrey Hinton",
+        "Oriol Vinyals",
+        "Jeff Dean"
+      ],
+      "categories": [
+        "stat.ML",
+        "cs.LG",
+        "cs.NE"
+      ],
+      "datestamp": "2015-03-10",
+      "doi": "",
+      "journal_ref": "",
+      "source": "arxiv",
+      "first_submitted": "2015-03-01",
+      "relevance_score": 1,
+      "match_quality": "weak",
+      "citation_count": 13861,
+      "url": "https://arxiv.org/abs/1503.02531",
+      "rank": 0.09850085526704788
+    },
+    {
+      "id": "24807516",
+      "title": "Twenty years of mixture of experts.",
+      "abstract": "In this paper, we provide a comprehensive survey of the mixture of experts (ME). We discuss the fundamental models for regression and classification and also their training with the expectation-maximization algorithm. We follow the discussion with improvements to the ME model and focus particularly on the mixtures of Gaussian process experts. We provide a review of the literature for other training methods, such as the alternative localized ME training, and cover the variational learning of ME in detail. In addition, we describe the model selection literature which encompasses finding the optimum number of experts, as well as the depth of the tree. We present the advances in ME in the classification area and present some issues concerning the classification model. We list the statistical properties of ME, discuss how the model has been modified over the years, compare ME to some popular algorithms, and list several applications. We conclude our survey with future directions and provide a list of publicly available datasets and a list of publicly available software that implement ME. Finally, we provide examples for regression and classification. We believe that the study described in this paper will provide quick access to the relevant literature for researchers and practitioners who would like to improve or use ME, and that it will stimulate further studies in ME.",
+      "authors": [
+        "Yuksel, Seniha Esen",
+        "Wilson, Joseph N",
+        "Gader, Paul D"
+      ],
+      "categories": [],
+      "datestamp": "2015-03-24",
+      "doi": "10.1109/TNNLS.2012.2200299",
+      "journal_ref": "IEEE transactions on neural networks and learning systems. 2012;23(8):1177-93",
+      "source": "pubmed",
+      "first_submitted": "2015-03-01",
+      "relevance_score": 0.5,
+      "match_quality": "weak",
+      "citation_count": 542,
+      "url": null,
+      "rank": 0.18436940014362335
+    }
+  ],
+  "query": "mixture of experts",
+  "query_type": "abstract",
+  "truncated": true
+}

@@ -1,0 +1,69 @@
+{
+  "count": 2,
+  "warnings": [],
+  "_meta": {
+    "request_id": "afb93414ce6920cf4a63ea7b05ef1d4d",
+    "tool": "search_cross_category",
+    "duration_ms": 6732,
+    "server_version": "0.3.20",
+    "db_duration_ms": 6732
+  },
+  "papers": [
+    {
+      "id": "2604.28118v1",
+      "title": "DEFault++: Automated Fault Detection, Categorization, and Diagnosis for Transformer Architectures",
+      "abstract": "Transformer models are widely deployed in critical AI applications, yet faults in their attention mechanisms, projections, and other internal components often degrade behavior silently without raising runtime errors. Existing fault diagnosis techniques often target generic deep neural networks and cannot identify which transformer component is responsible for an observed symptom. In this article, we present DEFault++, a hierarchical learning-based diagnostic technique that operates at three level of abstraction: it detects whether a fault is present, classifies it into one of 12 transformer-specific fault categories (covering both attention-internal mechanisms and surrounding architectural components), and identifies the underlying root cause from up to 45 mechanisms. To facilitate both training and evaluation, we construct DEFault-bench, a benchmark of 3,739 labeled instances obtained through systematic mutation testing. These instances are created across seven transformer models and nine downstream tasks using DEForm, a transformer-specific mutation technique we developed for this purpose. DEFault++ measures runtime behavior at the level of individual transformer components. It organizes these measurements through a Fault Propagation Graph (FPG) derived from the transformer architecture. It then produces an interpretable diagnosis using prototype matching combined with supervised contrastive learning. On DEFault-bench, DEFault++ exceeds an AUROC of 0.96 for detection and a Macro-F1 of 0.85 for both categorization and root-cause diagnosis on encoder and decoder architectures. In a developer study with 21 practitioners, the accuracy of choosing correct repair actions increased from 57.1% without support to 83.3% when using DEFault++.",
+      "authors": [
+        "Sigma Jahan",
+        "Saurabh Singh Rajput",
+        "Tushar Sharma",
+        "Mohammad Masudur Rahman"
+      ],
+      "categories": [
+        "cs.SE",
+        "cs.AI",
+        "cs.LG"
+      ],
+      "datestamp": "2026-05-01",
+      "doi": "",
+      "journal_ref": "",
+      "source": "arxiv",
+      "first_submitted": "2026-04-01",
+      "relevance_score": 0.0919,
+      "match_quality": "weak",
+      "citation_count": null,
+      "url": "https://arxiv.org/abs/2604.28118",
+      "rank": 0.09190623462200165
+    },
+    {
+      "id": "2604.27313v1",
+      "title": "PINN-Cast: Exploring the Role of Continuous-Depth NODE in Transformers and Physics Informed Loss as Soft Physical Constraints in Short-term Weather Forecasting",
+      "abstract": "Operational weather prediction has long relied on physics-based numerical weather prediction (NWP), whose accuracy comes at the cost of substantial compute and complex simulation workflows. Recent transformer-based forecasters offer efficient data-driven alternatives, however transformers are physics-agnostic models. Additionally, standard transformer encoders evolve representations through discrete layer updates that may be less suited to modeling smooth latent dynamics. In this work, we propose a continuous-depth transformer encoder for weather forecasting that integrates Neural Ordinary Differential Equation (Neural ODE) dynamics within each encoder block. Specifically, we replace discrete residual updates with ODE-based updates solved using adaptive numerical integration. We also introduce a two-branch attention module that combines conventional patch-wise self-attention with an auxiliary branch that applies a derivative operator to attention logits, providing an additional change-sensitive interaction signal. To further align forecasts with governing principles, we propose a customized physics-informed training objective that enforces physical consistency as a soft constraint. We evaluate the proposed method against a standard discrete transformer baseline and an existing continuous-time Neural ODE forecasting variant, demonstrating the importance of PINN-Cast in short term weather forecasting.",
+      "authors": [
+        "Hira Saleem",
+        "Flora Salim",
+        "Cormac Purcell"
+      ],
+      "categories": [
+        "cs.LG",
+        "cs.CV"
+      ],
+      "datestamp": "2026-05-01",
+      "doi": "",
+      "journal_ref": "",
+      "source": "arxiv",
+      "first_submitted": "2026-04-01",
+      "relevance_score": 0.089,
+      "match_quality": "weak",
+      "citation_count": null,
+      "url": "https://arxiv.org/abs/2604.27313",
+      "rank": 0.0889768898487091
+    }
+  ],
+  "query": "transformers",
+  "categories": [
+    "cs.LG",
+    "cs.CL"
+  ],
+  "query_type": "cross_category"
+}

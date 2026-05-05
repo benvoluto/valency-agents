@@ -1,0 +1,26 @@
+{
+  "warnings": [],
+  "_meta": {
+    "request_id": "7f0dd730956409f828a89edc7f287c42",
+    "tool": "export_papers_csv",
+    "duration_ms": 2,
+    "server_version": "0.3.20",
+    "db_duration_ms": 2
+  },
+  "format": "csv",
+  "paper_count": 0,
+  "content": "",
+  "requested_count": 1,
+  "not_found": 1,
+  "fields": [
+    "id",
+    "title",
+    "authors",
+    "abstract",
+    "categories",
+    "datestamp",
+    "doi",
+    "journal_ref"
+  ],
+  "error": "No papers found with given IDs"
+}

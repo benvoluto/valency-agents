@@ -1,0 +1,40 @@
+{
+  "warnings": [],
+  "_meta": {
+    "request_id": "4e863aa5a4ada9a04b0dff46b7c02a56",
+    "tool": "get_paper_by_id",
+    "duration_ms": 4,
+    "server_version": "0.3.20"
+  },
+  "paper": {
+    "id": "2406.12345v1",
+    "title": "Navigating Knowledge Management Implementation Success in Government Organizations: A type-2 fuzzy approach",
+    "abstract": "Optimal information and knowledge management is crucial for organizations to achieve their objectives efficiently. As a rare and valuable resource, effective knowledge management provides a strategic advantage and has become a key determinant of organizational success. The study aims to identify critical success and failure factors for implementing knowledge management systems in government organizations. This research employs a descriptive survey methodology, collecting data through random interviews and questionnaires. The study highlights the critical success factors for knowledge management systems in government organizations, including cooperation, an open atmosphere, staff training, creativity and innovation, removal of organizational constraints, reward policies, role modeling, and focus. Conversely, failure to consider formality, staff participation, collaboration technologies, network and hardware infrastructure, complexity, IT staff, and trust can pose significant obstacles to successful implementation.",
+    "authors": [
+      "Saman Foroutani",
+      "Nasim Fahimian",
+      "Reyhaneh Jalalinejad",
+      "Morteza Hezarkhani",
+      "Samaneh Mahmoudi",
+      "Behrooz Gharleghi"
+    ],
+    "categories": [
+      "cs.CY",
+      "cs.AI"
+    ],
+    "datestamp": "2024-06-19",
+    "doi": "",
+    "journal_ref": "",
+    "source": "arxiv",
+    "first_submitted": "2024-06-01",
+    "citation_count": 0,
+    "url": "https://arxiv.org/abs/2406.12345",
+    "base_id": "2406.12345",
+    "comments": "",
+    "version": 1,
+    "license": "http://creativecommons.org/licenses/by/4.0/"
+  },
+  "paper_id": "2406.12345",
+  "query_type": "paper_by_id",
+  "found": true
+}

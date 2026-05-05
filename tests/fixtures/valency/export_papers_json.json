@@ -1,0 +1,15 @@
+{
+  "warnings": [],
+  "_meta": {
+    "request_id": "921dbd2d9e4952ec3c4e4d7694e3e19e",
+    "tool": "export_papers_json",
+    "duration_ms": 3,
+    "server_version": "0.3.20",
+    "db_duration_ms": 3
+  },
+  "format": "json",
+  "paper_count": 0,
+  "requested_count": 1,
+  "not_found": 1,
+  "content": "[]"
+}

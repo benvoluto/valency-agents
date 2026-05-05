@@ -1,0 +1,62 @@
+{
+  "count": 2,
+  "warnings": [],
+  "_meta": {
+    "request_id": "d2c30458eb3233311faf96f01aa94b74",
+    "tool": "filter_papers_with_doi",
+    "duration_ms": 5,
+    "server_version": "0.3.20",
+    "db_duration_ms": 4
+  },
+  "papers": [
+    {
+      "id": "2603.26692v4",
+      "title": "Degrees, Levels, and Profiles of Contextuality",
+      "abstract": "We introduce a new notion, that of a contextuality profile of a system of random variables. Rather than characterizing a system's contextuality by a single number, its overall degree of contextuality, we show how it can be characterized by a curve relating degree of contextuality to level at which the system is considered. A system is represented at level n if one only considers the joint distributions with no more than n variables, ignoring higher-order joint distributions. We show that the level-wise contextuality analysis can be used in conjunction with any well-constructed measure of contextuality. We present a method of concatenated systems to explore contextuality profiles systematically, and we apply it to the contextuality profiles for three major measures of contextuality proposed in the literature.",
+      "authors": [
+        "Ehtibar N. Dzhafarov",
+        "Victor H. Cervantes"
+      ],
+      "categories": [
+        "quant-ph",
+        "cs.AI",
+        "math.PR"
+      ],
+      "datestamp": "2026-05-04",
+      "doi": "10.3390/e28050513",
+      "journal_ref": "Entropy 2026, 28, 513",
+      "source": "arxiv",
+      "first_submitted": "2026-03-01",
+      "relevance_score": 1,
+      "match_quality": "high",
+      "citation_count": null,
+      "url": "https://arxiv.org/abs/2603.26692"
+    },
+    {
+      "id": "2604.25140v1",
+      "title": "Parallel distributed quantum gates for dual-species quantum emitters",
+      "abstract": "We propose a parallel protocol for implementing distributed nonlocal quantum gates between spatially separated stationary qubits encoded in dual-species quantum emitters (i.e., color-center and superconducting qubits). By utilizing entangled photon pairs with distinct frequencies as a quantum data bus, our approach connects spatially separated devices without requiring quantum frequency conversion or preshared entanglement, while maintaining an always-ready and resource-efficient property for distributed quantum computing and networks. Furthermore, we demonstrate the feasibility of implementing parallel distributed nonlocal quantum gates on multiple pairs of spatially separated qubits using a single high-dimensional entangled photon pair, which directly benefits from the enhanced quantum capacity provided by optical qudit encoding. Our protocol establishes a scalable and practically implementable framework for distributed quantum networks, potentially enabling the development of future large-scale quantum computing architectures.",
+      "authors": [
+        "Zhihao Xie",
+        "Adam Miranowicz",
+        "Zhenhua Li",
+        "Tao Li",
+        "Franco Nori"
+      ],
+      "categories": [
+        "quant-ph"
+      ],
+      "datestamp": "2026-05-04",
+      "doi": "10.1103/lghw-qn1h",
+      "journal_ref": "Phys. Rev. A 113, 042628 (2026)",
+      "source": "arxiv",
+      "first_submitted": "2026-04-01",
+      "relevance_score": 0.5,
+      "match_quality": "good",
+      "citation_count": null,
+      "url": "https://arxiv.org/abs/2604.25140"
+    }
+  ],
+  "category": null,
+  "query_type": "has_doi"
+}

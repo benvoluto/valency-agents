@@ -1,0 +1,111 @@
+{
+  "count": 2,
+  "warnings": [],
+  "_meta": {
+    "request_id": "4a4c2f064fc0c077883233b34e3d479e",
+    "tool": "resolve_orcid",
+    "duration_ms": 61,
+    "server_version": "0.3.20",
+    "db_duration_ms": 61
+  },
+  "orcid": "0000-0002-1825-0097",
+  "profile": {
+    "openalex_author_id": "https://openalex.org/A5100335963",
+    "display_name": "Josiah Carberry",
+    "orcid": "https://orcid.org/0000-0002-1825-0097",
+    "works_count": 728,
+    "cited_by_count": 370,
+    "h_index": 11,
+    "affiliations": [
+      {
+        "institution": "John Brown University",
+        "country_code": "US",
+        "work_count": 30
+      },
+      {
+        "institution": "Health & Medical Publishing Group",
+        "country_code": "ZA",
+        "work_count": 21
+      },
+      {
+        "institution": "State University of Makassar",
+        "country_code": "ID",
+        "work_count": 11
+      },
+      {
+        "institution": "Mulawarman University",
+        "country_code": "ID",
+        "work_count": 9
+      },
+      {
+        "institution": "Distance State University",
+        "country_code": "CR",
+        "work_count": 8
+      }
+    ],
+    "current_institution": {
+      "institution": "John Brown University",
+      "country_code": "US",
+      "derived": true
+    }
+  },
+  "papers_in_corpus": [
+    {
+      "id": "2502.20338v3",
+      "title": "KeBaB: $k$-mer based breaking for finding long MEMs",
+      "abstract": "Long maximal exact matches (MEMs) are used in many genomics applications such as read classification and sequence alignment. Li's ropebwt3 finds long MEMs quickly because it can often ignore much of its input. In this paper we show that a fast and space efficient $k$-mer filtration step using a Bloom filter speeds up MEM-finders such as ropebwt3 even further by letting them ignore even more. We also show experimentally that our approach can accelerate metagenomic classification without significantly hurting accuracy.",
+      "authors": [
+        "Nathaniel K. Brown",
+        "Lore Depuydt",
+        "Mohsen Zakeri",
+        "Anas Alhadi",
+        "Nour Allam",
+        "Dove Begleiter",
+        "Nithin Bharathi Kabilan Karpagavalli",
+        "Suchith Sridhar Khajjayam",
+        "Hamza Wahed",
+        "Travis Gagie",
+        "Ben Langmead"
+      ],
+      "categories": [
+        "cs.DS"
+      ],
+      "datestamp": "2025-06-10",
+      "doi": "",
+      "journal_ref": "",
+      "source": "arxiv",
+      "first_submitted": "2025-02-01",
+      "citation_count": 0,
+      "comments": "",
+      "published_doi": null,
+      "base_id": "2502.20338"
+    },
+    {
+      "id": "2506.04404v1",
+      "title": "A Framework Leveraging Large Language Models for Autonomous UAV Control in Flying Networks",
+      "abstract": "This paper proposes FLUC, a modular framework that integrates open-source Large Language Models (LLMs) with Unmanned Aerial Vehicle (UAV) autopilot systems to enable autonomous control in Flying Networks (FNs). FLUC translates high-level natural language commands into executable UAV mission code, bridging the gap between operator intent and UAV behaviour.\n  FLUC is evaluated using three open-source LLMs - Qwen 2.5, Gemma 2, and LLaMA 3.2 - across scenarios involving code generation and mission planning. Results show that Qwen 2.5 excels in multi-step reasoning, Gemma 2 balances accuracy and latency, and LLaMA 3.2 offers faster responses with lower logical coherence. A case study on energy-aware UAV positioning confirms FLUC's ability to interpret structured prompts and autonomously execute domain-specific logic, showing its effectiveness in real-time, mission-driven control.",
+      "authors": [
+        "Diana Nunes",
+        "Ricardo Amorim",
+        "Pedro Ribeiro",
+        "Andr'e Coelho",
+        "Rui Campos"
+      ],
+      "categories": [
+        "cs.NI",
+        "cs.RO"
+      ],
+      "datestamp": "2025-06-06",
+      "doi": "",
+      "journal_ref": "",
+      "source": "arxiv",
+      "first_submitted": "2025-06-01",
+      "citation_count": 0,
+      "comments": "6 pages, 3 figures, 6 tables",
+      "published_doi": null,
+      "base_id": "2506.04404"
+    }
+  ],
+  "candidates": [],
+  "query_type": "resolve_orcid"
+}

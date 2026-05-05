@@ -1,0 +1,264 @@
+{
+  "count": 62,
+  "warnings": [],
+  "_meta": {
+    "request_id": "f696f5ba2ab9b19a0ddd45a68d0e6422",
+    "tool": "get_keyword_trends",
+    "duration_ms": 0,
+    "server_version": "0.3.20",
+    "db_duration_ms": 0
+  },
+  "query": "attention",
+  "granularity": "year",
+  "periods": [
+    {
+      "period": "1965",
+      "paper_count": 3
+    },
+    {
+      "period": "1966",
+      "paper_count": 17
+    },
+    {
+      "period": "1967",
+      "paper_count": 21
+    },
+    {
+      "period": "1968",
+      "paper_count": 19
+    },
+    {
+      "period": "1969",
+      "paper_count": 33
+    },
+    {
+      "period": "1970",
+      "paper_count": 24
+    },
+    {
+      "period": "1971",
+      "paper_count": 32
+    },
+    {
+      "period": "1972",
+      "paper_count": 35
+    },
+    {
+      "period": "1973",
+      "paper_count": 36
+    },
+    {
+      "period": "1974",
+      "paper_count": 33
+    },
+    {
+      "period": "1975",
+      "paper_count": 569
+    },
+    {
+      "period": "1976",
+      "paper_count": 1166
+    },
+    {
+      "period": "1977",
+      "paper_count": 1129
+    },
+    {
+      "period": "1978",
+      "paper_count": 958
+    },
+    {
+      "period": "1979",
+      "paper_count": 1162
+    },
+    {
+      "period": "1980",
+      "paper_count": 1145
+    },
+    {
+      "period": "1981",
+      "paper_count": 1387
+    },
+    {
+      "period": "1982",
+      "paper_count": 1275
+    },
+    {
+      "period": "1983",
+      "paper_count": 1591
+    },
+    {
+      "period": "1984",
+      "paper_count": 1766
+    },
+    {
+      "period": "1985",
+      "paper_count": 1820
+    },
+    {
+      "period": "1986",
+      "paper_count": 1934
+    },
+    {
+      "period": "1987",
+      "paper_count": 1923
+    },
+    {
+      "period": "1988",
+      "paper_count": 1994
+    },
+    {
+      "period": "1989",
+      "paper_count": 3041
+    },
+    {
+      "period": "1990",
+      "paper_count": 3141
+    },
+    {
+      "period": "1991",
+      "paper_count": 3462
+    },
+    {
+      "period": "1992",
+      "paper_count": 3890
+    },
+    {
+      "period": "1993",
+      "paper_count": 3534
+    },
+    {
+      "period": "1994",
+      "paper_count": 3723
+    },
+    {
+      "period": "1995",
+      "paper_count": 4062
+    },
+    {
+      "period": "1996",
+      "paper_count": 3998
+    },
+    {
+      "period": "1997",
+      "paper_count": 5414
+    },
+    {
+      "period": "1998",
+      "paper_count": 4991
+    },
+    {
+      "period": "1999",
+      "paper_count": 5463
+    },
+    {
+      "period": "2000",
+      "paper_count": 5551
+    },
+    {
+      "period": "2001",
+      "paper_count": 6192
+    },
+    {
+      "period": "2002",
+      "paper_count": 7098
+    },
+    {
+      "period": "2003",
+      "paper_count": 7715
+    },
+    {
+      "period": "2004",
+      "paper_count": 9046
+    },
+    {
+      "period": "2005",
+      "paper_count": 9538
+    },
+    {
+      "period": "2006",
+      "paper_count": 10535
+    },
+    {
+      "period": "2007",
+      "paper_count": 11952
+    },
+    {
+      "period": "2008",
+      "paper_count": 12856
+    },
+    {
+      "period": "2009",
+      "paper_count": 14953
+    },
+    {
+      "period": "2010",
+      "paper_count": 13772
+    },
+    {
+      "period": "2011",
+      "paper_count": 16396
+    },
+    {
+      "period": "2012",
+      "paper_count": 18229
+    },
+    {
+      "period": "2013",
+      "paper_count": 17263
+    },
+    {
+      "period": "2014",
+      "paper_count": 20244
+    },
+    {
+      "period": "2015",
+      "paper_count": 23089
+    },
+    {
+      "period": "2016",
+      "paper_count": 23904
+    },
+    {
+      "period": "2017",
+      "paper_count": 21677
+    },
+    {
+      "period": "2018",
+      "paper_count": 28490
+    },
+    {
+      "period": "2019",
+      "paper_count": 32672
+    },
+    {
+      "period": "2020",
+      "paper_count": 46065
+    },
+    {
+      "period": "2021",
+      "paper_count": 57329
+    },
+    {
+      "period": "2022",
+      "paper_count": 62968
+    },
+    {
+      "period": "2023",
+      "paper_count": 62536
+    },
+    {
+      "period": "2024",
+      "paper_count": 78421
+    },
+    {
+      "period": "2025",
+      "paper_count": 82802
+    },
+    {
+      "period": "2026",
+      "paper_count": 30618
+    }
+  ],
+  "category": null
+}

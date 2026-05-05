@@ -1,0 +1,37 @@
+{
+  "count": 5,
+  "warnings": [
+    "Ranked by paper count, not citations or impact."
+  ],
+  "_meta": {
+    "request_id": "6253104629662a5b02d9d096cd28afae",
+    "tool": "identify_prolific_authors",
+    "duration_ms": 2,
+    "server_version": "0.3.20",
+    "db_duration_ms": 2
+  },
+  "authors": [
+    {
+      "author": "Yang Liu",
+      "paper_count": 610
+    },
+    {
+      "author": "Yoshua Bengio",
+      "paper_count": 515
+    },
+    {
+      "author": "Sergey Levine",
+      "paper_count": 490
+    },
+    {
+      "author": "Bo Li",
+      "paper_count": 395
+    },
+    {
+      "author": "Hao Wang",
+      "paper_count": 374
+    }
+  ],
+  "limit": 5,
+  "category": "cs.LG"
+}

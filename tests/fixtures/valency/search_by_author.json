@@ -1,0 +1,64 @@
+{
+  "count": 2,
+  "warnings": [],
+  "_meta": {
+    "request_id": "5988da8c81a5042e820889e786edb1ea",
+    "tool": "search_by_author",
+    "duration_ms": 14,
+    "server_version": "0.3.20",
+    "db_duration_ms": 13
+  },
+  "papers": [
+    {
+      "id": "2306.02572v1",
+      "title": "Introduction to Latent Variable Energy-Based Models: A Path Towards Autonomous Machine Intelligence",
+      "abstract": "Current automated systems have crucial limitations that need to be addressed before artificial intelligence can reach human-like levels and bring new technological revolutions. Among others, our societies still lack Level 5 self-driving cars, domestic robots, and virtual assistants that learn reliable world models, reason, and plan complex action sequences. In these notes, we summarize the main ideas behind the architecture of autonomous intelligence of the future proposed by Yann LeCun. In particular, we introduce energy-based and latent variable models and combine their advantages in the building block of LeCun's proposal, that is, in the hierarchical joint embedding predictive architecture (H-JEPA).",
+      "authors": [
+        "Anna Dawid",
+        "Yann LeCun"
+      ],
+      "categories": [
+        "cs.LG",
+        "cond-mat.dis-nn",
+        "stat.ML"
+      ],
+      "datestamp": "2024-10-31",
+      "doi": "10.1088/1742-5468/ad292b",
+      "journal_ref": "J. Stat. Mech. (2024) 104011",
+      "source": "arxiv",
+      "first_submitted": "2023-06-01",
+      "relevance_score": 1,
+      "match_quality": "high",
+      "citation_count": 14,
+      "url": "https://arxiv.org/abs/2306.02572"
+    },
+    {
+      "id": "2305.15614v2",
+      "title": "Reverse Engineering Self-Supervised Learning",
+      "abstract": "Self-supervised learning (SSL) is a powerful tool in machine learning, but understanding the learned representations and their underlying mechanisms remains a challenge. This paper presents an in-depth empirical analysis of SSL-trained representations, encompassing diverse models, architectures, and hyperparameters. Our study reveals an intriguing aspect of the SSL training process: it inherently facilitates the clustering of samples with respect to semantic labels, which is surprisingly driven by the SSL objective's regularization term. This clustering process not only enhances downstream classification but also compresses the data information. Furthermore, we establish that SSL-trained representations align more closely with semantic classes rather than random classes. Remarkably, we show that learned representations align with semantic classes across various hierarchical levels, and this alignment increases during training and when moving deeper into the network. Our findings provide valuable insights into SSL's representation learning mechanisms and their impact on performance across different sets of classes.",
+      "authors": [
+        "Ido Ben-Shaul",
+        "Ravid Shwartz-Ziv",
+        "Tomer Galanti",
+        "Shai Dekel",
+        "Yann LeCun"
+      ],
+      "categories": [
+        "cs.LG",
+        "cs.AI"
+      ],
+      "datestamp": "2023-06-01",
+      "doi": "",
+      "journal_ref": "",
+      "source": "arxiv",
+      "first_submitted": "2023-05-01",
+      "relevance_score": 0.5,
+      "match_quality": "good",
+      "citation_count": 11,
+      "url": "https://arxiv.org/abs/2305.15614"
+    }
+  ],
+  "author": "Yann LeCun",
+  "query_type": "author",
+  "strict_mode": "prefix"
+}

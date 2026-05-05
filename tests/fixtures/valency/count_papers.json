@@ -1,0 +1,18 @@
+{
+  "total": 263076,
+  "count": 263076,
+  "_meta": {
+    "request_id": "9af85e56199f2ac51da0d64335c4a096",
+    "tool": "count_papers",
+    "duration_ms": 93,
+    "server_version": "0.3.20",
+    "db_duration_ms": 93
+  },
+  "start_date": null,
+  "end_date": null,
+  "category": "cs.LG",
+  "author": null,
+  "title_query": null,
+  "license": null,
+  "include_versions": false
+}

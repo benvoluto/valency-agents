@@ -1,0 +1,63 @@
+{
+  "count": 2,
+  "warnings": [],
+  "_meta": {
+    "request_id": "2cf0268720c44e161bf985ff8ff81d16",
+    "tool": "find_similar_papers",
+    "duration_ms": 19,
+    "server_version": "0.3.20",
+    "db_duration_ms": 19
+  },
+  "papers": [
+    {
+      "id": "1212.0387v1",
+      "title": "Review of Knowledge Management Systems As Socio-Technical System",
+      "abstract": "Knowledge Management Systems as socio-technical systemperspectives has recognized for decades. Practitioners and scholars belief Knowledge Management is best carried out throught the optimization both technological and social-aspect.Lacking of understand and consider both aspects could lead organizations in misinterpretation while developing andimplementing Knowledge Management System. There is a need for practical guidance how Knowledge Management System should implement in organizations. We propose a framework that could use by practitioner and manager as guidance in developing and implementing Knowledge Management System as Socio-Technical Systems. The framework developed base on Pan and Scarborough view of Knowledge Management as Socio-Technical system. Our framework consists of: Infrastructure(technology), Info structure (organizational structure) and Info culture (organizational culture). This concept would lead practitioners get clear understand aspect contribute to Knowledge Management System success as Socio-Technical System.",
+      "authors": [
+        "Setiawan Assegaff",
+        "Ab Razak Che Hussin"
+      ],
+      "categories": [
+        "cs.OH"
+      ],
+      "datestamp": "2012-12-04",
+      "doi": "",
+      "source": "arxiv",
+      "first_submitted": "2012-12-01",
+      "relevance_score": 0.9627,
+      "match_quality": "high",
+      "citation_count": 14,
+      "url": "https://arxiv.org/abs/1212.0387",
+      "base_id": "1212.0387",
+      "similarity_score": 0.962683101395579
+    },
+    {
+      "id": "1609.09541v1",
+      "title": "Knowledge management metrics for Public Organizations: A literature review-based proposal",
+      "abstract": "Knowledge Management (KM) is a relatively new phenomenon that appears in the field of Public Sector Organizations (PSO) bringing new paradigms of organizational management, challenges, risks and opportunities for its implementation, development and evaluation. KM can be seen as a systematic and deliberate effort to coordinate people, technology, organizational structures and its environment through knowledge reuse and innovation. This management approach has been established in parallel with the development and use of information and communications technologies (ICT). Nowadays more PSO are embodying KM practices in their core processes for support them, and as an advanced management strategy to create a new culture based on technology and resources efficiency. In this paper, we observed that KM can support organizational goals in PSO. The aim of this paper is to understand KM factors and its associated components, and propose KM metrics for measure KM programs in PSO. Through a critical literature review we analysed diverse studies related with KM performance indicators in PSO, then based on previous works we summarized the more convenient this purpose. We found that, in academic literature, studies about KM measurement in PSO are uncommon and emerging. As well, in the last section of this paper, we present a proposal of KM metrics for PSO, and some recommendations and practical implications for KM metrics development in PSO. This academic endeavour seeks to contribute to theoretical debate about KM measure development for KM initiatives in PSO.",
+      "authors": [
+        "P'erez L'opez-Portillo",
+        "H'ector",
+        "V'azquez Gonz'alez",
+        "Edgar Ren'e",
+        "Romero Hidalgo",
+        "Jorge Alberto"
+      ],
+      "categories": [
+        "cs.CY"
+      ],
+      "datestamp": "2016-10-03",
+      "doi": "10.13140/RG.2.2.24281.11368/1",
+      "source": "arxiv",
+      "first_submitted": "2016-09-01",
+      "relevance_score": 0.9625,
+      "match_quality": "high",
+      "citation_count": 2,
+      "url": "https://arxiv.org/abs/1609.09541",
+      "base_id": "1609.09541",
+      "similarity_score": 0.9625276610107241
+    }
+  ],
+  "source_paper_id": "2406.12345",
+  "query_type": "similar_papers"
+}

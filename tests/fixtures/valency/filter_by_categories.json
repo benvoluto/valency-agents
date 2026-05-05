@@ -1,0 +1,66 @@
+{
+  "count": 2,
+  "warnings": [
+    "Results ordered by last update date, not relevance."
+  ],
+  "_meta": {
+    "request_id": "893af21c3ace9d4363590ceec45d1bd7",
+    "tool": "filter_by_categories",
+    "duration_ms": 4,
+    "server_version": "0.3.20",
+    "db_duration_ms": 4
+  },
+  "papers": [
+    {
+      "id": "2602.18196v3",
+      "title": "RAT+: Train Dense, Infer Sparse -- Recurrence Augmented Attention for Dilated Inference",
+      "abstract": "Structured dilated attention has an appealing inference-time efficiency knob: it reduces the FLOPs of attention and the KV cache size by a factor of the dilation size D, while preserving long-range connectivity. While prior work studies it by training each configuration from scratch, directly sparsifying a pretrained attention model into a dilated pattern leads to severe accuracy degradation, preventing flexible reuse across inference scenarios. We introduce RAT+, a dense-pretraining architecture that augments attention with full-sequence recurrence and active recurrence learning. A single RAT+ model is pretrained densely once and can then be flexibly switched at inference time to dilated attention (optionally with local windows) or hybrid layer/head compositions, requiring only a short 1B-token resolution adaptation rather than retraining separate sparse models. At 1.5B parameters trained on 100B tokens, RAT+ closely matches dense accuracy at D=16, and drops by about 2--3 points at D=64 on commonsense reasoning and LongBench tasks. We further scale to 2.6B and 7.6B parameters and observe even more promising performance (e.g., a 1-point average accuracy loss with a 64x reduction in attention FLOPs and KV cache size). Code is available at https://github.com/wimh966/rat-plus.",
+      "authors": [
+        "Xiuying Wei",
+        "Caglar Gulcehre"
+      ],
+      "categories": [
+        "cs.LG"
+      ],
+      "datestamp": "2026-05-04",
+      "doi": "",
+      "journal_ref": "",
+      "source": "arxiv",
+      "first_submitted": "2026-02-01",
+      "citation_count": null,
+      "url": "https://arxiv.org/abs/2602.18196"
+    },
+    {
+      "id": "2605.00068v1",
+      "title": "Human-in-the-Loop Meta Bayesian Optimization for Fusion Energy and Scientific Applications",
+      "abstract": "Inertial Confinement Fusion (ICF) holds transformative promise for sustainable, near-limitless clean energy, yet remains constrained by prohibitively high costs and limited experimental opportunities. This paper presents Human-in-the-Loop Meta Bayesian Optimization (HL-MBO), a framework that integrates expert knowledge with few-shot, uncertainty-aware machine learning to accelerate discovery in data-scarce, high-stakes scientific domains. HL-MBO introduces a meta-learned surrogate model with an expert-informed acquisition function to recommend candidate experiments. To foster trust and enable informed decisions, HL-MBO also provides interpretable explanations of its suggestions. We show HL-MBO outperforms current BO methods on ICF energy yield optimization, as well as benchmarks in molecular optimization and critical temperature maximization for superconducting materials.",
+      "authors": [
+        "Ricardo Luna Gutierrez",
+        "Sahand Ghorbanpour",
+        "Ejaz Rahman",
+        "Varchas Gopalaswamy",
+        "Riccardo Betti",
+        "Vineet Gundecha",
+        "Aarne Lees",
+        "Soumyendu Sarkar"
+      ],
+      "categories": [
+        "cs.LG",
+        "cs.AI",
+        "physics.plasm-ph"
+      ],
+      "datestamp": "2026-05-04",
+      "doi": "",
+      "journal_ref": "",
+      "source": "arxiv",
+      "first_submitted": "2026-05-01",
+      "citation_count": null,
+      "url": "https://arxiv.org/abs/2605.00068"
+    }
+  ],
+  "categories": [
+    "cs.LG"
+  ],
+  "query_type": "multiple_categories",
+  "ranking": "recency"
+}

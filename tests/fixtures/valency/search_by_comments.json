@@ -1,0 +1,72 @@
+{
+  "count": 2,
+  "warnings": [],
+  "_meta": {
+    "request_id": "e24bef8387934947cad14b2ffddf0fce",
+    "tool": "search_by_comments",
+    "duration_ms": 26,
+    "server_version": "0.3.20",
+    "db_duration_ms": 26
+  },
+  "papers": [
+    {
+      "id": "2506.00239v5",
+      "title": "SmellNet: A Large-scale Dataset for Real-world Smell Recognition",
+      "abstract": "The ability of AI to sense and identify various substances based on their smell alone can have profound impacts on allergen detection (e.g. smelling gluten or peanuts in a cake), monitoring the manufacturing process, and sensing hormones that indicate emotional states, stress levels, and diseases. Despite these broad impacts, there are few standardized datasets, and therefore little progress, for training and evaluating AI systems' ability to `smell' in the real-world. In this paper, we use small gas and chemical sensors to create SmellNet, a comparatively large dataset for sensor-based machine olfaction that digitizes a diverse range of smells in the natural world. SmellNet contains about 828,000 time-series data points across 50 substances, spanning nuts, spices, herbs, fruits, and vegetables, and 43 mixtures among them with fixed ingredient volumetric ratios, with 68 hours of data collected. Using SmellNet, we developed ScentFormer, a Transformer-based architecture combining temporal differencing and sliding-window augmentation for smell data. For the SmellNet-Base classification tasks, ScentFormer achieves 63.3% Top-1 accuracy with GC-MS supervision, and for the SmellNet-Mixture distribution prediction tasks, ScentFormer achieves 50.2% Top-1@0.1 on the test-seen split. ScentFormer's ability to generalize across conditions and capture transient chemical dynamics demonstrates the promise of temporal modeling in sensor-based olfactory AI. SmellNet and ScentFormer lay the groundwork for sensor-based olfactory applications across healthcare, food and beverage, environmental monitoring, manufacturing, and entertainment.",
+      "authors": [
+        "Dewei Feng",
+        "Wei Dai",
+        "Carol Li",
+        "Alistair Pernigo",
+        "Yunge Wen",
+        "Paul Pu Liang"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "datestamp": "2026-04-15",
+      "doi": "",
+      "journal_ref": "",
+      "source": "arxiv",
+      "first_submitted": "2025-06-01",
+      "relevance_score": 0.1344,
+      "match_quality": "good",
+      "citation_count": 0,
+      "url": "https://arxiv.org/abs/2506.00239",
+      "comments": "Accepted to ICLR 2026; published as a conference paper at ICLR 2026. 32 pages; 21 figures",
+      "rank": 0.13435451686382294
+    },
+    {
+      "id": "2506.08618v4",
+      "title": "HSG-12M: A Large-Scale Benchmark of Spatial Multigraphs from the Energy Spectra of Non-Hermitian Crystals",
+      "abstract": "AI is transforming scientific research by revealing new ways to understand complex physical systems, but its impact remains constrained by the lack of large, high-quality domain-specific datasets. A rich, largely untapped resource lies in non-Hermitian quantum physics, where the energy spectra of crystals form intricate geometries on the complex plane -- termed as Hamiltonian spectral graphs. Despite their significance as fingerprints for electronic behavior, their systematic study has been intractable due to the reliance on manual extraction. To unlock this potential, we introduce Poly2Graph: a high-performance, open-source pipeline that automates the mapping of 1-D crystal Hamiltonians to spectral graphs. Using this tool, we present HSG-12M: a dataset containing 11.6 million static and 5.1 million dynamic Hamiltonian spectral graphs across 1401 characteristic-polynomial classes, distilled from 177 TB of spectral potential data. Crucially, HSG-12M is the first large-scale dataset of spatial multigraphs -- graphs embedded in a metric space where multiple geometrically distinct trajectories between two nodes are retained as separate edges. This simultaneously addresses a critical gap, as existing graph benchmarks overwhelmingly assume simple, non-spatial edges, discarding vital geometric information. Benchmarks with popular GNNs expose new challenges in learning spatial multi-edges at scale. Beyond its practical utility, we show that spectral graphs serve as universal topological fingerprints of polynomials, vectors, and matrices, forging a new algebra-to-graph link. HSG-12M lays the groundwork for data-driven scientific discovery in condensed matter physics, new opportunities in geometry-aware graph learning and beyond.",
+      "authors": [
+        "Xianquan Yan",
+        "Hakan Akgun",
+        "Kenji Kawaguchi",
+        "N. Duane Loh",
+        "Ching Hua Lee"
+      ],
+      "categories": [
+        "cs.LG",
+        "cond-mat.mes-hall",
+        "cond-mat.other",
+        "cs.AI",
+        "cs.CV"
+      ],
+      "datestamp": "2026-04-16",
+      "doi": "",
+      "journal_ref": "The Fourteenth International Conference on Learning Representations (ICLR 2026)",
+      "source": "arxiv",
+      "first_submitted": "2025-06-01",
+      "relevance_score": 0.0985,
+      "match_quality": "weak",
+      "citation_count": 0,
+      "url": "https://arxiv.org/abs/2506.08618",
+      "comments": "Accepted to ICLR 2026, OpenReview: [https://openreview.net/forum?id=YxuKCME576]. 49 pages, 13 figures, 14 tables. Code & pipeline: [https://github.com/sarinstein-yan/Poly2Graph]. Dataset: [https://github.com/sarinstein-yan/HSG-12M]. Dataset released under CC BY 4.0. Benchmark scripts and data loaders included. The Fourteenth International Conference on Learning Representations (ICLR 2026)",
+      "rank": 0.0985017642378807
+    }
+  ],
+  "query": "accepted to ICLR",
+  "query_type": "comments"
+}

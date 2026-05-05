@@ -1,0 +1,178 @@
+<h2 class="sr-only">Researchagents.io daily briefing for Dr. Maya Patel — Phosphor-icon visual treatment with four suggestion cards and a quick-actions sidebar.</h2>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css">
+<style>
+.ra-frame{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);overflow:hidden;font-family:var(--font-sans);font-size:13px;color:var(--color-text-primary);line-height:1.5}
+.ra-top{background:var(--color-background-secondary);border-bottom:0.5px solid var(--color-border-tertiary);padding:14px 16px;display:flex;align-items:center;gap:12px}
+.ra-name{font-family:var(--font-serif);font-size:22px;font-weight:500;line-height:1;flex:1;min-width:0}
+.ra-tnav{display:flex;align-items:center;gap:4px;font-size:11px;color:#185FA5;flex-wrap:wrap;justify-content:flex-end}
+.ra-tnav-item{display:inline-flex;align-items:center;gap:4px;padding:5px 8px;border-radius:var(--border-radius-md);white-space:nowrap}
+.ra-tnav-item.cur{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary)}
+.ra-tnav-brand{color:var(--color-text-tertiary)}
+.ra-tnav i{font-size:14px}
+.ra-body{padding:14px 16px;background:var(--color-background-primary);display:grid;grid-template-columns:minmax(0,1fr) 195px;gap:14px}
+.ra-filterrow{display:flex;align-items:center;gap:8px;margin-bottom:10px;font-size:12px;flex-wrap:wrap}
+.ra-filterrow .ic{color:var(--color-text-secondary);font-size:14px}
+.ra-filterrow .lbl{color:var(--color-text-secondary);margin-right:6px}
+.ra-fchip{font-size:12px}
+.ra-fchip.all{color:#185FA5}
+.ra-fchip.crit{color:#A32D2D}
+.ra-fchip.opp{color:#185FA5}
+.ra-fchip.proc{color:var(--color-text-secondary)}
+.ra-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.ra-card{border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:12px;display:flex;flex-direction:column;gap:7px;min-width:0}
+.ra-card.crit{background:#FAEEDA}
+.ra-card.proc{background:#EAF3DE}
+.ra-card.shift{background:#EAF3DE}
+.ra-card.opp{background:var(--color-background-primary)}
+.ra-cb{display:flex;align-items:center;gap:5px;font-size:11px;font-weight:500}
+.ra-cb.crit{color:#A32D2D}
+.ra-cb.proc{color:#3B6D11}
+.ra-cb.shift{color:#3B6D11}
+.ra-cb.opp{color:#185FA5}
+.ra-cb i{font-size:14px}
+.ra-ct{font-size:13px;font-weight:500;line-height:1.3}
+.ra-cd{font-size:11px;color:#444441;line-height:1.45}
+.ra-btnrow{display:flex;gap:5px;flex-wrap:wrap;margin-top:auto;padding-top:2px}
+.ra-btn{display:inline-flex;align-items:center;gap:4px;font-size:11px;padding:4px 7px;border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);background:var(--color-background-primary);color:#185FA5;white-space:nowrap}
+.ra-btn.ico{padding:4px 5px;color:var(--color-text-tertiary)}
+.ra-btn i{font-size:13px}
+.ra-cite{font-size:11px;color:var(--color-text-tertiary);display:flex;align-items:center;gap:5px;padding-top:6px;border-top:0.5px solid rgba(0,0,0,0.06)}
+.ra-cite i{font-size:12px}
+.ra-show{display:inline-flex;align-items:center;gap:5px;font-size:11px;color:#185FA5}
+.ra-show i{font-size:12px}
+.ra-side{display:flex;flex-direction:column;gap:14px}
+.ra-prof{display:flex;gap:8px;font-size:11px;color:var(--color-text-secondary);line-height:1.45}
+.ra-prof i{font-size:18px;flex:none;margin-top:1px;color:var(--color-text-secondary)}
+.ra-qa{display:grid;grid-template-columns:1fr 1fr;gap:12px 10px}
+.ra-qa-item{display:flex;align-items:center;gap:7px;font-size:12px;color:#185FA5}
+.ra-qa-item i{font-size:18px;color:#185FA5}
+.ra-ask{width:100%;height:54px;border-radius:var(--border-radius-md);border:0.5px solid var(--color-border-tertiary);background:var(--color-background-primary);padding:8px 10px;color:var(--color-text-tertiary);font-size:12px}
+.ra-ip-hd{display:flex;align-items:center;gap:6px;font-family:var(--font-serif);font-size:14px;font-weight:500;color:#3B6D11;margin-bottom:6px}
+.ra-ip-hd i{font-size:14px;color:#3B6D11}
+.ra-ip-hd .more{margin-left:auto;font-size:11px;color:#185FA5;font-family:var(--font-sans);font-weight:400}
+.ra-ip-hd .hid{font-size:10px;color:var(--color-text-tertiary);font-family:var(--font-sans);font-weight:400}
+.ra-ip-it{font-size:11px;line-height:1.45;color:var(--color-text-secondary);padding:7px 0;border-bottom:0.5px solid var(--color-border-tertiary)}
+.ra-ip-it:last-child{border:0}
+.ra-ip-t{font-weight:500;color:var(--color-text-primary);margin-bottom:1px}
+</style>
+
+<div class="ra-frame">
+
+  <div class="ra-top">
+    <i class="ph ph-user-circle" style="font-size:34px;color:#888780"></i>
+    <div class="ra-name">Dr. Maya Patel</div>
+    <div class="ra-tnav">
+      <span class="ra-tnav-item cur"><i class="ph ph-newspaper-clipping"></i>Today's Briefing</span>
+      <span class="ra-tnav-item"><i class="ph ph-tree-structure"></i>Topics</span>
+      <span class="ra-tnav-item"><i class="ph ph-books"></i>Library</span>
+      <span class="ra-tnav-item ra-tnav-brand"><i class="ph ph-address-book"></i>ResearchAgents</span>
+    </div>
+  </div>
+
+  <div class="ra-body">
+
+    <div>
+      <div class="ra-filterrow">
+        <i class="ph ph-cursor-click ic"></i>
+        <span class="lbl">Suggested actions</span>
+        <span class="ra-fchip all">All</span>
+        <span class="ra-fchip crit">1 priority</span>
+        <span class="ra-fchip opp">2 opportunities</span>
+        <span class="ra-fchip proc">1 process</span>
+      </div>
+
+      <div class="ra-grid">
+
+        <div class="ra-card crit">
+          <div class="ra-cb crit"><i class="ph-fill ph-warning-circle"></i>High priority</div>
+          <div class="ra-ct">Counter-evidence to your draft §3</div>
+          <div class="ra-cd">Anand et al. posted a v2 yesterday that directly challenges your premise about attention sinks holding past 32k tokens. Confidence: high · 92%.</div>
+          <div class="ra-btnrow">
+            <a class="ra-btn"><i class="ph ph-file-text"></i>Open in draft</a>
+            <a class="ra-btn"><i class="ph ph-chat-circle"></i>Explain</a>
+            <a class="ra-btn"><i class="ph ph-bell-simple"></i>Snooze</a>
+            <a class="ra-btn ico"><i class="ph ph-x-circle"></i></a>
+          </div>
+          <div class="ra-cite"><i class="ph ph-paperclip"></i><span>arXiv:2509.12345 · your draft §3 · 2 similar</span></div>
+          <a class="ra-show"><i class="ph ph-eye"></i>Show sources</a>
+        </div>
+
+        <div class="ra-card proc">
+          <div class="ra-cb proc"><i class="ph ph-graph"></i>In process · 3 of 5</div>
+          <div class="ra-ct">3 papers cite your 2024 attention-budget work</div>
+          <div class="ra-cd">Authors include Liu Chen, who you follow. Topics: attention budget allocation, KV-cache compression. Two posted this week. Confidence: medium · 78%.</div>
+          <div class="ra-btnrow">
+            <a class="ra-btn"><i class="ph ph-arrow-bend-up-right"></i>Continue</a>
+            <a class="ra-btn"><i class="ph ph-chat-circle"></i>Explain</a>
+            <a class="ra-btn"><i class="ph ph-bell-simple"></i>Snooze</a>
+            <a class="ra-btn ico"><i class="ph ph-x-circle"></i></a>
+          </div>
+          <div class="ra-cite"><i class="ph ph-paperclip"></i><span>3 papers · Liu Chen profile</span></div>
+          <a class="ra-show"><i class="ph ph-eye"></i>Show sources</a>
+        </div>
+
+        <div class="ra-card shift">
+          <div class="ra-cb shift"><i class="ph ph-arrows-clockwise"></i>Method shift</div>
+          <div class="ra-ct">Speculative sampling up 38% YoY in cs.LG</div>
+          <div class="ra-cd">7 papers from authors you follow now use it. None are in your library. Trend curve broke trend in March. Confidence: high · 88%.</div>
+          <div class="ra-btnrow">
+            <a class="ra-btn"><i class="ph ph-plus"></i>Add to reading list</a>
+            <a class="ra-btn"><i class="ph ph-bell-simple"></i>Snooze</a>
+            <a class="ra-btn ico"><i class="ph ph-x-circle"></i></a>
+          </div>
+          <div class="ra-cite"><i class="ph ph-paperclip"></i><span>get_keyword_trends · 7 papers</span></div>
+          <a class="ra-show"><i class="ph ph-eye"></i>Show sources</a>
+        </div>
+
+        <div class="ra-card opp">
+          <div class="ra-cb opp"><i class="ph ph-users-three"></i>Opportunity</div>
+          <div class="ra-ct">Potential collaborator: Dr. Priya Raman, MIT</div>
+          <div class="ra-cd">2 papers adjacent to your goal in the last 90 days. h-index 24. No co-authors in common; skill graph complementary. Confidence: medium · 74%.</div>
+          <div class="ra-btnrow">
+            <a class="ra-btn"><i class="ph ph-envelope"></i>Draft intro</a>
+            <a class="ra-btn"><i class="ph ph-chat-circle"></i>Explain</a>
+            <a class="ra-btn"><i class="ph ph-bell-simple"></i>Snooze</a>
+            <a class="ra-btn ico"><i class="ph ph-x-circle"></i></a>
+          </div>
+          <div class="ra-cite"><i class="ph ph-paperclip"></i><span>author profile · 2 papers · find_coauthors</span></div>
+          <a class="ra-show"><i class="ph ph-eye"></i>Show sources</a>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="ra-side">
+      <div class="ra-prof">
+        <i class="ph ph-address-book"></i>
+        <div>Postdoctoral researcher · Stanford NLP Group · ORCID 0000-0002-1234-5678 · 6 years · 23 papers · 412 saved</div>
+      </div>
+
+      <div class="ra-qa">
+        <div class="ra-qa-item"><i class="ph ph-target"></i>New goal</div>
+        <div class="ra-qa-item"><i class="ph ph-newspaper"></i>Briefings</div>
+        <div class="ra-qa-item"><i class="ph ph-tree-structure"></i>Browse topics</div>
+        <div class="ra-qa-item"><i class="ph ph-gear"></i>Settings</div>
+      </div>
+
+      <div class="ra-ask">Ask any question…</div>
+
+      <div>
+        <div class="ra-ip-hd">
+          <i class="ph ph-graph"></i>In process
+          <span class="more">See all</span>
+          <span class="hid">2 hidden</span>
+        </div>
+        <div class="ra-ip-it">
+          <div class="ra-ip-t">Daily scout running</div>
+          cs.CL, cs.LG, cs.AI · 2 of 4 goals scanned · ETA ~3 min
+        </div>
+        <div class="ra-ip-it">
+          <div class="ra-ip-t">BibTeX export queued</div>
+          14 saved papers · ready in ~1 min
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

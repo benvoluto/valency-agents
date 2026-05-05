@@ -1,0 +1,55 @@
+{
+  "warnings": [],
+  "_meta": {
+    "request_id": "9198c4ed3ef3a3621273cebf5c340f1c",
+    "tool": "get_author_identity",
+    "duration_ms": 50,
+    "server_version": "0.3.20",
+    "db_duration_ms": 49
+  },
+  "author": "Yann LeCun",
+  "orcid": null,
+  "resolved_name": "yann lecun",
+  "query_type": "author_identity",
+  "career_metrics": {
+    "openalex_author_id": "https://openalex.org/A5001226970",
+    "display_name": "Yann LeCun",
+    "orcid": null,
+    "works_count": 481,
+    "cited_by_count": 244047,
+    "h_index": 118,
+    "affiliations": [
+      {
+        "institution": "New York University",
+        "country_code": "US",
+        "work_count": 125
+      },
+      {
+        "institution": "Courant Institute of Mathematical Sciences",
+        "country_code": "US",
+        "work_count": 97
+      },
+      {
+        "institution": "AT&T (United States)",
+        "country_code": "US",
+        "work_count": 34
+      },
+      {
+        "institution": "Supélec",
+        "country_code": "FR",
+        "work_count": 21
+      },
+      {
+        "institution": "University of Applied Sciences and Arts of Southern Switzerland",
+        "country_code": "CH",
+        "work_count": 21
+      }
+    ],
+    "current_institution": {
+      "institution": "New York University",
+      "country_code": "US",
+      "derived": true
+    }
+  },
+  "candidates": []
+}

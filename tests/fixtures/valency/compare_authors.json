@@ -1,0 +1,330 @@
+{
+  "warnings": [],
+  "_meta": {
+    "request_id": "f08da0a6733afda8b4f33916da2b0ca0",
+    "tool": "compare_authors",
+    "duration_ms": 65,
+    "server_version": "0.3.20",
+    "db_duration_ms": 65
+  },
+  "authors": [
+    "Yann LeCun",
+    "Geoffrey Hinton"
+  ],
+  "author_count": 2,
+  "query_type": "compare_authors",
+  "profiles": [
+    {
+      "author": "Yann LeCun",
+      "resolved_name": "yann lecun",
+      "warnings": [],
+      "summary": {
+        "total_papers": 200,
+        "first_paper": "2010-06-01",
+        "last_paper": "2026-04-01",
+        "unique_coauthors": 581
+      },
+      "categories": [
+        {
+          "category": "cs.LG",
+          "count": 130
+        },
+        {
+          "category": "cs.CV",
+          "count": 107
+        },
+        {
+          "category": "cs.AI",
+          "count": 70
+        },
+        {
+          "category": "stat.ML",
+          "count": 37
+        },
+        {
+          "category": "cs.CL",
+          "count": 26
+        },
+        {
+          "category": "cs.NE",
+          "count": 16
+        },
+        {
+          "category": "cs.RO",
+          "count": 16
+        },
+        {
+          "category": "math.IT",
+          "count": 4
+        },
+        {
+          "category": "cs.IT",
+          "count": 4
+        },
+        {
+          "category": "q-bio.NC",
+          "count": 3
+        }
+      ],
+      "timeline": [
+        {
+          "year": 2010,
+          "papers": 3
+        },
+        {
+          "year": 2011,
+          "papers": 2
+        },
+        {
+          "year": 2012,
+          "papers": 5
+        },
+        {
+          "year": 2013,
+          "papers": 12
+        },
+        {
+          "year": 2014,
+          "papers": 10
+        },
+        {
+          "year": 2015,
+          "papers": 14
+        },
+        {
+          "year": 2016,
+          "papers": 11
+        },
+        {
+          "year": 2017,
+          "papers": 7
+        },
+        {
+          "year": 2018,
+          "papers": 8
+        },
+        {
+          "year": 2019,
+          "papers": 4
+        },
+        {
+          "year": 2020,
+          "papers": 1
+        },
+        {
+          "year": 2021,
+          "papers": 9
+        },
+        {
+          "year": 2022,
+          "papers": 23
+        },
+        {
+          "year": 2023,
+          "papers": 19
+        },
+        {
+          "year": 2024,
+          "papers": 28
+        },
+        {
+          "year": 2025,
+          "papers": 23
+        },
+        {
+          "year": 2026,
+          "papers": 21
+        }
+      ],
+      "career_metrics": {
+        "openalex_author_id": "https://openalex.org/A5001226970",
+        "display_name": "Yann LeCun",
+        "orcid": null,
+        "works_count": 481,
+        "cited_by_count": 244047,
+        "h_index": 118,
+        "affiliations": [
+          {
+            "institution": "New York University",
+            "country_code": "US",
+            "work_count": 125
+          },
+          {
+            "institution": "Courant Institute of Mathematical Sciences",
+            "country_code": "US",
+            "work_count": 97
+          },
+          {
+            "institution": "AT&T (United States)",
+            "country_code": "US",
+            "work_count": 34
+          },
+          {
+            "institution": "Supélec",
+            "country_code": "FR",
+            "work_count": 21
+          },
+          {
+            "institution": "University of Applied Sciences and Arts of Southern Switzerland",
+            "country_code": "CH",
+            "work_count": 21
+          }
+        ],
+        "current_institution": {
+          "institution": "New York University",
+          "country_code": "US",
+          "derived": true
+        }
+      }
+    },
+    {
+      "author": "Geoffrey Hinton",
+      "resolved_name": "geoffrey hinton",
+      "warnings": [],
+      "summary": {
+        "total_papers": 41,
+        "first_paper": "2012-06-01",
+        "last_paper": "2026-02-01",
+        "unique_coauthors": 249
+      },
+      "categories": [
+        {
+          "category": "cs.LG",
+          "count": 35
+        },
+        {
+          "category": "stat.ML",
+          "count": 19
+        },
+        {
+          "category": "cs.CV",
+          "count": 17
+        },
+        {
+          "category": "cs.AI",
+          "count": 10
+        },
+        {
+          "category": "cs.CL",
+          "count": 9
+        },
+        {
+          "category": "cs.NE",
+          "count": 7
+        },
+        {
+          "category": "cs.CY",
+          "count": 5
+        },
+        {
+          "category": "cs.CR",
+          "count": 2
+        },
+        {
+          "category": "cs.GR",
+          "count": 2
+        },
+        {
+          "category": "cs.MM",
+          "count": 1
+        }
+      ],
+      "timeline": [
+        {
+          "year": 2012,
+          "papers": 2
+        },
+        {
+          "year": 2013,
+          "papers": 1
+        },
+        {
+          "year": 2014,
+          "papers": 1
+        },
+        {
+          "year": 2015,
+          "papers": 1
+        },
+        {
+          "year": 2016,
+          "papers": 1
+        },
+        {
+          "year": 2017,
+          "papers": 3
+        },
+        {
+          "year": 2018,
+          "papers": 1
+        },
+        {
+          "year": 2019,
+          "papers": 8
+        },
+        {
+          "year": 2020,
+          "papers": 8
+        },
+        {
+          "year": 2021,
+          "papers": 2
+        },
+        {
+          "year": 2022,
+          "papers": 8
+        },
+        {
+          "year": 2023,
+          "papers": 1
+        },
+        {
+          "year": 2025,
+          "papers": 3
+        },
+        {
+          "year": 2026,
+          "papers": 1
+        }
+      ],
+      "career_metrics": {
+        "openalex_author_id": "https://openalex.org/A5108093963",
+        "display_name": "Geoffrey E. Hinton",
+        "orcid": null,
+        "works_count": 380,
+        "cited_by_count": 442151,
+        "h_index": 137,
+        "affiliations": [
+          {
+            "institution": "University of Toronto",
+            "country_code": "CA",
+            "work_count": 172
+          },
+          {
+            "institution": "Google (United States)",
+            "country_code": "US",
+            "work_count": 28
+          },
+          {
+            "institution": "Carnegie Mellon University",
+            "country_code": "US",
+            "work_count": 18
+          }
+        ],
+        "current_institution": {
+          "institution": "University of Toronto",
+          "country_code": "CA",
+          "derived": true
+        }
+      }
+    }
+  ],
+  "shared_categories": [
+    "cs.AI",
+    "cs.CL",
+    "cs.CV",
+    "cs.LG",
+    "cs.NE",
+    "stat.ML"
+  ]
+}

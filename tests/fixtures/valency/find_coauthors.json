@@ -1,0 +1,30 @@
+{
+  "count": 3,
+  "warnings": [],
+  "_meta": {
+    "request_id": "31877f1d8b4f592a6a240e29fc913396",
+    "tool": "find_coauthors",
+    "duration_ms": 13,
+    "server_version": "0.3.20"
+  },
+  "author": "Yann LeCun",
+  "resolved_name": "yann lecun",
+  "coauthors": [
+    {
+      "coauthor": "Randall Balestriero",
+      "coauthor_norm": "randall balestriero",
+      "shared_papers": 33
+    },
+    {
+      "coauthor": "Ravid Shwartz-Ziv",
+      "coauthor_norm": "ravid shwartz-ziv",
+      "shared_papers": 20
+    },
+    {
+      "coauthor": "Amir Bar",
+      "coauthor_norm": "amir bar",
+      "shared_papers": 18
+    }
+  ],
+  "query_type": "coauthors"
+}

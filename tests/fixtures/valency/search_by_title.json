@@ -1,0 +1,77 @@
+{
+  "count": 2,
+  "warnings": [
+    "No strong matches found. Consider semantic_search_papers for conceptual queries."
+  ],
+  "_meta": {
+    "request_id": "bf05592d14f6cae9ce7ad3034dbf8054",
+    "tool": "search_by_title",
+    "duration_ms": 1042,
+    "server_version": "0.3.20",
+    "db_duration_ms": 1041
+  },
+  "papers": [
+    {
+      "id": "1706.03762v7",
+      "title": "Attention Is All You Need",
+      "abstract": "The dominant sequence transduction models are based on complex recurrent or convolutional neural networks in an encoder-decoder configuration. The best performing models also connect the encoder and decoder through an attention mechanism. We propose a new simple network architecture, the Transformer, based solely on attention mechanisms, dispensing with recurrence and convolutions entirely. Experiments on two machine translation tasks show these models to be superior in quality while being more parallelizable and requiring significantly less time to train. Our model achieves 28.4 BLEU on the WMT 2014 English-to-German translation task, improving over the existing best results, including ensembles by over 2 BLEU. On the WMT 2014 English-to-French translation task, our model establishes a new single-model state-of-the-art BLEU score of 41.8 after training for 3.5 days on eight GPUs, a small fraction of the training costs of the best models from the literature. We show that the Transformer generalizes well to other tasks by applying it successfully to English constituency parsing both with large and limited training data.",
+      "authors": [
+        "Ashish Vaswani",
+        "Noam Shazeer",
+        "Niki Parmar",
+        "Jakob Uszkoreit",
+        "Llion Jones",
+        "Aidan N. Gomez",
+        "Lukasz Kaiser",
+        "Illia Polosukhin"
+      ],
+      "categories": [
+        "cs.CL",
+        "cs.LG"
+      ],
+      "datestamp": "2023-08-03",
+      "doi": "",
+      "journal_ref": "",
+      "source": "arxiv",
+      "first_submitted": "2017-06-01",
+      "relevance_score": 1,
+      "match_quality": "weak",
+      "citation_count": 6491,
+      "url": "https://arxiv.org/abs/1706.03762",
+      "rank": 0.09524299204349518
+    },
+    {
+      "id": "29573870",
+      "title": "What low back pain is and why we need to pay attention.",
+      "abstract": "Low back pain is a very common symptom. It occurs in high-income, middle-income, and low-income countries and all age groups from children to the elderly population. Globally, years lived with disability caused by low back pain increased by 54% between 1990 and 2015, mainly because of population increase and ageing, with the biggest increase seen in low-income and middle-income countries. Low back pain is now the leading cause of disability worldwide. For nearly all people with low back pain, it is not possible to identify a specific nociceptive cause. Only a small proportion of people have a well understood pathological cause-eg, a vertebral fracture, malignancy, or infection. People with physically demanding jobs, physical and mental comorbidities, smokers, and obese individuals are at greatest risk of reporting low back pain. Disabling low back pain is over-represented among people with low socioeconomic status. Most people with new episodes of low back pain recover quickly; however, recurrence is common and in a small proportion of people, low back pain becomes persistent and disabling. Initial high pain intensity, psychological distress, and accompanying pain at multiple body sites increases the risk of persistent disabling low back pain. Increasing evidence shows that central pain-modulating mechanisms and pain cognitions have important roles in the development of persistent disabling low back pain. Cost, health-care use, and disability from low back pain vary substantially between countries and are influenced by local culture and social systems, as well as by beliefs about cause and effect. Disability and costs attributed to low back pain are projected to increase in coming decades, in particular in low-income and middle-income countries, where health and other systems are often fragile and not equipped to cope with this growing burden. Intensified research efforts and global initiatives are clearly needed to address the burden of low back pain as a public health problem.",
+      "authors": [
+        "Hartvigsen, Jan",
+        "Hancock, Mark J",
+        "Kongsted, Alice",
+        "Louw, Quinette",
+        "Ferreira, Manuela L",
+        "Genevay, Stéphane",
+        "Hoy, Damian",
+        "Karppinen, Jaro",
+        "Pransky, Glenn",
+        "Sieper, Joachim",
+        "Smeets, Rob J",
+        "Underwood, Martin",
+        "Lancet Low Back Pain Series Working Group"
+      ],
+      "categories": [],
+      "datestamp": "2018-11-26",
+      "doi": "10.1016/S0140-6736(18)30480-X",
+      "journal_ref": "Lancet (London, England). 2018;391(10137):2356-2367",
+      "source": "pubmed",
+      "first_submitted": "2018-11-01",
+      "relevance_score": 0.5,
+      "match_quality": "weak",
+      "citation_count": 4319,
+      "url": null,
+      "rank": 0.09735848009586334
+    }
+  ],
+  "query": "attention is all you need",
+  "query_type": "title"
+}

@@ -1,0 +1,16 @@
+{
+  "warnings": [],
+  "_meta": {
+    "request_id": "6706416547fb4d885284be81b05be2a5",
+    "tool": "export_papers_bibtex",
+    "duration_ms": 2,
+    "server_version": "0.3.20",
+    "db_duration_ms": 2
+  },
+  "format": "bibtex",
+  "paper_count": 0,
+  "requested_count": 1,
+  "not_found": 1,
+  "bibtex": "",
+  "entries": []
+}

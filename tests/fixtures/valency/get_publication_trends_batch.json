@@ -1,0 +1,99 @@
+{
+  "warnings": [],
+  "_meta": {
+    "request_id": "c74321d28cc23650edf00bc1c941dd1d",
+    "tool": "get_publication_trends_batch",
+    "duration_ms": 19015,
+    "server_version": "0.3.20",
+    "db_duration_ms": 19015
+  },
+  "granularity": "year",
+  "categories": [
+    "cs.LG"
+  ],
+  "category_count": 1,
+  "data": {
+    "cs.LG": [
+      {
+        "period": "2007",
+        "paper_count": 93
+      },
+      {
+        "period": "2008",
+        "paper_count": 96
+      },
+      {
+        "period": "2009",
+        "paper_count": 202
+      },
+      {
+        "period": "2010",
+        "paper_count": 241
+      },
+      {
+        "period": "2011",
+        "paper_count": 334
+      },
+      {
+        "period": "2012",
+        "paper_count": 1112
+      },
+      {
+        "period": "2013",
+        "paper_count": 1173
+      },
+      {
+        "period": "2014",
+        "paper_count": 1473
+      },
+      {
+        "period": "2015",
+        "paper_count": 1819
+      },
+      {
+        "period": "2016",
+        "paper_count": 3289
+      },
+      {
+        "period": "2017",
+        "paper_count": 4431
+      },
+      {
+        "period": "2018",
+        "paper_count": 8322
+      },
+      {
+        "period": "2019",
+        "paper_count": 15800
+      },
+      {
+        "period": "2020",
+        "paper_count": 22828
+      },
+      {
+        "period": "2021",
+        "paper_count": 25858
+      },
+      {
+        "period": "2022",
+        "paper_count": 28029
+      },
+      {
+        "period": "2023",
+        "paper_count": 31973
+      },
+      {
+        "period": "2024",
+        "paper_count": 39344
+      },
+      {
+        "period": "2025",
+        "paper_count": 51930
+      },
+      {
+        "period": "2026",
+        "paper_count": 24729
+      }
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "count": 4,
+  "_meta": {
+    "request_id": "70d57178e64e3ca162c58000ee40f479",
+    "tool": "list_sources",
+    "duration_ms": 8,
+    "server_version": "0.3.20",
+    "db_duration_ms": 8
+  },
+  "sources": [
+    {
+      "source": "pubmed",
+      "paper_count": 40195364,
+      "earliest_date": "1965-11-13",
+      "latest_date": "2026-05-03",
+      "papers_with_embeddings": 28629884
+    },
+    {
+      "source": "arxiv",
+      "paper_count": 4645050,
+      "earliest_date": "2007-01-01",
+      "latest_date": "2026-05-04",
+      "papers_with_embeddings": 4632424
+    },
+    {
+      "source": "biorxiv",
+      "paper_count": 449553,
+      "earliest_date": "2013-11-07",
+      "latest_date": "2026-05-04",
+      "papers_with_embeddings": 449468
+    },
+    {
+      "source": "medrxiv",
+      "paper_count": 102509,
+      "earliest_date": "2019-06-25",
+      "latest_date": "2026-05-03",
+      "papers_with_embeddings": 102509
+    }
+  ]
+}

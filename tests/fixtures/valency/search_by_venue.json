@@ -1,0 +1,64 @@
+{
+  "count": 2,
+  "warnings": [],
+  "_meta": {
+    "request_id": "65275dc3396e1f9b047df49e0ee532ff",
+    "tool": "search_by_venue",
+    "duration_ms": 30,
+    "server_version": "0.3.20"
+  },
+  "papers": [
+    {
+      "id": "2503.19034v2",
+      "title": "Color Conditional Generation with Sliced Wasserstein Guidance",
+      "abstract": "We propose SW-Guidance, a training-free approach for image generation conditioned on the color distribution of a reference image. While it is possible to generate an image with fixed colors by first creating an image from a text prompt and then applying a color style transfer method, this approach often results in semantically meaningless colors in the generated image. Our method solves this problem by modifying the sampling process of a diffusion model to incorporate the differentiable Sliced 1-Wasserstein distance between the color distribution of the generated image and the reference palette. Our method outperforms state-of-the-art techniques for color-conditional generation in terms of color similarity to the reference, producing images that not only match the reference colors but also maintain semantic coherence with the original text prompt. Our source code is available at https://github.com/alobashev/sw-guidance/.",
+      "authors": [
+        "Alexander Lobashev",
+        "Maria Larchenko",
+        "Dmitry Guskov"
+      ],
+      "categories": [
+        "cs.CV"
+      ],
+      "datestamp": "2026-05-04",
+      "doi": "",
+      "journal_ref": "https://neurips.cc/virtual/2025/loc/san-diego/poster/115823",
+      "source": "arxiv",
+      "first_submitted": "2025-03-01",
+      "relevance_score": 1,
+      "match_quality": "high",
+      "citation_count": null,
+      "url": "https://arxiv.org/abs/2503.19034"
+    },
+    {
+      "id": "2507.01946v2",
+      "title": "Characterizing control between interacting subsystems with deep Jacobian estimation",
+      "abstract": "Biological function arises through the dynamical interactions of multiple subsystems, including those between brain areas, within gene regulatory networks, and more. A common approach to understanding these systems is to model the dynamics of each subsystem and characterize communication between them. An alternative approach is through the lens of control theory: how the subsystems control one another. This approach involves inferring the directionality, strength, and contextual modulation of control between subsystems. However, methods for understanding subsystem control are typically linear and cannot adequately describe the rich contextual effects enabled by nonlinear complex systems. To bridge this gap, we devise a data-driven nonlinear control-theoretic framework to characterize subsystem interactions via the Jacobian of the dynamics. We address the challenge of learning Jacobians from time-series data by proposing the JacobianODE, a deep learning method that leverages properties of the Jacobian to directly estimate it for arbitrary dynamical systems from data alone. We show that JacobianODEs outperform existing Jacobian estimation methods on challenging systems, including high-dimensional chaos. Applying our approach to a multi-area recurrent neural network (RNN) trained on a working memory selection task, we show that the \"sensory\" area gains greater control over the \"cognitive\" area over learning. Furthermore, we leverage the JacobianODE to directly control the trained RNN, enabling precise manipulation of its behavior. Our work lays the foundation for a theoretically grounded and data-driven understanding of interactions among biological subsystems.",
+      "authors": [
+        "Adam J. Eisen",
+        "Mitchell Ostrow",
+        "Sarthak Chandra",
+        "Leo Kozachkov",
+        "Earl K. Miller",
+        "Ila R. Fiete"
+      ],
+      "categories": [
+        "q-bio.QM",
+        "cs.LG",
+        "math.DS",
+        "q-bio.NC"
+      ],
+      "datestamp": "2026-05-04",
+      "doi": "",
+      "journal_ref": "Advances in Neural Information Processing Systems 38 (NeurIPS 2025)",
+      "source": "arxiv",
+      "first_submitted": "2025-07-01",
+      "relevance_score": 0.5,
+      "match_quality": "good",
+      "citation_count": null,
+      "url": "https://arxiv.org/abs/2507.01946"
+    }
+  ],
+  "venue": "NeurIPS",
+  "query_type": "venue"
+}

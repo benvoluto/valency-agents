@@ -1,0 +1,39 @@
+{
+  "warnings": [],
+  "_meta": {
+    "request_id": "850abb30906edd1913850d4234ac8db3",
+    "tool": "batch_author_categories",
+    "duration_ms": 8,
+    "server_version": "0.3.20",
+    "db_duration_ms": 7
+  },
+  "authors": {
+    "Yann LeCun": {
+      "resolved_name": "yann lecun",
+      "categories": [
+        {
+          "category": "cs.LG",
+          "count": 130
+        },
+        {
+          "category": "cs.CV",
+          "count": 107
+        },
+        {
+          "category": "cs.AI",
+          "count": 70
+        },
+        {
+          "category": "stat.ML",
+          "count": 37
+        },
+        {
+          "category": "cs.CL",
+          "count": 26
+        }
+      ]
+    }
+  },
+  "query_type": "batch_author_categories",
+  "author_count": 1
+}

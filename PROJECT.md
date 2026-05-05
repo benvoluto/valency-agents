@@ -336,11 +336,14 @@ Each phase is independently deploy-and-demo-able. Definition-of-done at the end 
 ### Phase 2 — Profile, goals, follows
 **Goal.** A researcher can configure who they are and what they want briefed.
 **Deliverables.**
-- Onboarding flow: ORCID input → server-side `resolve_orcid` via Valency MCP → fills `users.displayName/affiliation/orcid` and seeds the user's `authors` table with co-authors as suggested follows.
+- Onboarding flow (3 steps):
+  1. **Identity** — name, affiliation, optional ORCID. ORCID resolves via Valency `resolve_orcid`; otherwise we fall back to `search_by_author` filtered by affiliation when present. Profile fields written to `users` and a row upserted into `authors`.
+  2. **Research summary** — server fetches the researcher's papers from the corpus, then calls Anthropic (Opus 4.7) with `tool_use`-constrained output to summarize them as 3–5 candidate research goals (title, description, keywords, source paper IDs). User reviews, edits, and selects which to keep; selected candidates become `goals` rows with seeds derived from the keywords and source papers. Co-authors from `find_coauthors` are written to `follows` as suggested.
+  3. **Cadence** — applied to every goal created during onboarding.
 - Goals CRUD UI at `/app/goals`. A goal has title, free-text description, seeds (categories from `list_sources`/`identify_research_domains`, keywords, ORCIDs, paper IDs, venues), and a cadence.
-- Follows UI for authors and papers.
-- `credentials` table; settings page collects the user's Valency bearer token, encrypts it, verifies via a `health` round-trip, stores `lastVerifiedAt` and last4.
-**Integration tests.** Playwright: create goal with 2 keyword seeds + 1 ORCID seed; ORCID resolves and pre-fills; edit + delete; settings page accepts a real Valency token, verifies, and stores last4.
+- Follows UI on settings.
+- `credentials` table; settings page collects the user's Valency bearer token, encrypts it, verifies via a cheap authenticated MCP call (`list_sources`), stores `lastVerifiedAt` and last4.
+**Integration tests.** Playwright: create goal with 2 keyword seeds + 1 ORCID seed; identity step resolves ORCID and pre-fills; edit + delete; settings page accepts a real Valency token, verifies, and stores last4.
 
 ### Phase 3 — Valency MCP integration & call inspector
 **Goal.** Server-side, deterministic Valency calls with full traceability.

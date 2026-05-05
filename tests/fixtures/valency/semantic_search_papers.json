@@ -1,0 +1,82 @@
+{
+  "count": 2,
+  "warnings": [
+    "100% of results lack DOI. Use filter_papers_with_doi to restrict to papers with DOI identifiers."
+  ],
+  "_meta": {
+    "request_id": "1671f9b8214fd6d4c0f2b9bebdb7352f",
+    "tool": "semantic_search_papers",
+    "duration_ms": 0,
+    "server_version": "0.3.20",
+    "db_duration_ms": 0
+  },
+  "papers": [
+    {
+      "id": "2510.05554v1",
+      "title": "Critical attention scaling in long-context transformers",
+      "abstract": "As large language models scale to longer contexts, attention layers suffer from a fundamental pathology: attention scores collapse toward uniformity as context length $n$ increases, causing tokens to cluster excessively, a phenomenon known as rank-collapse. While $\\textit{attention scaling}$ effectively addresses this deficiency by rescaling attention scores with a polylogarithmic factor $\\beta_n$, theoretical justification for this approach remains lacking.\n  We analyze a simplified yet tractable model that magnifies the effect of attention scaling. In this model, attention exhibits a phase transition governed by the scaling factor $\\beta_n$: insufficient scaling collapses all tokens to a single direction, while excessive scaling reduces attention to identity, thereby eliminating meaningful interactions between tokens. Our main result identifies the critical scaling $\\beta_n \\asymp \\log n$ and provides a rigorous justification for attention scaling in YaRN and Qwen, clarifying why logarithmic scaling maintains sparse, content-adaptive attention at large context lengths.",
+      "authors": [
+        "Shi Chen",
+        "Zhengjiang Lin",
+        "Yury Polyanskiy",
+        "Philippe Rigollet"
+      ],
+      "categories": [
+        "cs.LG",
+        "cs.AI",
+        "cs.DM",
+        "math.CA"
+      ],
+      "datestamp": "2025-10-08",
+      "doi": "",
+      "source": "arxiv",
+      "first_submitted": "2025-10-01",
+      "relevance_score": 0.7321,
+      "match_quality": "high",
+      "citation_count": 0,
+      "url": "https://arxiv.org/abs/2510.05554",
+      "base_id": "2510.05554",
+      "semantic_score": 0.9488875375646861,
+      "bm25_score": 0,
+      "title_trgm_score": 0.4137931168079376,
+      "abstract_trgm_score": 0.05829596519470215,
+      "final_score": 0.7321198403359411
+    },
+    {
+      "id": "1902.05766v1",
+      "title": "Context-Aware Self-Attention Networks",
+      "abstract": "Self-attention model have shown its flexibility in parallel computation and the effectiveness on modeling both long- and short-term dependencies. However, it calculates the dependencies between representations without considering the contextual information, which have proven useful for modeling dependencies among neural representations in various natural language tasks. In this work, we focus on improving self-attention networks through capturing the richness of context. To maintain the simplicity and flexibility of the self-attention networks, we propose to contextualize the transformations of the query and key layers, which are used to calculates the relevance between elements. Specifically, we leverage the internal representations that embed both global and deep contexts, thus avoid relying on external resources. Experimental results on WMT14 English-German and WMT17 Chinese-English translation tasks demonstrate the effectiveness and universality of the proposed methods. Furthermore, we conducted extensive analyses to quantity how the context vectors participate in the self-attention model.",
+      "authors": [
+        "Baosong Yang",
+        "Jian Li",
+        "Derek Wong",
+        "Lidia S. Chao",
+        "Xing Wang",
+        "Zhaopeng Tu"
+      ],
+      "categories": [
+        "cs.CL"
+      ],
+      "datestamp": "2019-02-18",
+      "doi": "",
+      "source": "arxiv",
+      "first_submitted": "2019-02-01",
+      "relevance_score": 0.7308,
+      "match_quality": "high",
+      "citation_count": 27,
+      "url": "https://arxiv.org/abs/1902.05766",
+      "base_id": "1902.05766",
+      "semantic_score": 0.9425239761836591,
+      "bm25_score": 0,
+      "title_trgm_score": 0.43478259444236755,
+      "abstract_trgm_score": 0.0580357126891613,
+      "final_score": 0.7307877437638326
+    }
+  ],
+  "query": "long context attention sinks",
+  "query_type": "semantic",
+  "confidence": "good_match",
+  "top_similarity": 0.9489,
+  "spread": 0.0032,
+  "hints": []
+}
