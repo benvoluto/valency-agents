@@ -4,7 +4,7 @@ import { agentRuns, goals, goalSeeds, users } from '@/db/schema'
 import { ANALYST_AGENT, type AnalystOutput } from '@/lib/agents/analyst'
 import { EDITOR_AGENT, type EditorOutput } from '@/lib/agents/editor'
 import { LIBRARIAN_AGENT, type LibrarianOutput } from '@/lib/agents/librarian'
-import { SCOUT_AGENT, type ScoutOutput } from '@/lib/agents/scout'
+import { type ScoutOutput } from '@/lib/agents/scout'
 import {
   assertWithinBudget,
   runAgent,
@@ -18,6 +18,7 @@ import {
   pickModelForNonEditor,
   upsertLibrarianEntities,
 } from '@/lib/pipeline/runGoal'
+import { deterministicScout, loadGoalById } from '@/lib/pipeline/deterministicScout'
 import { getValencyToken } from '@/lib/valency'
 import { inngest } from '../client'
 
@@ -101,34 +102,18 @@ export const runGoalRequested = inngest.createFunction(
     })
 
     try {
+      // Scout used to be an LLM-driven Anthropic+MCP loop. On goals with 10+
+      // seeds it reliably exceeded the 800s function budget and died with
+      // zero recorded steps. Replaced with a deterministic per-seed Valency
+      // call layer (the same one the goal-detail Preview button uses).
       const scoutOutput = await step.run(
         'scout',
         async (): Promise<ScoutOutput> => {
           const [user] = await db.select().from(users).where(eq(users.id, userId))
-          const token = await getValencyToken(userId)
-          if (!token) throw new Error(`Valency token missing for ${userId}`)
-          const model = await pickModelForNonEditor(user, SCOUT_AGENT.defaultModel)
-          const scoutInput = {
-            goal: {
-              id: goalId,
-              title: setup.goalTitle,
-              description: setup.goalDescription,
-            },
-            seeds: setup.seeds,
-            firstRun: setup.firstRun,
-            widenTimeframe: setup.firstRun,
-            recommendedTimeframe: setup.recommendedTimeframe,
-          }
-          const scout = await runAgent({
-            agent: SCOUT_AGENT,
-            userId,
-            goalId,
-            parentRunId: setup.parentRunId,
-            model,
-            valency: { url: VALENCY_URL, token },
-            userMessage: JSON.stringify(scoutInput),
-          })
-          return scout.output
+          const goal = await loadGoalById(goalId)
+          if (!goal) throw new Error(`goal ${goalId} not found`)
+          const { output } = await deterministicScout(user, goal)
+          return output
         },
       )
 

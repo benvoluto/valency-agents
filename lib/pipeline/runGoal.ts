@@ -20,7 +20,8 @@ import { getValencyToken } from '@/lib/valency'
 import { ANALYST_AGENT, type AnalystOutput } from '@/lib/agents/analyst'
 import { EDITOR_AGENT, type EditorOutput } from '@/lib/agents/editor'
 import { LIBRARIAN_AGENT, type LibrarianOutput } from '@/lib/agents/librarian'
-import { SCOUT_AGENT, type ScoutOutput } from '@/lib/agents/scout'
+import { type ScoutOutput } from '@/lib/agents/scout'
+import { deterministicScout } from './deterministicScout'
 import {
   BudgetExceededError,
   assertWithinBudget,
@@ -74,30 +75,25 @@ export async function runGoalPipeline(
   const ctx = await assessUserContext(user.id, goal.id)
 
   try {
-    // ─── Scout ────────────────────────────────────────────────────────────
-    const scoutModel = await pickModelForNonEditor(user, SCOUT_AGENT.defaultModel)
-    const scoutInput = {
-      goal: { id: goal.id, title: goal.title, description: goal.description },
-      seeds: seeds.map((s) => ({ kind: s.kind, value: s.value, weight: s.weight })),
-      firstRun: ctx.firstRun,
-      widenTimeframe: ctx.firstRun,
-      recommendedTimeframe: ctx.firstRun ? '6–12 months' : '30–60 days',
-    }
-    const scout = await runAgent({
-      agent: SCOUT_AGENT,
-      userId: user.id,
-      goalId: goal.id,
-      parentRunId: parentRun.id,
-      model: scoutModel,
-      valency,
-      userMessage: JSON.stringify(scoutInput),
-    })
+    // ─── Scout (deterministic) ────────────────────────────────────────────
+    // We used to invoke an LLM-driven Scout against Anthropic+MCP, but for
+    // goals with 10+ seeds the Anthropic loop reliably exceeded 800s and the
+    // function died with zero recorded steps. Scout's job is enumeration —
+    // pick the right Valency tool per seed and gather candidates — which is
+    // mechanical. The deterministic per-seed call is fast (~3s for 50
+    // candidates), free, and what the goal-detail "Preview" button already
+    // uses. ctx.firstRun is acknowledged here for parity with the prompt
+    // signal but the deterministic path doesn't currently widen — the
+    // per-seed Valency calls return the corpus's freshest matches anyway.
+    void ctx.firstRun
+    const scout = await deterministicScout(user, goal)
 
     // ─── Analyst ──────────────────────────────────────────────────────────
     const analystInput = {
       goal: { id: goal.id, title: goal.title, description: goal.description },
       seeds: seeds.map((s) => ({ kind: s.kind, value: s.value })),
       candidates: scout.output.candidates,
+      firstRun: ctx.firstRun,
     }
     const analyst = await runAgent({
       agent: ANALYST_AGENT,
