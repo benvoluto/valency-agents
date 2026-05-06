@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { ArrowRight } from '@phosphor-icons/react/dist/ssr'
-import { desc, eq, sql } from 'drizzle-orm'
+import { desc, eq, inArray, sql } from 'drizzle-orm'
 import { requireOnboardedUser } from '@/lib/auth-helpers'
 import { db } from '@/db'
 import { goals, goalSeeds } from '@/db/schema'
@@ -8,7 +8,7 @@ import { goals, goalSeeds } from '@/db/schema'
 export default async function GoalsList() {
   const user = await requireOnboardedUser()
 
-  const rows = await db
+  const goalRows = await db
     .select({
       id: goals.id,
       title: goals.title,
@@ -16,11 +16,34 @@ export default async function GoalsList() {
       status: goals.status,
       cadence: goals.cadence,
       createdAt: goals.createdAt,
-      seedCount: sql<number>`(select count(*) from ${goalSeeds} where ${goalSeeds.goalId} = ${goals.id})`.as('seed_count'),
     })
     .from(goals)
     .where(eq(goals.userId, user.id))
     .orderBy(desc(goals.createdAt))
+
+  // Counting seeds via a correlated subquery in the goals select returned
+  // bigint-as-string and didn't render — fetch separately and map by id.
+  const seedCounts =
+    goalRows.length === 0
+      ? []
+      : await db
+          .select({
+            goalId: goalSeeds.goalId,
+            n: sql<number>`count(*)::int`,
+          })
+          .from(goalSeeds)
+          .where(
+            inArray(
+              goalSeeds.goalId,
+              goalRows.map((g) => g.id),
+            ),
+          )
+          .groupBy(goalSeeds.goalId)
+  const seedCountByGoal = new Map(seedCounts.map((s) => [s.goalId, Number(s.n)]))
+  const rows = goalRows.map((g) => ({
+    ...g,
+    seedCount: seedCountByGoal.get(g.id) ?? 0,
+  }))
 
   return (
     <>
