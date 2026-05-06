@@ -12,6 +12,7 @@ import {
 } from '@/lib/agents/runner'
 import {
   VALENCY_URL,
+  assessUserContext,
   dropRecentlyShown,
   materializeBriefings,
   pickModelForNonEditor,
@@ -25,6 +26,8 @@ interface SetupResult {
   goalTitle: string
   goalDescription: string
   seeds: Array<{ kind: string; value: string; weight: number }>
+  firstRun: boolean
+  recommendedTimeframe: string
 }
 
 export const runGoalRequested = inngest.createFunction(
@@ -68,6 +71,7 @@ export const runGoalRequested = inngest.createFunction(
       if (seedRows.length === 0) {
         throw new Error(`Goal ${g.id} has no seeds; nothing to run.`)
       }
+      const ctx = await assessUserContext(u.id, g.id)
       const [parentRun] = await db
         .insert(agentRuns)
         .values({
@@ -75,7 +79,11 @@ export const runGoalRequested = inngest.createFunction(
           goalId: g.id,
           agent: 'orchestrator',
           status: 'running',
-          summaryJson: { inngestRunId, reason } as Record<string, unknown>,
+          summaryJson: {
+            inngestRunId,
+            reason,
+            firstRun: ctx.firstRun,
+          } as Record<string, unknown>,
         })
         .returning()
       return {
@@ -87,6 +95,8 @@ export const runGoalRequested = inngest.createFunction(
           value: s.value,
           weight: s.weight,
         })),
+        firstRun: ctx.firstRun,
+        recommendedTimeframe: ctx.firstRun ? '6–12 months' : '30–60 days',
       }
     })
 
@@ -105,6 +115,9 @@ export const runGoalRequested = inngest.createFunction(
               description: setup.goalDescription,
             },
             seeds: setup.seeds,
+            firstRun: setup.firstRun,
+            widenTimeframe: setup.firstRun,
+            recommendedTimeframe: setup.recommendedTimeframe,
           }
           const scout = await runAgent({
             agent: SCOUT_AGENT,

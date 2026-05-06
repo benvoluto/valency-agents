@@ -2,6 +2,7 @@
 
 @theme {
   --color-bg: #fafaf7;
+  --color-bg-subtle: #eceef2;
   --color-surface: #ffffff;
   --color-ink: #141414;
   --color-ink-muted: #5c5c5c;
@@ -14,8 +15,19 @@
   --color-priority-signal: #7a5300;
   --color-audit: #3f4756;
 
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-fraunces), ui-serif, Georgia, serif;
+  /* Briefing-card pastel backgrounds + saturated icon/label colors. Picked
+     to match the dashboard sketch (orange / mint / lavender / mint). */
+  --color-card-bg-critical: #fdebdb;
+  --color-card-ink-critical: #c2410c;
+  --color-card-bg-process: #e1f2e5;
+  --color-card-ink-process: #1f7a4a;
+  --color-card-bg-opportunity: #eef1ff;
+  --color-card-ink-opportunity: #3a4fbf;
+  --color-card-bg-signal: #e1f2e5;
+  --color-card-ink-signal: #1f7a4a;
+
+  --font-sans: 'Helvetica Neue', HelveticaNeue, Helvetica, var(--font-inter), Arial, sans-serif;
+  --font-display: 'Helvetica Neue', HelveticaNeue, Helvetica, var(--font-inter), Arial, sans-serif;
   --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
 }
 
@@ -23,4 +35,10 @@ html,
 body {
   background: var(--color-bg);
   color: var(--color-ink);
+}
+
+/* Headings render as Helvetica Neue Medium (or its fallback). Explicit
+   font-weight utilities (e.g. font-bold) still override. */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 500;
 }

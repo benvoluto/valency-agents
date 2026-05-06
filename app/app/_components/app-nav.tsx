@@ -1,51 +1,49 @@
 import Link from 'next/link'
 import { signOut } from '@/auth'
+import { IdentificationBadge, UserCircle } from '@phosphor-icons/react/dist/ssr'
 import type { User } from '@/db/schema'
-import { AppNavLinks } from './app-nav-links'
-
-const NAV_ITEMS = [
-  { href: '/app', label: 'Briefings' },
-  { href: '/app/goals', label: 'Goals' },
-  { href: '/app/library', label: 'Library' },
-  { href: '/app/topics', label: 'Topics' },
-  { href: '/app/map', label: 'Map' },
-  { href: '/app/settings', label: 'Settings' },
-]
+import { AppNavTabs } from './app-nav-tabs'
 
 export function AppNav({ user }: { user: User }) {
-  const initial = (user.name ?? user.email ?? '?').slice(0, 1).toUpperCase()
+  const displayName = user.name ?? user.email ?? 'researcher'
   return (
-    <header className="border-border-subtle border-b">
-      <div className="mx-auto flex max-w-5xl items-center justify-between gap-3 px-4 py-3 sm:gap-6 sm:px-6 sm:py-4">
+    <header className="bg-bg-subtle">
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 sm:py-4">
         <Link
           href="/app"
-          className="text-ink-muted font-mono text-[11px] tracking-wider uppercase focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-4 rounded-sm sm:text-xs"
+          className="flex min-w-0 items-center gap-3 focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-4 rounded-md"
         >
-          researchagents.io
+          {user.image ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={user.image}
+              alt=""
+              className="h-10 w-10 rounded-full object-cover"
+            />
+          ) : (
+            <UserCircle
+              size={40}
+              weight="duotone"
+              className="text-ink-muted shrink-0"
+              aria-hidden
+            />
+          )}
+          <span className="font-display text-ink truncate text-xl font-medium sm:text-2xl">
+            {displayName}
+          </span>
         </Link>
 
-        <nav
-          aria-label="Primary"
-          className="text-ink-muted hidden items-center gap-5 text-sm md:flex"
-        >
-          {NAV_ITEMS.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="hover:text-ink focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2 rounded px-1 py-1"
-            >
-              {item.label}
-            </Link>
-          ))}
-        </nav>
+        <AppNavTabs />
 
         <div className="flex items-center gap-3">
-          <div
-            aria-hidden
-            className="bg-accent-soft text-accent flex h-9 w-9 items-center justify-center rounded-full text-xs font-medium sm:h-7 sm:w-7"
+          <Link
+            href="/app"
+            className="text-ink-muted hover:text-ink focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2 hidden items-center gap-2 rounded-md text-sm sm:flex"
+            aria-label="ResearchAgents home"
           >
-            {initial}
-          </div>
+            <IdentificationBadge size={20} weight="regular" aria-hidden />
+            <span className="hidden md:inline">ResearchAgents</span>
+          </Link>
           <form
             action={async () => {
               'use server'
@@ -54,13 +52,11 @@ export function AppNav({ user }: { user: User }) {
           >
             <button
               type="submit"
-              className="text-ink-muted hover:text-ink focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2 hidden rounded px-2 py-1 text-xs sm:inline"
+              className="text-ink-muted hover:text-ink focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2 rounded px-2 py-1 text-xs"
             >
               Sign out
             </button>
           </form>
-
-          <AppNavLinks items={NAV_ITEMS} />
         </div>
       </div>
     </header>

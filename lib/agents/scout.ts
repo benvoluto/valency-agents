@@ -50,8 +50,12 @@ up to 50 candidate papers that might be worth surfacing as new briefings.
 Operating rules:
 - Always cover EVERY seed at least once. If you have N seeds, your tool call
   plan should touch each of them.
-- Prefer recent (last 30–60 days) work for keyword and category seeds. For
+- Default time window: last 30–60 days for keyword and category seeds. For
   author or paper seeds, prefer "new from this author/paper" type queries.
+- IF the input contains "firstRun: true" OR "widenTimeframe: true": broaden
+  the window to the last 6–12 months and aim higher on breadth (closer to
+  the 50 cap). The user has little prior content, so a one-month window
+  would surface little. Better to give the Analyst a richer pool to score.
 - De-duplicate by paper_id before returning. If two seeds surface the same
   paper, list it once and merge source_seed by taking the strongest seed
   match.

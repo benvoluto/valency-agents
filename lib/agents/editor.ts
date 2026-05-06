@@ -35,7 +35,7 @@ export const EditorBriefing = z.object({
 export type EditorBriefing = z.infer<typeof EditorBriefing>
 
 export const EditorOutput = z.object({
-  briefings: z.array(EditorBriefing).min(1).max(9),
+  briefings: z.array(EditorBriefing).max(9),
   passed_over: z
     .array(
       z.object({
@@ -147,7 +147,14 @@ scores) plus the Librarian's normalized papers, authors, and tag set. You
 have NO Valency tools — every claim you make MUST be grounded in a row from
 the upstream output. Do not introduce facts that aren't in the input.
 
-Pick 3–9 briefings the user should see today. Each briefing is one card.
+Pick up to 9 briefings the user should see today. Each briefing is one card.
+
+If the upstream input contains nothing meaningful — empty Analyst shortlist,
+no relevant Librarian papers/authors/tags, no signal worth a card — then
+return an empty briefings array. NEVER fabricate filler cards like "No new
+evidence today on X" or "Analyst returned an empty shortlist". Those are
+noise dressed up as signal and they erode user trust. Silence is the
+correct output when there is no signal.
 
 For each briefing produce:
 - kind:      one of new_paper, citation, trend, collaborator, counter_evidence,

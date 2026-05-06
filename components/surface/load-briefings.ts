@@ -1,4 +1,4 @@
-import { and, desc, eq, gte, inArray, sql } from 'drizzle-orm'
+import { and, desc, eq, gte, inArray, notInArray, sql } from 'drizzle-orm'
 import { db } from '@/db'
 import {
   briefingProvenance,
@@ -11,14 +11,23 @@ import {
 } from '@/db/schema'
 import type { BriefingWithDetail, PriorityFilter } from './types'
 
+// Statuses that should never appear on the home feed: the user has acted
+// to remove them (dismissed) or they've timed out (expired).
+const HIDDEN_STATUSES = ['dismissed', 'expired'] as const
+
 export async function loadFeed(
   userId: string,
   filter: PriorityFilter,
 ): Promise<BriefingWithDetail[]> {
+  const visible = notInArray(briefings.status, [...HIDDEN_STATUSES])
   const where =
     filter === 'all'
-      ? eq(briefings.userId, userId)
-      : and(eq(briefings.userId, userId), eq(briefings.priority, filter))
+      ? and(eq(briefings.userId, userId), visible)
+      : and(
+          eq(briefings.userId, userId),
+          eq(briefings.priority, filter),
+          visible,
+        )
 
   const rows = await db
     .select({
@@ -85,15 +94,20 @@ export async function countByPriority(userId: string): Promise<{
   thisWeek: number
 }> {
   const oneWeekAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000)
+  const visible = notInArray(briefings.status, [...HIDDEN_STATUSES])
   const [{ total }] = await db
     .select({ total: sql<number>`count(*)::int` })
     .from(briefings)
-    .where(eq(briefings.userId, userId))
+    .where(and(eq(briefings.userId, userId), visible))
   const [{ thisWeek }] = await db
     .select({ thisWeek: sql<number>`count(*)::int` })
     .from(briefings)
     .where(
-      and(eq(briefings.userId, userId), gte(briefings.createdAt, oneWeekAgo)),
+      and(
+        eq(briefings.userId, userId),
+        visible,
+        gte(briefings.createdAt, oneWeekAgo),
+      ),
     )
   const byPrio = await db
     .select({
@@ -101,7 +115,7 @@ export async function countByPriority(userId: string): Promise<{
       n: sql<number>`count(*)::int`,
     })
     .from(briefings)
-    .where(eq(briefings.userId, userId))
+    .where(and(eq(briefings.userId, userId), visible))
     .groupBy(briefings.priority)
   const byPriority: Record<Briefing['priority'], number> = {
     critical: 0,

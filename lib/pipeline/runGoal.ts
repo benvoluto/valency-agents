@@ -7,6 +7,7 @@ import {
   briefingSources,
   briefingTags,
   briefings,
+  follows,
   goalSeeds,
   papers,
   tags,
@@ -70,12 +71,17 @@ export async function runGoalPipeline(
     })
     .returning()
 
+  const ctx = await assessUserContext(user.id, goal.id)
+
   try {
     // ─── Scout ────────────────────────────────────────────────────────────
     const scoutModel = await pickModelForNonEditor(user, SCOUT_AGENT.defaultModel)
     const scoutInput = {
       goal: { id: goal.id, title: goal.title, description: goal.description },
       seeds: seeds.map((s) => ({ kind: s.kind, value: s.value, weight: s.weight })),
+      firstRun: ctx.firstRun,
+      widenTimeframe: ctx.firstRun,
+      recommendedTimeframe: ctx.firstRun ? '6–12 months' : '30–60 days',
     }
     const scout = await runAgent({
       agent: SCOUT_AGENT,
@@ -220,6 +226,44 @@ export async function runGoalPipeline(
       .where(eq(agentRuns.id, parentRun.id))
     throw err
   }
+}
+
+/**
+ * Detects whether this user (or this specific goal) has enough prior content
+ * for the default 30–60d Scout window to surface anything useful. Returns a
+ * `firstRun` flag the orchestrator passes to Scout so it can widen the search.
+ *
+ * Heuristic: count visible (non-dismissed/non-expired) briefings for the
+ * user, plus follows. If both are zero — for the user *and* this goal has
+ * no prior briefings either — treat as first run.
+ */
+export async function assessUserContext(
+  userId: string,
+  goalId: string,
+): Promise<{
+  firstRun: boolean
+  totalBriefings: number
+  totalFollows: number
+  goalBriefings: number
+}> {
+  const [briefingRow] = await db
+    .select({ n: sql<number>`count(*)::int` })
+    .from(briefings)
+    .where(eq(briefings.userId, userId))
+  const [followRow] = await db
+    .select({ n: sql<number>`count(*)::int` })
+    .from(follows)
+    .where(eq(follows.userId, userId))
+  const [goalBriefingRow] = await db
+    .select({ n: sql<number>`count(*)::int` })
+    .from(briefings)
+    .where(and(eq(briefings.userId, userId), eq(briefings.goalId, goalId)))
+  const totalBriefings = Number(briefingRow?.n ?? 0)
+  const totalFollows = Number(followRow?.n ?? 0)
+  const goalBriefings = Number(goalBriefingRow?.n ?? 0)
+  const firstRun =
+    goalBriefings === 0 && totalBriefings < 5 && totalFollows < 3
+  return { firstRun, totalBriefings, totalFollows, goalBriefings }
 }
 
 export async function pickModelForNonEditor(

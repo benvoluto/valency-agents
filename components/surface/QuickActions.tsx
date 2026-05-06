@@ -1,37 +1,42 @@
 import Link from 'next/link'
-import { ArrowRight } from '@phosphor-icons/react/dist/ssr'
+import {
+  Gear,
+  Graph,
+  Newspaper,
+  Target,
+} from '@phosphor-icons/react/dist/ssr'
+import type { ComponentType } from 'react'
 
-const ACTIONS = [
-  { href: '/app/goals/new', label: 'New goal' },
-  { href: '/app/settings', label: 'Pause briefings' },
-  { href: '/app/library', label: 'Library' },
-  { href: '/app/topics', label: 'Topics' },
-  { href: '/app/settings', label: 'Settings' },
+type IconComp = ComponentType<{
+  size?: number
+  weight?: 'regular' | 'bold' | 'fill'
+}>
+
+const ACTIONS: Array<{ href: string; label: string; icon: IconComp }> = [
+  { href: '/app/goals/new', label: 'New Goal', icon: Target },
+  { href: '/app', label: 'Briefings', icon: Newspaper },
+  { href: '/app/topics', label: 'Browse Topics', icon: Graph },
+  { href: '/app/settings', label: 'Settings', icon: Gear },
 ]
 
 export function QuickActions() {
   return (
-    <section className="bg-surface border-border-subtle rounded-2xl border p-5">
-      <h2 className="text-ink-muted font-mono text-[11px] tracking-wider uppercase">
-        Quick actions
-      </h2>
-      <ul className="mt-3 space-y-1.5 text-sm">
-        {ACTIONS.map((a) => (
-          <li key={a.label}>
-            <Link
-              href={a.href}
-              className="text-ink hover:text-accent group flex items-center justify-between py-1"
-            >
-              <span>{a.label}</span>
-              <ArrowRight
-                size={14}
-                weight="regular"
-                className="text-ink-muted group-hover:text-accent transition"
-                aria-hidden
-              />
-            </Link>
-          </li>
-        ))}
+    <section aria-label="Quick actions">
+      <ul className="grid grid-cols-2 gap-x-4 gap-y-3 text-sm">
+        {ACTIONS.map((a) => {
+          const Icon = a.icon
+          return (
+            <li key={a.label}>
+              <Link
+                href={a.href}
+                className="text-accent hover:text-ink focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2 inline-flex items-center gap-2 rounded-sm py-1 font-medium"
+              >
+                <Icon size={20} weight="regular" aria-hidden />
+                {a.label}
+              </Link>
+            </li>
+          )
+        })}
       </ul>
     </section>
   )

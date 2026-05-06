@@ -1,67 +1,55 @@
 import Link from 'next/link'
-import { CategoryIcon } from './CategoryIcon'
-import { ConfidenceChip } from './ConfidenceChip'
-import { PriorityBadge } from './PriorityBadge'
 import { BriefingActions } from './BriefingActions'
+import { CategoryHeader } from './CategoryHeader'
 import type { BriefingWithDetail } from './types'
+
+const CARD_BG: Record<string, string> = {
+  critical: 'bg-card-bg-critical',
+  process: 'bg-card-bg-process',
+  opportunity: 'bg-card-bg-opportunity',
+  signal: 'bg-card-bg-signal',
+}
+
+const CARD_INK: Record<string, string> = {
+  critical: 'text-card-ink-critical',
+  process: 'text-card-ink-process',
+  opportunity: 'text-card-ink-opportunity',
+  signal: 'text-card-ink-signal',
+}
 
 function ellipsize(s: string, n: number): string {
   return s.length > n ? `${s.slice(0, n - 1)}…` : s
 }
 
 export function BriefingCard({ data }: { data: BriefingWithDetail }) {
-  const { briefing, goalTitle, sources, tags } = data
-  const sourceCount = sources.length
-  const authorMatch = sources.find((s) => s.kind === 'author')
-  const subtitleParts: string[] = []
-  if (goalTitle) subtitleParts.push(`From your "${ellipsize(goalTitle, 60)}"`)
-  if (sourceCount > 0) {
-    subtitleParts.push(
-      `${sourceCount} source${sourceCount === 1 ? '' : 's'}${authorMatch ? ` · author you follow` : ''}`,
-    )
-  }
+  const { briefing } = data
+  const bgClass = CARD_BG[briefing.priority]
+  const inkClass = CARD_INK[briefing.priority]
+
   return (
-    <article className="bg-surface border-border-subtle rounded-2xl border p-5">
-      <div className="flex items-start gap-4">
-        <CategoryIcon kind={briefing.kind} />
+    <article
+      className={`${bgClass} relative rounded-2xl p-5`}
+      data-priority={briefing.priority}
+    >
+      <div className={inkClass}>
+        <CategoryHeader kind={briefing.kind} priority={briefing.priority} />
+      </div>
 
-        <div className="flex-1 min-w-0">
-          <div className="flex items-start justify-between gap-3">
-            <Link
-              href={`/app/briefings/${briefing.id}`}
-              className="text-ink hover:text-accent block min-w-0 text-base font-medium leading-snug"
-            >
-              {ellipsize(briefing.title, 90)}
-            </Link>
-            <div className="flex items-center gap-2 whitespace-nowrap">
-              <ConfidenceChip confidence={briefing.confidence} />
-              <PriorityBadge priority={briefing.priority} />
-            </div>
-          </div>
+      <Link
+        href={`/app/briefings/${briefing.id}`}
+        className="text-ink hover:text-accent focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2 mt-3 block rounded-sm"
+      >
+        <h2 className="font-display text-ink text-xl leading-snug font-medium">
+          {ellipsize(briefing.title, 110)}
+        </h2>
+      </Link>
 
-          {subtitleParts.length > 0 ? (
-            <p className="text-ink-muted mt-1 text-[13px]">
-              {subtitleParts.join(' · ')}
-            </p>
-          ) : null}
+      <p className="text-ink/85 mt-2 line-clamp-3 text-sm leading-relaxed">
+        {briefing.summary}
+      </p>
 
-          {tags.length > 0 ? (
-            <ul className="mt-3 flex flex-wrap gap-2">
-              {tags.slice(0, 5).map((t) => (
-                <li
-                  key={t.id}
-                  className="bg-accent-soft text-accent rounded-full px-2 py-0.5 font-mono text-[11px]"
-                >
-                  {t.label}
-                </li>
-              ))}
-            </ul>
-          ) : null}
-
-          <div className="mt-4 flex items-center justify-between gap-3">
-            <BriefingActions data={data} />
-          </div>
-        </div>
+      <div className="mt-4">
+        <BriefingActions data={data} />
       </div>
     </article>
   )
