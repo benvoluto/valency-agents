@@ -6,15 +6,35 @@ import { credentials, follows, users } from '@/db/schema'
 import { encryptSecret } from '@/lib/crypto'
 import { ValencyClient, tools as valency } from '@/lib/valency'
 
+// ORCIDs are 16 digits in 4-4-4-4 form; the final character may be X.
+// Accept the bare id or any orcid.org URL pasted from a profile page.
+const ORCID_RE = /^(\d{4}-\d{4}-\d{4}-\d{3}[\dX])$/
+
+function normalizeOrcid(raw: string): string | null | 'invalid' {
+  const trimmed = raw.trim()
+  if (trimmed.length === 0) return null
+  const stripped = trimmed
+    .replace(/^https?:\/\/(www\.)?orcid\.org\//i, '')
+    .toUpperCase()
+  return ORCID_RE.test(stripped) ? stripped : 'invalid'
+}
+
 async function saveProfile(formData: FormData) {
   'use server'
   const user = await requireUser()
   const name = formData.get('name')?.toString().trim() || null
   const affiliation = formData.get('affiliation')?.toString().trim() || null
   const timezone = formData.get('timezone')?.toString().trim() || null
+  const orcidRaw = formData.get('orcid')?.toString() ?? ''
+  const orcid = normalizeOrcid(orcidRaw)
+  if (orcid === 'invalid') {
+    redirect(
+      `/app/settings?error=${encodeURIComponent('ORCID must look like 0000-0002-1825-0097.')}`,
+    )
+  }
   await db
     .update(users)
-    .set({ name, affiliation, timezone })
+    .set({ name, affiliation, timezone, orcid })
     .where(eq(users.id, user.id))
   redirect('/app/settings?saved=profile')
 }
@@ -191,12 +211,21 @@ export default async function SettingsPage({
               className="border-border-subtle bg-surface text-ink mt-1 block w-full rounded-md border px-3 py-2 text-sm focus:outline-2 focus:outline-accent"
             />
           </label>
-          <p className="text-ink-muted text-xs">
-            ORCID:{' '}
-            <span className="font-mono">
-              {user.orcid ?? 'not connected'}
+          <label className="block">
+            <span className="text-ink text-sm font-medium">ORCID</span>
+            <input
+              name="orcid"
+              type="text"
+              placeholder="0000-0002-1825-0097"
+              defaultValue={user.orcid ?? ''}
+              pattern="(?:https?:\/\/(?:www\.)?orcid\.org\/)?\d{4}-\d{4}-\d{4}-\d{3}[\dX]"
+              className="border-border-subtle bg-surface text-ink mt-1 block w-full rounded-md border px-3 py-2 font-mono text-sm focus:outline-2 focus:outline-accent"
+            />
+            <span className="text-ink-muted mt-1 block text-xs">
+              Paste the 16-digit id or the orcid.org URL. Leave blank to
+              disconnect.
             </span>
-          </p>
+          </label>
           <button
             type="submit"
             className="bg-ink text-surface hover:bg-ink/90 inline-flex items-center justify-center rounded-lg px-4 py-2 text-sm font-medium transition"

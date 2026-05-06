@@ -65,12 +65,20 @@ export async function buildSystemPrompt(user: User): Promise<string> {
   ])
 
   const lines: string[] = [SYSTEM_HEADER, '']
-  lines.push('## Researcher')
-  lines.push(
-    `- Name: ${user.name ?? '(not set)'}` +
-      (user.affiliation ? ` · ${user.affiliation}` : '') +
-      (user.orcid ? ` · ORCID ${user.orcid}` : ''),
-  )
+
+  // Only surface researcher identity when the user has explicitly set
+  // affiliation or ORCID (settings-driven fields). user.name alone is
+  // unreliable since Auth.js auto-populates it from the Google profile —
+  // including it before the user has confirmed their settings would leak
+  // login info into the prompt rather than identity-as-configured.
+  if (user.affiliation || user.orcid) {
+    const parts: string[] = []
+    if (user.name) parts.push(user.name)
+    if (user.affiliation) parts.push(user.affiliation)
+    if (user.orcid) parts.push(`ORCID ${user.orcid}`)
+    lines.push('## Researcher')
+    lines.push(`- ${parts.join(' · ')}`)
+  }
 
   if (activeGoals.length > 0) {
     lines.push('')
