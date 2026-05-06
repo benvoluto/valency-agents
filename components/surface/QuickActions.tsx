@@ -2,6 +2,7 @@ import Link from 'next/link'
 import {
   Gear,
   Graph,
+  ListChecks,
   Newspaper,
   Target,
 } from '@phosphor-icons/react/dist/ssr'
@@ -14,6 +15,7 @@ type IconComp = ComponentType<{
 
 const ACTIONS: Array<{ href: string; label: string; icon: IconComp }> = [
   { href: '/app/goals/new', label: 'New Goal', icon: Target },
+  { href: '/app/goals', label: 'Manage Goals', icon: ListChecks },
   { href: '/app', label: 'Briefings', icon: Newspaper },
   { href: '/app/topics', label: 'Browse Topics', icon: Graph },
   { href: '/app/settings', label: 'Settings', icon: Gear },
