@@ -47,9 +47,17 @@ export function HomeShell({
         {feed.length === 0 ? (
           <EmptyState filter={filter} />
         ) : (
-          <ul className="mt-6 grid gap-4 sm:grid-cols-2">
+          // CSS columns gives true masonry packing — cards with varying
+          // summary length pack tightly without grid-row gaps. Column count
+          // scales with viewport so wider displays show more cards per row.
+          <ul
+            className="mt-6 gap-4 [column-fill:_balance] columns-1 sm:columns-2 xl:columns-3 2xl:columns-4 [@media(min-width:120rem)]:columns-5 [@media(min-width:160rem)]:columns-6"
+          >
             {feed.map((b) => (
-              <li key={b.briefing.id} className="relative">
+              <li
+                key={b.briefing.id}
+                className="relative mb-4 break-inside-avoid"
+              >
                 <BriefingCard data={b} />
               </li>
             ))}

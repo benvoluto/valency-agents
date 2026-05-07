@@ -13,7 +13,7 @@ export default async function AppLayout({
       <AppNav user={user} />
       <main
         id="main"
-        className="mx-auto max-w-5xl px-4 py-6 sm:px-6 sm:py-10"
+        className="px-4 py-6 sm:px-6 sm:py-10"
       >
         {children}
       </main>
